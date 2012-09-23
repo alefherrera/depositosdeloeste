@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Text;
 
 namespace Depositos_del_Oeste
 {
@@ -67,6 +68,87 @@ namespace Depositos_del_Oeste
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            List<Menu> menuList = new List<Menu>();
+            Menu menu = new Menu();
+            menu.Id = 0;
+            menu.IdPadre = 0;
+            menu.Nombre = "Home";
+            menu.Link = "/Default.aspx";
+
+            menuList.Add(menu);
+
+            menu = new Menu();
+            menu.Id = 1;
+            menu.IdPadre = 0;
+            menu.Nombre = "MENU1";
+            menu.Link = "#";
+
+            menuList.Add(menu);
+
+            menu = new Menu();
+            menu.Id = 2;
+            menu.IdPadre = 1;
+            menu.Nombre = "SubMenu1";
+            menu.Link = "/About.aspx";
+
+            StringBuilder stringMenu = new StringBuilder();  
+            stringMenu.Append("<ul>");
+
+            List<Menu> menuPrincipal = new List<Menu>();
+            menuPrincipal = menuList.FindAll(
+                delegate(Menu mn)
+                {
+                    return mn.IdPadre == 0;
+                }
+            );
+
+            for(int i = 0; menuPrincipal.Count > i; i++)
+            {
+                stringMenu.Append("<li><a href='");
+                stringMenu.Append(menuPrincipal[i].Link);
+                stringMenu.Append("'><span>");
+                stringMenu.Append(menuPrincipal[i].Nombre);
+                stringMenu.Append("</span></a></li>");
+            }
+
+            stringMenu.Append("</ul>");
+
+            
+            //cssmenu.InnerHtml = stringMenu.ToString();
         }
+    }
+
+
+    public class Menu
+    {
+        private int id;
+        public int Id
+        {
+            get { return id; }
+            set { id = value; }
+        }
+
+        private int idPadre;
+        public int IdPadre
+        {
+            get { return idPadre; }
+            set { idPadre = value; }
+        }
+
+        private string nombre;
+        public string Nombre
+        {
+            get { return nombre; }
+            set { nombre = value; }
+        }
+
+        private string link;
+        public string Link
+        {
+            get { return link; }
+            set { link = value; }
+        }
+
+
     }
 }

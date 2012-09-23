@@ -36,9 +36,7 @@
         <header>
             <div class="content-wrapper">
                 <div>
-                    <p class="site-title">
-                        <a id="A1" runat="server" href="~/">your logo here</a>
-                    </p>
+                    <img src="Images/banner.png"/>
                 </div>
                 <div id="cssmenu" runat="server">
                     <ul>
@@ -49,7 +47,6 @@
 
                                 </li>
                                 <li class='has-sub '><a href='#'><span>Product 2</span></a>
-
                                 </li>
                             </ul>
                         </li>
@@ -71,7 +68,7 @@
                 
                 <div class="float-left">
                     <p>
-                        &copy; <%: DateTime.Now.Year %> - RamonLabs
+                        &copy; <%: DateTime.Now.Year %> - RAMONLABS
                     </p>
                 </div>
             </div>
