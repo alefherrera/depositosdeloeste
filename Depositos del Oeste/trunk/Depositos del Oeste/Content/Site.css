@@ -90,18 +90,19 @@ h5, h6 {
         text-decoration: none;
     }
 
+
 /* main layout
 ----------------------------------------------------------*/
 .content-wrapper {
     margin: 0 auto;
-    max-width: 80%;
+    max-width: 960px;
 }
 
 #body {
     background-color: #efeeef;
     clear: both;
     padding-bottom: 35px;
-    max-width: 80%;
+    max-width: 960px;
     margin: 0 auto;
 }
 
@@ -167,11 +168,11 @@ footer p {
 }
 
 #cssmenu {
-    height: 49px;
-    border-radius: 5px 5px 0 0;
+    height: 30px;
+    /*border-radius: 5px 5px 0 0;
     -moz-border-radius: 5px 5px 0 0;
     -webkit-border-radius: 5px 5px 0 0;
-    /*background: #141414;
+    background: #141414;
   background: -moz-linear-gradient(top, #32323a 0%, #141414 100%);
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #32323a), color-stop(100%, #141414));
   background: -webkit-linear-gradient(top, #32323a 0%, #141414 100%);
@@ -179,6 +180,7 @@ footer p {
   background: -ms-linear-gradient(top, #32323a 0%, #141414 100%);
   background: linear-gradient(to bottom, #32323a 0%, #141414 100%);
   filter: progid:DXImageTransform.Microsoft.Gradient(StartColorStr='#32323a', EndColorStr='#141414', GradientType=0);*/
+    border-top: 2px solid #174B6E;
     border-bottom: 2px solid #174B6E;
 }
 
@@ -190,7 +192,7 @@ footer p {
     }
 
 #cssmenu a {
-    background: #2687c7;
+    background: #fff;
     /*background: -moz-linear-gradient(top, #2687c7 0%, #2687c7 50%);
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #2687c7), color-stop(50%, #2687c7));
   background: -webkit-linear-gradient(top, #2687c7 0%, #2687c7 50%);
@@ -198,13 +200,15 @@ footer p {
   background: -ms-linear-gradient(top, #2687c7 0%, #2687c7 50%);
   background: linear-gradient(to bottom, #2687c7 0%, #2687c7 50%);
   filter: progid:DXImageTransform.Microsoft.Gradient(StartColorStr='#2687c7', EndColorStr='#2687c7', GradientType=0);*/
-    color: #ffffff;
+    color: #000000;
     display: inline-block;
     font-family: Helvetica, Arial, Verdana, sans-serif;
     font-size: 12px;
-    line-height: 49px;
+    line-height: 30px;
     padding: 0 20px;
     text-decoration: none;
+    font-family:Tahoma;
+    font-size:12px;
 }
 
 #cssmenu ul {
@@ -227,10 +231,10 @@ footer p {
     position: absolute;
     left: 50%;
     bottom: 0;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-bottom: 10px solid #174B6E;
-    margin-left: -10px;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 7px solid #174B6E;
+    margin-left: -7px;
 }
 
 #cssmenu > ul > li:first-child a {
@@ -260,8 +264,8 @@ lter: progid:DXImageTransform.Microsoft.Gradient(StartColorStr='#26262c', EndCol
 }
 
 #cssmenu > ul > li:hover > a {
-    background: #449EDA;
-            /*background: -moz-linear-gradient(top, #26262c 0%, #070707 100%);
+  /*background: #449EDA;
+  background: -moz-linear-gradient(top, #26262c 0%, #070707 100%);
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #26262c), color-stop(100%, #070707));
   background: -webkit-linear-gradient(top, #26262c 0%, #070707 100%);
   background: -o-linear-gradient(top, #26262c 0%, #070707 100%);
@@ -271,7 +275,6 @@ lter: progid:DXImageTransform.Microsoft.Gradient(StartColorStr='#26262c', EndCol
   box-shadow: inset 0 0 3px #000000;
   -moz-box-shadow: inset 0 0 3px #000000;
   -webkit-box-shadow: inset 0 0 3px #000000;*/
-
 }
 
 #cssmenu .has-sub {
@@ -283,6 +286,7 @@ lter: progid:DXImageTransform.Microsoft.Gradient(StartColorStr='#26262c', EndCol
 }
 
 #cssmenu .has-sub ul {
+    border-top: 2px solid #174B6E;
     display: none;
     position: absolute;
     width: 200px;
@@ -295,8 +299,8 @@ lter: progid:DXImageTransform.Microsoft.Gradient(StartColorStr='#26262c', EndCol
 }
 
 #cssmenu .has-sub ul li a {
-    background: #174B6E;
-    border-bottom: 1px dotted #206897;
+    background: #fff;
+    /*border-bottom: 1px dotted #206897;
     filter: none;
     font-size: 11px;
     display: block;
