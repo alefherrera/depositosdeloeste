@@ -6,6 +6,7 @@ using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Text;
+using BackEnd;
 
 namespace Depositos_del_Oeste
 {
@@ -68,8 +69,8 @@ namespace Depositos_del_Oeste
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            List<Menu> menuList = new List<Menu>();
-            Menu menu = new Menu();
+            List<BackEnd.Menu> menuList = new List<BackEnd.Menu>();
+            BackEnd.Menu menu = new BackEnd.Menu();
             menu.Id = 0;
             menu.IdPadre = 0;
             menu.Nombre = "Home";
@@ -77,7 +78,7 @@ namespace Depositos_del_Oeste
 
             menuList.Add(menu);
 
-            menu = new Menu();
+            menu = new BackEnd.Menu();
             menu.Id = 1;
             menu.IdPadre = 0;
             menu.Nombre = "MENU1";
@@ -85,7 +86,7 @@ namespace Depositos_del_Oeste
 
             menuList.Add(menu);
 
-            menu = new Menu();
+            menu = new BackEnd.Menu();
             menu.Id = 2;
             menu.IdPadre = 1;
             menu.Nombre = "SubMenu1";
@@ -94,9 +95,9 @@ namespace Depositos_del_Oeste
             StringBuilder stringMenu = new StringBuilder();  
             stringMenu.Append("<ul>");
 
-            List<Menu> menuPrincipal = new List<Menu>();
+            List<BackEnd.Menu> menuPrincipal = new List<BackEnd.Menu>();
             menuPrincipal = menuList.FindAll(
-                delegate(Menu mn)
+                delegate(BackEnd.Menu mn)
                 {
                     return mn.IdPadre == 0;
                 }
@@ -121,36 +122,4 @@ namespace Depositos_del_Oeste
     }
 
 
-    public class Menu
-    {
-        private int id;
-        public int Id
-        {
-            get { return id; }
-            set { id = value; }
-        }
-
-        private int idPadre;
-        public int IdPadre
-        {
-            get { return idPadre; }
-            set { idPadre = value; }
-        }
-
-        private string nombre;
-        public string Nombre
-        {
-            get { return nombre; }
-            set { nombre = value; }
-        }
-
-        private string link;
-        public string Link
-        {
-            get { return link; }
-            set { link = value; }
-        }
-
-
-    }
 }
