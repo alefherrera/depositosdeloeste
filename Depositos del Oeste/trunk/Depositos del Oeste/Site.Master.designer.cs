@@ -40,6 +40,15 @@ namespace Depositos_del_Oeste {
         protected global::System.Web.UI.ScriptManager ScriptManager1;
         
         /// <summary>
+        /// login control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Login login;
+        
+        /// <summary>
         /// cssmenu control.
         /// </summary>
         /// <remarks>

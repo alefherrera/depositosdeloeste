@@ -115,8 +115,49 @@ h5, h6 {
 
 header .content-wrapper {
     padding-top: 20px;
-
 }
+
+#banner {
+    background-image:url("/Images/banner.png");
+    background-repeat:no-repeat;
+    height:141px;
+    padding-bottom: 2px;
+}
+
+
+
+/* login
+----------------------------------------------------------*/
+#log {
+    float: right;
+    margin-top: 20px;
+}
+
+#log .login{
+    font-weight:bold;
+    font-family:Tahoma;
+    font-size:10px;
+    color:#fff;
+}
+
+#log .button {
+    font-family:Tahoma;
+    font-size:12px;
+    font-weight:bold;
+    background:none;
+    border:none;
+    color:#fff;
+}
+/* footer
+----------------------------------------------------------*/
+
+
+footer p {
+    font-family:Tahoma;
+    font-size:12px;
+    margin-left:20px;
+}
+
 
 footer {
     clear: both;
@@ -126,36 +167,8 @@ footer {
 footer .content-wrapper{
     clear: both;
     height: 50px;
-    background-color:#e2e2e2;
+    border-top: 2px #ccdbe2 solid;
 }
-
-/* site title
-----------------------------------------------------------*/
-.site-title {
-    color: #c8c8c8;
-    font-family: Rockwell, Consolas, "Courier New", Courier, monospace;
-    font-size: 2.3em;
-    margin: 0;
-}
-
-.site-title a, .site-title a:hover, .site-title a:active {
-    background: none;
-    color: #c8c8c8;
-    outline: none;
-    text-decoration: none;
-}
-
-
-/* login
-----------------------------------------------------------*/
-
-
-/* footer
-----------------------------------------------------------*/
-footer p {
-    margin-left:20px;
-}
-
 /* menu
 ----------------------------------------------------------*/
 #cssmenu ul,
@@ -180,8 +193,8 @@ footer p {
   background: -ms-linear-gradient(top, #32323a 0%, #141414 100%);
   background: linear-gradient(to bottom, #32323a 0%, #141414 100%);
   filter: progid:DXImageTransform.Microsoft.Gradient(StartColorStr='#32323a', EndColorStr='#141414', GradientType=0);*/
-    border-top: 2px solid #174B6E;
-    border-bottom: 2px solid #174B6E;
+    border-top: 2px solid #ccdbe2;
+    border-bottom: 1px solid #ccdbe2;
 }
 
 #cssmenu:after,
@@ -286,7 +299,7 @@ lter: progid:DXImageTransform.Microsoft.Gradient(StartColorStr='#26262c', EndCol
 }
 
 #cssmenu .has-sub ul {
-    border-top: 2px solid #174B6E;
+    border-top: 1px solid #ccdbe2;
     display: none;
     position: absolute;
     width: 200px;
@@ -296,6 +309,7 @@ lter: progid:DXImageTransform.Microsoft.Gradient(StartColorStr='#26262c', EndCol
 
 #cssmenu .has-sub ul li {
     *margin-bottom: -1px;
+
 }
 
 #cssmenu .has-sub ul li a {
@@ -305,11 +319,11 @@ lter: progid:DXImageTransform.Microsoft.Gradient(StartColorStr='#26262c', EndCol
     font-size: 11px;
     display: block;
     line-height: 120%;
-    padding: 10px;
+    padding: 10px;*/
 }
 
 #cssmenu .has-sub ul li:hover a {
-    background: #206897;
+    background: #e2e2e2;
 }
 
 
@@ -321,8 +335,6 @@ lter: progid:DXImageTransform.Microsoft.Gradient(StartColorStr='#26262c', EndCol
 *   Mobile Styles   *
 ********************/
 /*@media only screen and (max-width: 850px) {
-
- 
     header .float-left,
     header .float-right {
         float: none;
