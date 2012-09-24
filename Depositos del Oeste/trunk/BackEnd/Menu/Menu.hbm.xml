@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="BackEnd">
+  <class name="BackEnd.Menu, BackEnd" table="Menu" lazy="true">
+    <id name="Id">
+      <column name="id"/>
+      <generator class="native" />
+    </id>
+    <property name="IdPadre">
+      <column name="idPadre"/>
+    </property>
+    <property name="Nombre">
+      <column name="nombre"/>
+    </property>
+    <property name="Link">
+      <column name="link"/>
+    </property>
+  </class>
+</hibernate-mapping>

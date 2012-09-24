@@ -114,7 +114,9 @@ namespace Depositos_del_Oeste
 
             stringMenu.Append("</ul>");
 
-            
+
+
+            menu.TestMethod();
             //cssmenu.InnerHtml = stringMenu.ToString();
         }
 
