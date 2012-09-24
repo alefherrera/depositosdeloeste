@@ -35,8 +35,10 @@
         </asp:ScriptManager>
         <header>
             <div class="content-wrapper">
-                <div>
-                    <img src="Images/banner.png"/>
+                <div id="banner">
+                    <div id="log">
+                        <asp:Login ID="login" runat="server" PasswordLabelText="Contraseña" UserNameLabelText="Legajo" RememberMeText="Recordar datos" LoginButtonText="Entrar" TitleText="" CssClass="login" FailureText="Error al entrar, por favor, trate de nuevo." LoginButtonStyle-CssClass="button" OnAuthenticate="login_Authenticate"></asp:Login>
+                    </div>
                 </div>
                 <div id="cssmenu" runat="server">
                     <ul>
