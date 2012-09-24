@@ -8,7 +8,7 @@ using NHibernate.Cfg;
 
 namespace BackEnd
 {
-    public class Base
+    public class BusinessObject<T>
     {
         public virtual void TestMethod()
         {
@@ -28,6 +28,60 @@ namespace BackEnd
             tx.Commit();
 
             session.Close();
+        }
+
+        public virtual void Save()
+        {
+            Configuration config = new Configuration();
+            config.Configure();
+
+            ISessionFactory factory = config.BuildSessionFactory();
+            ISession session = factory.OpenSession();
+            ITransaction tx = session.BeginTransaction();
+
+            session.Save(this);
+
+            tx.Commit();
+
+            session.Close();
+        }
+
+        public virtual void Delete()
+        {
+            Configuration config = new Configuration();
+            config.Configure();
+
+            ISessionFactory factory = config.BuildSessionFactory();
+            ISession session = factory.OpenSession();
+            ITransaction tx = session.BeginTransaction();
+
+            session.Delete(this);
+
+            tx.Commit();
+            session.Close();
+        }
+
+
+
+        public virtual T Clone()
+        {
+            return this.Clone();
+        }
+
+        public virtual List<T> Select()
+        {
+            List<T> rtnList = new List<T>();
+
+            Configuration config = new Configuration();
+            config.Configure();
+
+            ISessionFactory factory = config.BuildSessionFactory();
+            ISession session = factory.OpenSession();
+            
+            rtnList = (List<T>)session.CreateCriteria(typeof(T)).List<T>();
+
+            session.Close();
+            return rtnList;
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BackEnd
 {
-    public class Menu:Base
+    public class Menu:BusinessObject<Menu>
     {
         private int id;
         public virtual int Id
