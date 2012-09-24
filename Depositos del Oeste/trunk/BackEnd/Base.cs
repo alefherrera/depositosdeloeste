@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NHibernate;
 using NHibernate.Cfg;
+using NHibernate.Criterion;
 
 namespace BackEnd
 {
@@ -83,5 +84,45 @@ namespace BackEnd
             session.Close();
             return rtnList;
         }
+
+        public virtual List<T> Select(List<List<string>> lista)
+        {
+            List<T> rtnList = new List<T>();
+
+            Configuration config = new Configuration();
+            config.Configure();
+
+            ISessionFactory factory = config.BuildSessionFactory();
+            ISession session = factory.OpenSession();
+
+            ICriteria criteria = session.CreateCriteria(typeof(T));
+            foreach (List<string> item in lista)
+            {
+                item.ToArray();
+                criteria.Add(Restrictions.Eq(item[0],item[1]));
+            }
+
+            rtnList = (List<T>)criteria.List<T>();
+
+            session.Close();
+            return rtnList;
+        }
+
+        public virtual List<T> Select(string query)
+        {
+            List<T> rtnList = new List<T>();
+
+            Configuration config = new Configuration();
+            config.Configure();
+
+            ISessionFactory factory = config.BuildSessionFactory();
+            ISession session = factory.OpenSession();           
+
+            rtnList = (List<T>)session.CreateQuery(query).List<T>();
+
+            session.Close();
+            return rtnList;
+        }
+
     }
 }
