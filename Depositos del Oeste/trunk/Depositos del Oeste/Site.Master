@@ -37,8 +37,11 @@
             <div class="content-wrapper">
                 <div id="banner">
                     <div id="log">
-                        <asp:Login ID="login" runat="server" PasswordLabelText="Contraseña" UserNameLabelText="Legajo" RememberMeText="Recordar datos" LoginButtonText="Entrar" TitleText="" CssClass="login" FailureText="Error al entrar, por favor, trate de nuevo." LoginButtonStyle-CssClass="button" OnAuthenticate="login_Authenticate"></asp:Login>
+                         <asp:Login ID="login" runat="server" PasswordLabelText="Contraseña" UserNameLabelText="Legajo" RememberMeText="Recordar datos" LoginButtonText="Entrar" TitleText="" 
+                            CssClass="login" FailureText="Error al entrar, por favor, trate de nuevo." LoginButtonStyle-CssClass="button" LoginButtonType="Link"></asp:Login>
                     </div>
+
+                       
                 </div>
                 <div id="cssmenu" runat="server">
                     <ul>
