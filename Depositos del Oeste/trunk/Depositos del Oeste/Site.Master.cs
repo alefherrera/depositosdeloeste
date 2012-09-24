@@ -116,8 +116,14 @@ namespace Depositos_del_Oeste
 
 
 
-            menu.TestMethod();
+            //menu.TestMethod();
             //cssmenu.InnerHtml = stringMenu.ToString();
+            Usuario usuario = new Usuario();
+            //usuario.Legajo = 12;
+            //suario.Save();
+
+            List<Usuario> usuarios= usuario.Select();
+            usuarios.Count();
         }
 
 

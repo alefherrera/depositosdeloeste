@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="BackEnd">
+  <class name="BackEnd.Usuario, BackEnd" table="Usuarios" lazy="true">
+    <id name="Legajo">
+      <column name="legajo"/>
+      <generator class="native" />
+    </id>
+    <property name="Nombre">
+      <column name="nombre"/>
+    </property>
+    <property name="Apellido">
+      <column name="apellido"/>
+    </property>
+    <property name="Dni">
+      <column name="dni"/>
+    </property>
+    <property name="IdGrupo">
+      <column name="idGrupo"/>
+    </property>
+    <property name="Activo">
+      <column name="activo"/>
+    </property>
+  </class>
+</hibernate-mapping>
