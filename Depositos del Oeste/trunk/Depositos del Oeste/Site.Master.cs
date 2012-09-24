@@ -117,10 +117,7 @@ namespace Depositos_del_Oeste
             //cssmenu.InnerHtml = stringMenu.ToString();
         }
 
-        protected void login_Authenticate(object sender, AuthenticateEventArgs e)
-        {
 
-        }
     }
 
 

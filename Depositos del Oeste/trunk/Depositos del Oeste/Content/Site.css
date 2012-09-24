@@ -129,8 +129,8 @@ header .content-wrapper {
 /* login
 ----------------------------------------------------------*/
 #log {
-    float: right;
-    margin-top: 20px;
+    height:100%;
+    position:relative;
 }
 
 #log .login{
@@ -138,6 +138,9 @@ header .content-wrapper {
     font-family:Tahoma;
     font-size:10px;
     color:#fff;
+    position:absolute;
+    bottom:0;
+    right:0;
 }
 
 #log .button {
@@ -147,6 +150,7 @@ header .content-wrapper {
     background:none;
     border:none;
     color:#fff;
+    text-decoration:none;
 }
 /* footer
 ----------------------------------------------------------*/
