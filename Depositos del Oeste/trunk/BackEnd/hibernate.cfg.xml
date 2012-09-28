@@ -11,7 +11,7 @@
       NHibernate.Driver.MySqlDataDriver
     </property>
     <property name="connection.connection_string">
-      Server=localhost;Database=depositosoeste;User ID=root;Password=ale123
+      Server=depositosoeste.no-ip.org;Database=depositosoeste;User ID=depositosweb;Password=ale123
     </property>
     <mapping assembly="BackEnd" />
   </session-factory>
