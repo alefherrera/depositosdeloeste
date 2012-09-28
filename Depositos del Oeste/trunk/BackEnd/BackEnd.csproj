@@ -69,6 +69,7 @@
     </EmbeddedResource>
     <Content Include="hibernate.cfg.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <EmbeddedResource Include="Menu\Menu.hbm.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

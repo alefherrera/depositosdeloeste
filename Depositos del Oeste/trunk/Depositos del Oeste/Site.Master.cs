@@ -122,7 +122,7 @@ namespace Depositos_del_Oeste
             //usuario.Legajo = 12;
             //suario.Save();
 
-            List<Usuario> usuarios= usuario.Select();
+            List<Usuario> usuarios= usuario.Select("where legajo = 16600");
             usuarios.Count();
         }
 
