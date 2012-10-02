@@ -12,6 +12,8 @@ namespace BackEnd
     public class BusinessObject<T>
     {
 
+        public bool Loaded { get; set; }
+
         public BusinessObject()
         {
             ResetearParametros(this);
@@ -23,7 +25,7 @@ namespace BackEnd
             {
                 if (Dic.ContainsKey(item.PropertyType))
                 {
-                    item.SetValue(o, Dic[item.PropertyType], null);
+                    item.SetValue(o, Dic[item.PropertyType]);
                 }
             }
         }
@@ -115,8 +117,6 @@ namespace BackEnd
             session.Close();
         }
 
-
-
         public virtual T Clone()
         {
             return this.Clone();
@@ -175,6 +175,25 @@ namespace BackEnd
 
             session.Close();
             return rtnList;
+        }
+
+        public bool Load()
+        {
+            try
+            {
+                var obj = this.Select()[0];
+                foreach (System.Reflection.PropertyInfo item in this.GetType().GetProperties())
+                {
+                    item.SetValue(this, obj.GetType().GetProperty(item.Name).GetValue(obj));
+                }
+                Loaded = true;
+            }
+            catch
+            {
+                Loaded = false;
+            }
+            return Loaded;
+
         }
 
     }
