@@ -116,9 +116,10 @@ namespace BackEnd
             config.Configure();
 
             ISessionFactory factory = config.BuildSessionFactory();
-            ISession session = factory.OpenSession();           
+            ISession session = factory.OpenSession();
+            IQuery squery = session.CreateQuery(query);
 
-            rtnList = (List<T>)session.CreateQuery(query).List<T>();
+            rtnList = (List<T>)squery.List<T>();
 
             session.Close();
             return rtnList;
