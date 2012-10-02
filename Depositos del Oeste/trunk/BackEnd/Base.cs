@@ -11,6 +11,31 @@ namespace BackEnd
 {
     public class BusinessObject<T>
     {
+
+        public BusinessObject()
+        {
+            ResetearParametros(this);
+        }
+
+        protected void ResetearParametros(object o)
+        {
+            foreach (System.Reflection.PropertyInfo item in o.GetType().GetProperties())
+            {
+                if (Dic.ContainsKey(item.PropertyType))
+                {
+                    item.SetValue(o, Dic[item.PropertyType], null);
+                }
+            }
+        }
+
+        private static Dictionary<System.Type, object> Dic = new Dictionary<Type, object> {
+        {typeof(string),string.Empty},
+        {typeof(int),-1},
+        {typeof(Int64),-1},
+        {typeof(DateTime),Convert.ToDateTime("1900-01-01")},
+        {typeof(bool),false}
+        };
+
         public virtual void TestMethod()
         {
             Configuration config = new Configuration();
@@ -29,6 +54,34 @@ namespace BackEnd
             tx.Commit();
 
             session.Close();
+        }
+
+        public class Parameter
+        {
+            public Parameter(string name, object value)
+            {
+                Name = name;
+                Value = value;
+            }
+            public string Name { get; set; }
+            public object Value { get; set; }
+        }
+
+
+        public virtual List<T> Select()
+        {
+            List<Parameter> param = new List<Parameter>();
+            List<System.Data.SqlClient.SqlParameter> l = new List<System.Data.SqlClient.SqlParameter>();
+            foreach (System.Reflection.PropertyInfo item in this.GetType().GetProperties())
+            {
+                var valor = item.GetValue(this);
+
+                if (valor != null && Dic.ContainsKey(valor.GetType()) && valor.ToString() != Dic[valor.GetType()].ToString())
+                {
+                    param.Add(new Parameter(item.Name, valor));
+                }
+            }
+            return this.Select(param.ToArray());
         }
 
         public virtual void Save()
@@ -69,7 +122,7 @@ namespace BackEnd
             return this.Clone();
         }
 
-        public virtual List<T> Select()
+        public virtual List<T> Select(bool a)
         {
             List<T> rtnList = new List<T>();
 
@@ -78,14 +131,14 @@ namespace BackEnd
 
             ISessionFactory factory = config.BuildSessionFactory();
             ISession session = factory.OpenSession();
-            
+
             rtnList = (List<T>)session.CreateCriteria(typeof(T)).List<T>();
 
             session.Close();
             return rtnList;
         }
 
-        public virtual List<T> Select(List<List<string>> lista)
+        protected virtual List<T> Select(params Parameter[] parametros)
         {
             List<T> rtnList = new List<T>();
 
@@ -96,10 +149,9 @@ namespace BackEnd
             ISession session = factory.OpenSession();
 
             ICriteria criteria = session.CreateCriteria(typeof(T));
-            foreach (List<string> item in lista)
+            foreach (Parameter item in parametros)
             {
-                item.ToArray();
-                criteria.Add(Restrictions.Eq(item[0],item[1]));
+                criteria.Add(Restrictions.Eq(item.Name, item.Value));
             }
 
             rtnList = (List<T>)criteria.List<T>();
