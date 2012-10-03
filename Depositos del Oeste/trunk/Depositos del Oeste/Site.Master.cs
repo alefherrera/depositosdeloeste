@@ -128,19 +128,34 @@ namespace Depositos_del_Oeste
             stringMenu.Append("</ul>");
 
 
-
-            //menu.TestMethod();
             cssmenu.InnerHtml = stringMenu.ToString();
-            Usuario usuario = new Usuario();
-            //usuario.Legajo = 12;
-            //suario.Save();
-            usuario.Legajo = 16600;
-            List<Usuario> usuarios = usuario.Select();//usuario.Select("from Usuario where legajo = 16600");
-            usuarios.Count();
+
         }
 
+        protected void login_Authenticate(object sender, AuthenticateEventArgs e)
+        {
+            Usuario usuario = new Usuario();
+            if (!Validaciones.isNumeric(login.UserName))
+            {
+                login.FailureText = "Error, el numero de legajo no tiene el formato correcto";
+                return;
+            }
+           
+            usuario.Legajo = int.Parse(login.UserName);
+            usuario.Dni = login.Password;
 
+            List<Usuario> usuarios = usuario.Select();
+
+            if (usuarios.Count != 1)
+            {
+                login.FailureText = "Error, el numero de legajo o la contraseña es incorrecto/a";
+                return;
+            }
+
+            login.Visible = false;
+            logcorrecto.Visible = true;
+            legajo.Text = usuario.Legajo.ToString();
+            nombre.Text = usuario.Apellido + " " + usuario.Nombre;
+        }
     }
-
-
 }

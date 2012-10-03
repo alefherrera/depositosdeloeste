@@ -49,6 +49,33 @@ namespace Depositos_del_Oeste {
         protected global::System.Web.UI.WebControls.Login login;
         
         /// <summary>
+        /// logcorrecto control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel logcorrecto;
+        
+        /// <summary>
+        /// legajo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label legajo;
+        
+        /// <summary>
+        /// nombre control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label nombre;
+        
+        /// <summary>
         /// cssmenu control.
         /// </summary>
         /// <remarks>
