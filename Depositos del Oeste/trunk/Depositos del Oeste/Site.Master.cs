@@ -69,32 +69,14 @@ namespace Depositos_del_Oeste
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            List<BackEnd.Menu> menuList = new List<BackEnd.Menu>();
+            //Traigo todos los menues
             BackEnd.Menu menu = new BackEnd.Menu();
-            menu.Id = 0;
-            menu.IdPadre = 0;
-            menu.Nombre = "Home";
-            menu.Link = "/Default.aspx";
+            List<BackEnd.Menu> menuList = menu.Select();
 
-            menuList.Add(menu);
+            StringBuilder stringMenu = new StringBuilder();
+            new List<BackEnd.Menu>();
 
-            menu = new BackEnd.Menu();
-            menu.Id = 1;
-            menu.IdPadre = 0;
-            menu.Nombre = "MENU1";
-            menu.Link = "#";
-
-            menuList.Add(menu);
-
-            menu = new BackEnd.Menu();
-            menu.Id = 2;
-            menu.IdPadre = 1;
-            menu.Nombre = "SubMenu1";
-            menu.Link = "/About.aspx";
-
-            StringBuilder stringMenu = new StringBuilder();  
-            stringMenu.Append("<ul>");
-
+            //Extraigo los padres
             List<BackEnd.Menu> menuPrincipal = new List<BackEnd.Menu>();
             menuPrincipal = menuList.FindAll(
                 delegate(BackEnd.Menu mn)
@@ -103,13 +85,44 @@ namespace Depositos_del_Oeste
                 }
             );
 
+            //Empieza aca, se puede hacer recursivo pero son solo dos niveles estaticos, no hace falta
+            stringMenu.Append("<ul>");
             for(int i = 0; menuPrincipal.Count > i; i++)
             {
-                stringMenu.Append("<li><a href='");
+                //Agarro todos los que son hijos del padre que voy iterando
+                List<BackEnd.Menu> menuSecundario = new List<BackEnd.Menu>();
+                menuSecundario = new List<BackEnd.Menu>();
+                menuSecundario = menuList.FindAll(
+                    delegate(BackEnd.Menu mn)
+                    {
+                        return mn.IdPadre == menuPrincipal[i].Id;
+                    }
+                );
+
+
+                stringMenu.Append("<li class='has-sub '><a href='");
                 stringMenu.Append(menuPrincipal[i].Link);
                 stringMenu.Append("'><span>");
                 stringMenu.Append(menuPrincipal[i].Nombre);
-                stringMenu.Append("</span></a></li>");
+                stringMenu.Append("</span></a>");
+
+                if (menuSecundario.Count > 0)
+                {
+                    stringMenu.Append("<ul>");
+                    for (int j = 0; menuSecundario.Count > j; j++)
+                    {
+                        stringMenu.Append("<li class='has-sub'><a href='");
+                        stringMenu.Append(menuSecundario[j].Link);
+                        stringMenu.Append("'><span>");
+                        stringMenu.Append(menuSecundario[j].Nombre);
+                        stringMenu.Append("</span></a>");
+                        stringMenu.Append("</li>");
+                    }
+                    stringMenu.Append("</ul>");
+                }
+
+          
+                stringMenu.Append("</li>");
             }
 
             stringMenu.Append("</ul>");
@@ -117,7 +130,7 @@ namespace Depositos_del_Oeste
 
 
             //menu.TestMethod();
-            //cssmenu.InnerHtml = stringMenu.ToString();
+            cssmenu.InnerHtml = stringMenu.ToString();
             Usuario usuario = new Usuario();
             //usuario.Legajo = 12;
             //suario.Save();

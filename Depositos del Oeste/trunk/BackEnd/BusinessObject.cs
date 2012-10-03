@@ -12,7 +12,7 @@ namespace BackEnd
     public class BusinessObject<T>
     {
 
-        public bool Loaded { get; set; }
+        public virtual bool Loaded { get; set; }
 
         public BusinessObject()
         {
@@ -158,7 +158,7 @@ namespace BackEnd
             return rtnList;
         }
 
-        public bool Load()
+        public virtual bool Load()
         {
             try
             {
