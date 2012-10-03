@@ -317,11 +317,11 @@ lter: progid:DXImageTransform.Microsoft.Gradient(StartColorStr='#26262c', EndCol
 }
 
 #cssmenu .has-sub ul li a {
+    display: block;
     background: #fff;
     /*border-bottom: 1px dotted #206897;
     filter: none;
     font-size: 11px;
-    display: block;
     line-height: 120%;
     padding: 10px;*/
 }
