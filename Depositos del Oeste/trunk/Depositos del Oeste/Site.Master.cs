@@ -12,6 +12,8 @@ namespace Depositos_del_Oeste
 {
     public partial class SiteMaster : MasterPage
     {
+        private Usuario user = new Usuario();
+
         private const string AntiXsrfTokenKey = "__AntiXsrfToken";
         private const string AntiXsrfUserNameKey = "__AntiXsrfUserName";
         private string _antiXsrfTokenValue;
@@ -69,6 +71,29 @@ namespace Depositos_del_Oeste
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            //Verifico si el usuario esta logueado y lo logueo
+            if (Session["Usuario"] != null)
+            {
+                this.user = (Usuario)Session["Usuario"];
+
+                login.Visible = false;
+                logcorrecto.Visible = true;
+
+                legajo.Text = this.user.Legajo.ToString();
+                nombre.Text = this.user.Apellido + " " + this.user.Nombre;
+            }
+            else if (Request.Cookies["usuarioDepositos"].Value != null && Validaciones.isNumeric(Request.Cookies["usuarioDepositos"].Value))
+            {
+                this.user.Legajo = int.Parse(Request.Cookies["usuarioDepositos"].Value);
+                this.user.Load();
+
+                login.Visible = false;
+                logcorrecto.Visible = true;
+
+                legajo.Text = this.user.Legajo.ToString();
+                nombre.Text = this.user.Apellido + " " + this.user.Nombre;
+            }
+
             //Traigo todos los menues
             BackEnd.Menu menu = new BackEnd.Menu();
             List<BackEnd.Menu> menuList = menu.Select();
@@ -127,9 +152,7 @@ namespace Depositos_del_Oeste
 
             stringMenu.Append("</ul>");
 
-
             cssmenu.InnerHtml = stringMenu.ToString();
-
         }
 
         protected void login_Authenticate(object sender, AuthenticateEventArgs e)
@@ -154,8 +177,20 @@ namespace Depositos_del_Oeste
 
             login.Visible = false;
             logcorrecto.Visible = true;
+
+            usuario.Load();
+
             legajo.Text = usuario.Legajo.ToString();
             nombre.Text = usuario.Apellido + " " + usuario.Nombre;
+
+
+            Session.Add("Usuario", usuario);
+
+            if (login.RememberMeSet)
+            {
+                Response.Cookies["usuarioDepositos"].Value = usuario.Legajo.ToString();
+                Response.Cookies["usuarioDepositos"].Expires = DateTime.Now.AddDays(7);
+            }
         }
     }
 }

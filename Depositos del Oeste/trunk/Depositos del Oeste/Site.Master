@@ -38,11 +38,13 @@
                 <div id="banner">
                     <div id="log">
                         <asp:Login ID="login" runat="server" PasswordLabelText="Contraseña" UserNameLabelText="Legajo" RememberMeText="Recordar datos" LoginButtonText="Entrar" TitleText=""
-                            CssClass="login" FailureText="Error al intentar entrar, por favor, trate de nuevo." LoginButtonStyle-CssClass="button" LoginButtonType="Link" OnAuthenticate="login_Authenticate" PasswordRequiredErrorMessage="Complete todos los campos" UserNameRequiredErrorMessage="Complete todos los campos">
+                            Visible="true" CssClass="login" FailureText="Error al intentar entrar, por favor, trate de nuevo." LoginButtonStyle-CssClass="button" LoginButtonType="Link" OnAuthenticate="login_Authenticate" PasswordRequiredErrorMessage="Complete todos los campos" UserNameRequiredErrorMessage="Complete todos los campos">
                         </asp:Login>
-                        <asp:Panel ID="logcorrecto" runat="server" Visible="false">
+                        <asp:Panel  ID="logcorrecto" runat="server" Visible="false">
+                            <img  id="icono" src="Images/user_icon.png" />
                             <asp:Label ID="legajo" runat="server"></asp:Label>
                             <asp:Label ID="nombre" runat="server"></asp:Label>
+                            <a id="desloguear" runat="server">X</a>
                         </asp:Panel>
                     </div>
 
