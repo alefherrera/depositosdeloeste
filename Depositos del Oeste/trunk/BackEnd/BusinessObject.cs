@@ -38,26 +38,7 @@ namespace BackEnd
         {typeof(bool),false}
         };
 
-        public virtual void TestMethod()
-        {
-            Configuration config = new Configuration();
-            config.Configure();
-
-            ISessionFactory factory = config.BuildSessionFactory();
-            ISession session = factory.OpenSession();
-
-            ITransaction tx = session.BeginTransaction();
-            Menu d = new Menu();
-            d.Id = 1;
-            d.IdPadre = 0;
-            d.Link = "/Default.aspx";
-            d.Nombre = "HOME";
-            session.Save(d);
-            tx.Commit();
-
-            session.Close();
-        }
-
+ 
         public class Parameter
         {
             public Parameter(string name, object value)
