@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{3132B9
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{4884A339-E9AB-4D2F-8C7C-E97EE1CA88DE}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -31,6 +33,10 @@ Global
 		{596F4139-C6D1-4CCB-B10D-6673E39EB516}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{596F4139-C6D1-4CCB-B10D-6673E39EB516}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{596F4139-C6D1-4CCB-B10D-6673E39EB516}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4884A339-E9AB-4D2F-8C7C-E97EE1CA88DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4884A339-E9AB-4D2F-8C7C-E97EE1CA88DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4884A339-E9AB-4D2F-8C7C-E97EE1CA88DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4884A339-E9AB-4D2F-8C7C-E97EE1CA88DE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
