@@ -85,7 +85,7 @@ namespace Depositos_del_Oeste
             }
             catch (LoginException ex)
             {
-                login.FailureText = ex.Message;
+                errorLogin.Text= ex.Message;
                 return;
             }
 
@@ -111,7 +111,7 @@ namespace Depositos_del_Oeste
                 this.user = (Usuario)Session["Usuario"];
                 Logueado(true);
             }
-            else if (Request.Cookies["usuarioDepositos"].Value != null && Validaciones.isNumeric(Request.Cookies["usuarioDepositos"].Value))
+            else if (Request.Cookies["usuarioDepositos"] != null && Validaciones.isNumeric(Request.Cookies["usuarioDepositos"].Value) && Request.Cookies["usuarioDepositos"].Value != "")
             {
                 this.user.Legajo = int.Parse(Request.Cookies["usuarioDepositos"].Value);
                 this.user.Load();
@@ -124,6 +124,7 @@ namespace Depositos_del_Oeste
             if (log)
             {
                 login.Visible = false;
+                errorLogin.Text = "";
                 logcorrecto.Visible = true;
 
                 legajo.Text = this.user.Legajo.ToString();
@@ -133,7 +134,18 @@ namespace Depositos_del_Oeste
             {
                 login.Visible = true;
                 logcorrecto.Visible = false;
+                Session["Usuario"] = null;
+                Response.Cookies["usuarioDepositos"].Value = "";
             }
         }
+
+        protected void desloguear_Click(object sender, EventArgs e)
+        {
+            Logueado(false);
+        }
+
+       
+
+
     }
 }

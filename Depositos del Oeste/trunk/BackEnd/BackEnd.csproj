@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="BusinessObject.cs" />
     <Compile Include="Exceptions\LoginException.cs" />
+    <Compile Include="Mail.cs" />
     <Compile Include="Usuarios\Usuario.cs" />
     <Compile Include="Menu\Menu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

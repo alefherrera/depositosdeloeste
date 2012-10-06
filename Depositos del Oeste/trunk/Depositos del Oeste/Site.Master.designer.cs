@@ -40,6 +40,15 @@ namespace Depositos_del_Oeste {
         protected global::System.Web.UI.ScriptManager ScriptManager1;
         
         /// <summary>
+        /// errorLogin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label errorLogin;
+        
+        /// <summary>
         /// login control.
         /// </summary>
         /// <remarks>
@@ -82,7 +91,7 @@ namespace Depositos_del_Oeste {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor desloguear;
+        protected global::System.Web.UI.WebControls.LinkButton desloguear;
         
         /// <summary>
         /// cssmenu control.
