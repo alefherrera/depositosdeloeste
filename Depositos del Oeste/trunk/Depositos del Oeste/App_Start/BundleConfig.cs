@@ -9,6 +9,9 @@ namespace Depositos_del_Oeste
     public class BundleConfig
     {
         // For more information on Bundling, visit http://go.microsoft.com/fwlink/?LinkId=254726
+        protected void Application_Start() {
+             BundleConfig.RegisterBundles(BundleTable.Bundles);
+        }
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/WebFormsJs").Include(
@@ -31,6 +34,9 @@ namespace Depositos_del_Oeste
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                 "~/Scripts/modernizr-*"));
+
+            BundleTable.EnableOptimizations = false;
+
         }
     }
 }

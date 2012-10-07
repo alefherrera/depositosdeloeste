@@ -27,7 +27,10 @@ namespace Depositos_del_Oeste
         void Application_Error(object sender, EventArgs e)
         {
             // Code that runs when an unhandled error occurs
+        }
 
+        protected void Application_PostMapRequestHandler()
+        {
         }
     }
 }
