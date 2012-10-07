@@ -2,23 +2,29 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head runat="server">
+<head id="Head1" runat="server">
     <meta charset="utf-8" />
     <title><%: Page.Title %> - My ASP.NET Application</title>
-    <asp:PlaceHolder runat="server">
+    <asp:PlaceHolder ID="PlaceHolder1" runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
-    <webopt:BundleReference runat="server" Path="~/Content/css" />
+    <asp:ContentPlaceHolder runat="server" ID="HeadContent" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width" />
-    <asp:ContentPlaceHolder runat="server" ID="HeadContent" />
+
+    <webopt:BundleReference ID="BundleReference1" runat="server" Path="~/Content/css" />
+
 </head>
 <body>
     <form id="Form1" runat="server">
         <asp:ScriptManager ID="ScriptManager1" runat="server">
             <Scripts>
-                <%--Framework scripts--%>
-                <asp:ScriptReference Name="MsAjaxBundle" />
+                <%--Framework scripts>--%>
+                <asp:ScriptReference Path="~/Scripts/WebForms/MsAjax/MicrosoftAjax.js" />
+                <asp:ScriptReference Path="~/Scripts/WebForms/MsAjax/MicrosoftAjaxApplicationServices.js" />
+                <asp:ScriptReference Path="~/Scripts/WebForms/MsAjax/MicrosoftAjaxTimer.js" />
+                <asp:ScriptReference Path="~/Scripts/WebForms/MsAjax/MicrosoftAjaxWebForms.js" /
+
                 <asp:ScriptReference Name="jquery" />
                 <asp:ScriptReference Name="jquery.ui.combined" />
                 <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
@@ -29,7 +35,8 @@
                 <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
                 <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
                 <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
-                <asp:ScriptReference Name="WebFormsBundle" />
+<%--                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="WebFormsBundle" />--%>
                 <%--Site scripts--%>
             </Scripts>
         </asp:ScriptManager>
