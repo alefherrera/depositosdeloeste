@@ -23,7 +23,7 @@
                 <asp:ScriptReference Path="~/Scripts/WebForms/MsAjax/MicrosoftAjax.js" />
                 <asp:ScriptReference Path="~/Scripts/WebForms/MsAjax/MicrosoftAjaxApplicationServices.js" />
                 <asp:ScriptReference Path="~/Scripts/WebForms/MsAjax/MicrosoftAjaxTimer.js" />
-                <asp:ScriptReference Path="~/Scripts/WebForms/MsAjax/MicrosoftAjaxWebForms.js" /
+                <asp:ScriptReference Path="~/Scripts/WebForms/MsAjax/MicrosoftAjaxWebForms.js" />
 
                 <asp:ScriptReference Name="jquery" />
                 <asp:ScriptReference Name="jquery.ui.combined" />
