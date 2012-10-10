@@ -54,7 +54,6 @@ namespace BackEnd
         public virtual List<T> Select()
         {
             List<Parameter> param = new List<Parameter>();
-            List<System.Data.SqlClient.SqlParameter> l = new List<System.Data.SqlClient.SqlParameter>();
             foreach (System.Reflection.PropertyInfo item in this.GetType().GetProperties())
             {
                 var valor = item.GetValue(this);
