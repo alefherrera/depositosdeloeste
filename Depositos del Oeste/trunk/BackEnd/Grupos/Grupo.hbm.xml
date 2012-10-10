@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="BackEnd">
+  <class name="BackEnd.Grupo, BackEnd" table="Grupos" lazy="true">
+    <id name="Id">
+      <column name="id"/>
+      <generator class="native" />
+    </id>
+    <property name="Descripcion">
+      <column name="descripcion"/>
+    </property>
+  </class>
+</hibernate-mapping>

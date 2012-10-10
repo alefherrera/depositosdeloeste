@@ -51,7 +51,7 @@
                         <asp:Panel  ID="logcorrecto" runat="server" Visible="false">
                             <asp:Label ID="legajo" runat="server"></asp:Label><br />
                             <asp:Label ID="nombre" runat="server"></asp:Label><br />
-                            <asp:LinkButton ID="desloguear"  Text="Desloguear" runat="server" CssClass="button" OnClick="desloguear_Click" />
+                            <asp:LinkButton ID="desloguear"  Text="Salir" runat="server" CssClass="button" OnClick="desloguear_Click" />
                         </asp:Panel>
                     </div>
 
