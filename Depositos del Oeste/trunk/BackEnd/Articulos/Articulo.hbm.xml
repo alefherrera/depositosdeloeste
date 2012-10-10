@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="BackEnd">
+  <class name="BackEnd.Articulo, BackEnd" table="articulos" lazy="true">
+    <id name="IdArticulo">
+      <column name="idarticulo"/>
+      <generator class="native" />
+    </id>
+    <property name="Nombre">
+      <column name="nombre"/>
+    </property>
+    <property name="Descripcion">
+      <column name="descripcion"/>
+    </property>
+    <property name="Alto">
+      <column name="alto"/>
+    </property>
+    <property name="Largo">
+      <column name="largo"/>
+    </property>
+    <property name="Ancho">
+      <column name="ancho"/>
+    </property>
+    <property name="Peso">
+      <column name="peso"/>
+    </property>
+  </class>
+</hibernate-mapping>
