@@ -106,7 +106,7 @@ namespace Depositos_del_Oeste
         private void LogHandler()
         {
             //Verifico si el usuario esta logueado y lo logueo
-            /*if (Session["Usuario"] != null)
+            if (Session["Usuario"] != null)
             {
                 this.user = (Usuario)Session["Usuario"];
                 Logueado(true);
@@ -116,7 +116,7 @@ namespace Depositos_del_Oeste
                 this.user.Legajo = int.Parse(Request.Cookies["usuarioDepositos"].Value);
                 this.user.Load();
                 Logueado(true);
-            }*/
+            }
         }
 
         private void Logueado(bool log)
