@@ -12,7 +12,7 @@ namespace Services
         //TODO: Implementar el tema de los privilegios para el usuario
         
         public static string generarMenu(Usuario user){
-            string inicio = "<ul><li class='has-sub'><a href='#'><span>Inicio</span></a></li></ul>";
+            string inicio = "<ul><li class='has-sub'><a href='/default.aspx'><span>Inicio</span></a></li></ul>";
 
             if (user == null)
             {
