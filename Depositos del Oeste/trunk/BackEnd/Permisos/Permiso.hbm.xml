@@ -8,8 +8,8 @@
     <property name="IdGrupo">
       <column name="idGrupo"/>
     </property>
-    <property name="IdMenu">
-      <column name="idMenu"/>
+    <property name="PermisoDesc">
+      <column name="permiso"/>
     </property>
   </class>
 </hibernate-mapping>

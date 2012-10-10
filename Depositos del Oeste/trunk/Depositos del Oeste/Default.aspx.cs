@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace Depositos_del_Oeste
 {
-    public partial class _Default : PageBase
+    public partial class _Default : Page
     {
         
     }

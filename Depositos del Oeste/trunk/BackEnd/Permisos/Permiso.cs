@@ -23,11 +23,11 @@ namespace BackEnd
             set { idGrupo = value; }
         }
 
-        private int idMenu;
-        public virtual int IdMenu
+        private string permiso;
+        public virtual string PermisoDesc
         {
-            get { return idMenu; }
-            set { idMenu = value; }
+            get { return permiso; }
+            set { permiso = value; }
         }
     }
 }

@@ -9,11 +9,15 @@ namespace Services
 {
     public class ServicePermisos
     {
-        public static bool VerificarPermisos(Usuario user, int menu)
+        public static bool VerificarPermisos(Usuario user, string perm)
         {
+            if (user == null || user.Legajo == -1)
+            {
+                return false;
+            }
             Permiso permiso = new Permiso();
             permiso.IdGrupo = user.IdGrupo;
-            permiso.IdMenu = menu;
+            permiso.PermisoDesc = perm;
 
             if (permiso.Select().Count == 0)
                 return true;
