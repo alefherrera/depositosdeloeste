@@ -73,8 +73,8 @@ namespace Depositos_del_Oeste
         protected void Page_Load(object sender, EventArgs e)
         {
             LogHandler();
-            cssmenu.InnerHtml = ServiceMenu.generarMenu(this.user);
         }
+
 
         protected void login_Authenticate(object sender, AuthenticateEventArgs e)
         {
@@ -136,12 +136,19 @@ namespace Depositos_del_Oeste
                 logcorrecto.Visible = false;
                 Session["Usuario"] = null;
                 Response.Cookies["usuarioDepositos"].Value = "";
+                user = new Usuario();
             }
         }
 
         protected void desloguear_Click(object sender, EventArgs e)
         {
             Logueado(false);
+        }
+
+        protected void MainContent_PreRender(object sender, EventArgs e)
+        {
+            cssmenu.InnerHtml = ServiceMenu.generarMenu(this.user);
+
         }
 
        
