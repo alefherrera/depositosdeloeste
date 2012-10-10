@@ -52,7 +52,7 @@ namespace Services
                 }
             );
 
-            for (int i = 0; menuPrincipal.Count > i; i++)
+            for (int i = menuPrincipal.Count -1; i >= 0; i--)
             {
                 menuSecundario = menuList.FindAll(
                      delegate(BackEnd.Menu mn)
@@ -64,7 +64,7 @@ namespace Services
                 {
                     bool menuOK = false;
 
-                    for (int j = 0; menuSecundario.Count > j; j++)
+                    for (int j = menuSecundario.Count -1;j >= 0; j--)
                     {
                         if(permisos.Exists(
                             delegate(Permiso pr){
