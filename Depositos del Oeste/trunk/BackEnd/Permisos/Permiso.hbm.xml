@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="BackEnd">
+  <class name="BackEnd.Permiso, BackEnd" table="Permisos" lazy="true">
+    <id name="Id">
+      <column name="id"/>
+      <generator class="native" />
+    </id>
+    <property name="IdGrupo">
+      <column name="idGrupo"/>
+    </property>
+    <property name="IdMenu">
+      <column name="idMenu"/>
+    </property>
+  </class>
+</hibernate-mapping>
