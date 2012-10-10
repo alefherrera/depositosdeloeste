@@ -33,7 +33,7 @@ namespace Services
             List<Permiso> permisos = ServicePermisos.CargarPermisos(user);
 
             //Extraigo los padres
-            List<BackEnd.Menu> menuPrincipal = new List<BackEnd.Menu>();
+            List<BackEnd.Menu> menuPrincipal;
 
             menuPrincipal = menuList.FindAll(
                 delegate(BackEnd.Menu mn)
@@ -44,7 +44,14 @@ namespace Services
             
             //Los principales sin hijos futuros no los pongo
             List<BackEnd.Menu> menuSecundario = new List<BackEnd.Menu>();
-            List<BackEnd.Menu> menuPrincipalRF = menuPrincipal;
+            List<BackEnd.Menu> menuPrincipalRF;
+            menuPrincipalRF = menuList.FindAll(
+                delegate(BackEnd.Menu mn)
+                {
+                    return mn.IdPadre == 0;
+                }
+            );
+
             for (int i = 0; menuPrincipal.Count > i; i++)
             {
                 menuSecundario = menuList.FindAll(
@@ -55,15 +62,15 @@ namespace Services
                 );
                 if (menuSecundario.Count > 0)
                 {
-                    bool menuOK = true;
+                    bool menuOK = false;
 
                     for (int j = 0; menuSecundario.Count > j; j++)
                     {
-                        if(!permisos.Exists(
+                        if(permisos.Exists(
                             delegate(Permiso pr){
-                                return pr.IdMenu == menuSecundario[j].Id;
+                                return pr.PermisoDesc == menuSecundario[j].Link;
                             })){
-                            menuOK = false;
+                            menuOK = true;
                         }
                     }
                     if (menuOK == false)
@@ -103,8 +110,8 @@ namespace Services
 
                     if(permisos.Find(
                         delegate(Permiso pr){
-                            return pr.IdMenu == menuSecundario[j].Id;
-                    }) != null)
+                            return pr.PermisoDesc == menuSecundario[j].Link;
+                        }) != null)
                         {
                         stringMenu.Append("<li class='has-sub'><a href='");
                         stringMenu.Append(menuSecundario[j].Link);
