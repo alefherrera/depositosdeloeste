@@ -150,9 +150,5 @@ namespace Depositos_del_Oeste
             cssmenu.InnerHtml = ServiceMenu.generarMenu(this.user);
 
         }
-
-       
-
-
     }
 }

@@ -29,27 +29,57 @@ namespace Services
             StringBuilder stringMenu = new StringBuilder();
             new List<BackEnd.Menu>();
 
+            //Cargo los permisos del usuario
+            List<Permiso> permisos = ServicePermisos.CargarPermisos(user);
+
             //Extraigo los padres
             List<BackEnd.Menu> menuPrincipal = new List<BackEnd.Menu>();
+
             menuPrincipal = menuList.FindAll(
                 delegate(BackEnd.Menu mn)
                 {
                     return mn.IdPadre == 0;
                 }
             );
+            
+            //Los principales sin hijos futuros no los pongo
+            List<BackEnd.Menu> menuSecundario = new List<BackEnd.Menu>();
+            List<BackEnd.Menu> menuPrincipalRF = menuPrincipal;
             for (int i = 0; menuPrincipal.Count > i; i++)
             {
+                menuSecundario = menuList.FindAll(
+                     delegate(BackEnd.Menu mn)
+                    {
+                        return mn.IdPadre == menuPrincipal[i].Id;
+                    }
+                );
+                if (menuSecundario.Count > 0)
+                {
+                    bool menuOK = true;
 
+                    for (int j = 0; menuSecundario.Count > j; j++)
+                    {
+                        if(!permisos.Exists(
+                            delegate(Permiso pr){
+                                return pr.IdMenu == menuSecundario[j].Id;
+                            })){
+                            menuOK = false;
+                        }
+                    }
+                    if (menuOK == false)
+                    {
+                        menuPrincipalRF.RemoveAt(i);
+                    }
+                }
             }
-            //Cargo los permisos del usuario
-            List<Permiso> permisos = ServicePermisos.CargarPermisos(user);
+
+            menuPrincipal = menuPrincipalRF;
 
             //Empieza aca, se puede hacer recursivo pero son solo dos niveles estaticos, no hace falta
             stringMenu.Append("<ul>");
             for (int i = 0; menuPrincipal.Count > i; i++)
             {
                 //Agarro todos los que son hijos del padre que voy iterando
-                List<BackEnd.Menu> menuSecundario = new List<BackEnd.Menu>();
                 menuSecundario = menuList.FindAll(
                     delegate(BackEnd.Menu mn)
                     {
