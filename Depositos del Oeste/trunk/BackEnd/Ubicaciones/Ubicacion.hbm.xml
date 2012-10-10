@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="BackEnd">
+  <class name="BackEnd.Ubicacion, BackEnd" table="ubicaciones" lazy="true">
+    <id name="Id">
+      <column name="id"/>
+      <generator class="native" />
+    </id>
+    <property name="IdNivel">
+      <column name="niveles_id"/>
+    </property>
+    <property name="idEspacio">
+      <column name="niveles_espacios_id"/>
+    </property>
+    <property name="idEstante">
+      <column name="niveles_espacios_estantes_id"/>
+    </property>
+  </class>
+</hibernate-mapping>

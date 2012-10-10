@@ -7,20 +7,9 @@ using System.Data.Sql;
 
 namespace BackEnd
 {
-    public class Grupo:BusinessObject<Grupo>
+    public class Grupo : BusinessObject<Grupo>
     {
-        private int id;
-        public virtual int Id
-        {
-            get { return id; }
-            set { id = value; }
-        }
-
-        private string descripcion;
-        public virtual string Descripcion
-        {
-            get { return descripcion; }
-            set { descripcion = value; }
-        }
+        public virtual int Id { get; set; }
+        public virtual string Descripcion { get; set; }
     }
 }

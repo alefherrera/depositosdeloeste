@@ -55,11 +55,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Articulos\Articulo.cs" />
     <Compile Include="BusinessObject.cs" />
+    <Compile Include="Clientes\Cliente.cs" />
+    <Compile Include="Depositados\Depositado.cs" />
     <Compile Include="Exceptions\LoginException.cs" />
     <Compile Include="Mail.cs" />
     <Compile Include="Grupos\Grupo.cs" />
     <Compile Include="Permisos\Permiso.cs" />
+    <Compile Include="Reservas\Reserva.cs" />
+    <Compile Include="Ubicaciones\Ubicacion.cs" />
     <Compile Include="Usuarios\Usuario.cs" />
     <Compile Include="Menu\Menu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -69,6 +74,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Ubicaciones\Ubicacion.hbm.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="Permisos\Permiso.hbm.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -76,6 +84,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Usuarios\Usuario.hbm.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Articulos\Articulo.hbm.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Clientes\Cliente.hbm.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <Content Include="hibernate.cfg.xml">
