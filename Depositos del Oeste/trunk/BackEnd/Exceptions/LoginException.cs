@@ -10,4 +10,10 @@ namespace BackEnd
     {
         public LoginException(string message) : base(message){}
     }
+
+    public class AleException : Exception
+    {
+        public AleException(string message) : base(message) { }
+    }
+
 }
