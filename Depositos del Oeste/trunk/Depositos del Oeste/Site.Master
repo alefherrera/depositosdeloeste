@@ -77,7 +77,7 @@
         </header>
         <div id="body">
             <section class="content-wrapper main-content clear-fix">
-                <asp:ContentPlaceHolder runat="server" ID="MainContent">
+                <asp:ContentPlaceHolder runat="server" ID="MainContent" OnPreRender="MainContent_PreRender">
                 </asp:ContentPlaceHolder>
             </section>
         </div>
