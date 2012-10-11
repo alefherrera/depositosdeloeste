@@ -51,7 +51,6 @@ namespace Depositos_del_Oeste
 
             Page.PreLoad += master_Page_PreLoad;
 
-            LogHandler();
         }
 
         protected void master_Page_PreLoad(object sender, EventArgs e)
@@ -75,6 +74,7 @@ namespace Depositos_del_Oeste
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            LogHandler();
         }
 
 
