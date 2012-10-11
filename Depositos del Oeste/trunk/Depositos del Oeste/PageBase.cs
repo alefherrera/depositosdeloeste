@@ -16,10 +16,13 @@ namespace Depositos_del_Oeste
         protected override void OnPreLoad(System.EventArgs e)
         {
             base.OnPreLoad(e);
-        
-            //esta hardcodeado porque me pedia un numero, vos hacete la funcionciata de verificar ;)
-            
             string context = Request.AppRelativeCurrentExecutionFilePath.Replace("~", "").ToLower();
+        
+            //Cargo Page Title
+            Page.Title = Services.ServiceMenu.cargarNombre(context);
+
+
+            //Verifico Permisos
             if (context == "/default.aspx")
             {
                 return;

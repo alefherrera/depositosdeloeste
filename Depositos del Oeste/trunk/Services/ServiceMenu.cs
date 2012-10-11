@@ -9,8 +9,6 @@ namespace Services
 {
     public class ServiceMenu
     {
-        //TODO: Implementar el tema de los privilegios para el usuario
-        
         public static string generarMenu(Usuario user){
             string inicio = "<ul><li class='has-sub'><a href='/default.aspx'><span>Inicio</span></a></li></ul>";
 
@@ -130,6 +128,17 @@ namespace Services
 
             stringMenu.Append("</ul>");
             return stringMenu.ToString();
+        }
+
+        public static string cargarNombre(string path)
+        {
+            if(path == null){
+                return "";
+            }
+            Menu menu = new Menu();
+            menu.Link = path;
+            menu.Load();
+            return menu.Nombre;
         }
     }
 }

@@ -20,9 +20,9 @@ namespace Services
             permiso.PermisoDesc = perm;
 
             if (permiso.Select().Count == 0)
-                return true;
-            else
                 return false;
+            else
+                return true;
         }
 
         public static List<Permiso> CargarPermisos(Usuario user)
