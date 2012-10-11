@@ -9,6 +9,7 @@ namespace BackEnd
     public class Articulo : BusinessObject<Articulo>
     {
         public virtual int IdArticulo { get; set; }
+        public virtual int IdCliente { get; set; }
         public virtual string Nombre { get; set; }
         public virtual string Descripcion { get; set; }
         public virtual int Alto { get; set; }

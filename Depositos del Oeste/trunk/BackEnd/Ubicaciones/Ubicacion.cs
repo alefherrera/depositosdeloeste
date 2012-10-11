@@ -10,7 +10,7 @@ namespace BackEnd
     {
         public virtual int Id { get; set; }
         public virtual int IdNivel { get; set; }
-        public virtual int idEspacio { get; set; }
+        public virtual int IdEspacio { get; set; }
         public virtual int IdEstante { get; set; }
     }
 }

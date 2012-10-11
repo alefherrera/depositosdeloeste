@@ -121,7 +121,7 @@ header .content-wrapper {
 }
 
 #banner {
-    background-image: url("/Images/banner.png");
+    background-image: url("/Content/Images/banner.png");
     background-repeat: no-repeat;
     height: 141px;
     padding-bottom: 2px;

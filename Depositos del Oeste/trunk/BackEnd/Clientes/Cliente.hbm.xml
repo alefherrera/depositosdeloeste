@@ -1,9 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="BackEnd">
   <class name="BackEnd.Cliente, BackEnd" table="clientes" lazy="true">
-    <id name="IdCliente">
-      <column name="id"/>
+    <id name="Id">
+      <column name="Id"/>
       <generator class="native" />
-    </id>    
+    </id>
+    <property name="Razon_Social">
+      <column name="razon_social"/>
+    </property>
+    <property name="Cuit">
+      <column name="cuit"/>
+    </property>
+    <property name="Estado">
+      <column name="estado"/>
+    </property>
   </class>
 </hibernate-mapping>

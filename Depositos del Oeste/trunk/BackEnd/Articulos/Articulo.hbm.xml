@@ -5,6 +5,9 @@
       <column name="idarticulo"/>
       <generator class="native" />
     </id>
+    <property name="IdCliente">
+      <column name="clientes_id"/>
+    </property>
     <property name="Nombre">
       <column name="nombre"/>
     </property>

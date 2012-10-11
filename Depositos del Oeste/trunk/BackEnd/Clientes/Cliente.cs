@@ -8,6 +8,9 @@ namespace BackEnd
 {
     public class Cliente : BusinessObject<Cliente>
     {
-        public virtual int IdCliente { get; set; }
+        public virtual int Id { get; set; }
+        public virtual string Razon_Social { get; set; }
+        public virtual string Cuit { get; set; }
+        public virtual int Estado { get; set; }
     }
 }

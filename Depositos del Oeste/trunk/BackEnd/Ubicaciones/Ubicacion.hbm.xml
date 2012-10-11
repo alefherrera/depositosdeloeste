@@ -2,16 +2,16 @@
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="BackEnd">
   <class name="BackEnd.Ubicacion, BackEnd" table="ubicaciones" lazy="true">
     <id name="Id">
-      <column name="id"/>
+      <column name="Id"/>
       <generator class="native" />
     </id>
     <property name="IdNivel">
       <column name="niveles_id"/>
     </property>
-    <property name="idEspacio">
+    <property name="IdEspacio">
       <column name="niveles_espacios_id"/>
     </property>
-    <property name="idEstante">
+    <property name="IdEstante">
       <column name="niveles_espacios_estantes_id"/>
     </property>
   </class>
