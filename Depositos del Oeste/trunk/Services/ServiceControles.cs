@@ -12,7 +12,25 @@ namespace Services
 {
     public class ServiceControles
     {
-        public static void cargarArticulos(GridView gridArticulos, string seleccion)
+        public static Cliente cargarCliente(string idCliente){
+            if(!Validaciones.isNumeric(idCliente))
+                throw new CargarDatosException("Id de cliente incorrecta");
+
+            int id = int.Parse(idCliente);
+
+            if (id < 0)
+                throw new Exception("Id de cliente incorrecta");
+
+            Cliente cliente = new Cliente();
+            cliente.Id = id;
+            cliente.Load();
+            if (cliente.Loaded)
+                return cliente;
+            else
+                throw new Exception("Los datos del cliente no se pudieron cargar");
+        }
+
+        public static void cargarGridArticulos(GridView gridArticulos, string seleccion)
         {
             int sel = 0;
             if (Validaciones.isNumeric(seleccion))
@@ -35,22 +53,20 @@ namespace Services
 
             gridArticulos.DataBind();
         }
-
-        public static BoundField agregarColuma(string header, string field)
+        private static BoundField agregarColuma(string header, string field)
         {
             BoundField col = new BoundField();
             col.HeaderText = header;
             col.DataField = field;
             return col; 
         }
-
-        public static TemplateField agregarTemplate(string header, Control[] controles)
+        private static TemplateField agregarTemplate(string header, Control[] controles)
         {
             TemplateField col = new TemplateField();
             return col;
         }
-        
-        public static void cargarClientes(DropDownList ddlClientes)
+
+        public static void cargarComboClientes(DropDownList ddlClientes)
         {
             string textField = "Id";
             string dataField = "Razon_Social";
@@ -59,7 +75,6 @@ namespace Services
             cargarDropDownList<Cliente>(textField, dataField, ddlClientes, cliente.Select());
             ddlClientes.Items.Insert(0, new ListItem("Seleccione Cliente", "-1"));
         }
-
         private static void cargarDropDownList<T>(string valueField, string textField, DropDownList control, List<T> lista)
         {
             if (valueField == null || textField == null)
