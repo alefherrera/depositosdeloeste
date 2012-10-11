@@ -9,17 +9,17 @@ using Services;
 
 namespace Depositos_del_Oeste
 {
-    public partial class _productos : PageBase
+    public partial class _Productos : PageBase
     {
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                ServiceControles.cargarClientes(ddlClientes);
+                ServiceControles.cargarComboClientes(ddlClientes);
             }
             else
             {
-                ServiceControles.cargarArticulos(gridArticulos, ddlClientes.SelectedItem.Value);
+                ServiceControles.cargarGridArticulos(gridArticulos, ddlClientes.SelectedItem.Value);
             }
         }
     }

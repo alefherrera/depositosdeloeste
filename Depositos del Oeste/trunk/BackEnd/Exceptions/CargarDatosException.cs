@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace BackEnd
 {
-    public class LoginException : Exception
+    public class CargarDatosException : Exception
     {
-        public LoginException(string message) : base(message){}
+        public CargarDatosException(string message) : base(message) { }
     }
 }
