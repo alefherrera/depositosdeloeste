@@ -20,7 +20,6 @@ namespace Services
 
             if (sel < 0)
             {
-                gridArticulos.Visible = false;
                 return;
             }
 
@@ -28,6 +27,7 @@ namespace Services
             articulo.IdCliente = sel;
             gridArticulos.AutoGenerateColumns = false;
             gridArticulos.ShowHeader = true;
+            gridArticulos.Columns.Clear();
             gridArticulos.Columns.Add(agregarColuma("Nombre", "Nombre"));
             gridArticulos.Columns.Add(agregarColuma("Descripcion", "Descripcion"));
             //gridArticulos.Columns.Add(agregarTemplate("hola",null)); 

@@ -188,6 +188,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Content\Images\banner.png" />
     <Content Include="Content\Images\user_icon.png" />
+    <Content Include="productos\productos_alta.aspx" />
     <Content Include="productos\productos.aspx" />
     <Content Include="packages.config" />
     <None Include="Properties\PublishProfiles\Nacho.pubxml" />
@@ -228,6 +229,13 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\AuthConfig.cs" />
+    <Compile Include="productos\productos_alta.aspx.cs">
+      <DependentUpon>productos_alta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="productos\productos_alta.aspx.designer.cs">
+      <DependentUpon>productos_alta.aspx</DependentUpon>
+    </Compile>
     <Compile Include="productos\productos.aspx.cs">
       <DependentUpon>productos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
