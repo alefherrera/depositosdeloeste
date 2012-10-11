@@ -14,11 +14,6 @@ namespace Services
     {
         public static void cargarArticulos(GridView gridArticulos, string seleccion)
         {
-            List<string> DataKeyNames = new List<string>();
-            DataKeyNames.Add("Nombre");
-            DataKeyNames.Add("Descripcion");
-
-
             int sel = 0;
             if (Validaciones.isNumeric(seleccion))
                 sel = int.Parse(seleccion);
@@ -33,9 +28,26 @@ namespace Services
             articulo.IdCliente = sel;
             gridArticulos.AutoGenerateColumns = false;
             gridArticulos.ShowHeader = true;
-            gridArticulos.DataKeyNames = DataKeyNames.ToArray();
-            gridArticulos.DataSource = articulo.Select();
+            gridArticulos.Columns.Add(agregarColuma("Nombre", "Nombre"));
+            gridArticulos.Columns.Add(agregarColuma("Descripcion", "Descripcion"));
+            //gridArticulos.Columns.Add(agregarTemplate("hola",null)); 
+            gridArticulos.DataSource = articulo.Select();          
+
             gridArticulos.DataBind();
+        }
+
+        public static BoundField agregarColuma(string header, string field)
+        {
+            BoundField col = new BoundField();
+            col.HeaderText = header;
+            col.DataField = field;
+            return col; 
+        }
+
+        public static TemplateField agregarTemplate(string header, Control[] controles)
+        {
+            TemplateField col = new TemplateField();
+            return col;
         }
         
         public static void cargarClientes(DropDownList ddlClientes)
