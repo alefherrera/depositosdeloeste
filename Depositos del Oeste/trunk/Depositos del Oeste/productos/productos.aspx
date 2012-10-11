@@ -5,5 +5,5 @@
     Cliente
     <asp:DropDownList ID="ddlClientes" runat="server" AutoPostBack="True"></asp:DropDownList><br />
     <asp:GridView ID="gridArticulos" runat="server"></asp:GridView><br />
-    <a href="productos_alta.asp" runat="server">Agregar Articulo</a>
+    <a href="productos_alta.aspx" runat="server">Agregar Articulo</a>
 </asp:Content>
