@@ -21,6 +21,7 @@ namespace Depositos_del_Oeste
 
         protected void Page_Init(object sender, EventArgs e)
         {
+
             // The code below helps to protect against XSRF attacks
             var requestCookie = Request.Cookies[AntiXsrfTokenKey];
             Guid requestCookieGuidValue;
@@ -49,6 +50,8 @@ namespace Depositos_del_Oeste
             }
 
             Page.PreLoad += master_Page_PreLoad;
+
+            LogHandler();
         }
 
         protected void master_Page_PreLoad(object sender, EventArgs e)
@@ -72,7 +75,6 @@ namespace Depositos_del_Oeste
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            LogHandler();
         }
 
 
@@ -115,6 +117,7 @@ namespace Depositos_del_Oeste
             {
                 this.user.Legajo = int.Parse(Request.Cookies["usuarioDepositos"].Value);
                 this.user.Load();
+                Session["Usuario"] = this.user;
                 Logueado(true);
             }
         }

@@ -10,14 +10,20 @@ namespace Depositos_del_Oeste
         protected override void OnInit(System.EventArgs e)
         {
             base.OnInit(e);
-            user = (Usuario)Session["Usuario"];
         }
         
         protected override void OnPreLoad(System.EventArgs e)
         {
             base.OnPreLoad(e);
+        }
+
+        protected override void OnPreRender(System.EventArgs e)
+        {
+            base.OnPreRender(e);
+            user = (Usuario)Session["Usuario"];
+
             string context = Request.AppRelativeCurrentExecutionFilePath.Replace("~", "").ToLower();
-        
+
             //Cargo Page Title
             Page.Title = Services.ServiceMenu.cargarNombre(context);
 
