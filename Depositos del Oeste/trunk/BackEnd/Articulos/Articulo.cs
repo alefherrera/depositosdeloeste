@@ -18,5 +18,20 @@ namespace BackEnd
         public virtual int Peso { get; set; }
         public virtual int Actividad { get; set; }
         public virtual int Activo { get; set; }
+
+        public virtual string nombre_actividad()
+        {
+            switch (Actividad)
+            {
+                case 0:
+                    return "Baja";
+                case 1:
+                    return "Media";
+                case 2:
+                    return "Alta";
+                default:
+                    return "Baja";
+            }
+        }
     }
 }

@@ -26,10 +26,16 @@
     <br />
     Índice de Actividad 
     <asp:RadioButtonList runat="server" ID="rblActividad">
-        <asp:ListItem Value="0">Bajo</asp:ListItem>
+        <asp:ListItem Value="0" Selected="True">Bajo</asp:ListItem>
         <asp:ListItem Value="1">Medio</asp:ListItem>
         <asp:ListItem Value="2">Alto</asp:ListItem>
     </asp:RadioButtonList>
     <br />
-    <asp:Button id="btnSubmit" runat="server" Text="Confirmar" OnClick="btnSubmit_Click"/>
+    <asp:Button id="btnSubmit" runat="server" Text="Confirmar" CssClass="btnConfirmar" OnClick="btnSubmit_Click"/>
+    <asp:Button id="btnVolver" runat="server" Text="Volver" OnClick="btnVolver_Click"/>
+    <script type="text/ecmascript">
+        $(".btnConfirmar").click(function () {
+            return confirm("¿Esta seguro que los datos son correctos?");
+        });
+    </script>
 </asp:Content>

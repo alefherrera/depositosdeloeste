@@ -31,13 +31,13 @@ namespace Depositos_del_Oeste {
         protected global::System.Web.UI.WebControls.Label lbCliente;
         
         /// <summary>
-        /// txtNombre control.
+        /// lbNombre control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtNombre;
+        protected global::System.Web.UI.WebControls.Label lbNombre;
         
         /// <summary>
         /// txtDescripcion control.
@@ -46,52 +46,52 @@ namespace Depositos_del_Oeste {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtDescripcion;
+        protected global::System.Web.UI.WebControls.TextBox txtDescripcion;
         
         /// <summary>
-        /// txtAlto control.
+        /// lbAlto control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtAlto;
+        protected global::System.Web.UI.WebControls.Label lbAlto;
         
         /// <summary>
-        /// txtLargo control.
+        /// lbLargo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtLargo;
+        protected global::System.Web.UI.WebControls.Label lbLargo;
         
         /// <summary>
-        /// txtAncho control.
+        /// lbAncho control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtAncho;
+        protected global::System.Web.UI.WebControls.Label lbAncho;
         
         /// <summary>
-        /// txtPeso control.
+        /// lbPeso control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtPeso;
+        protected global::System.Web.UI.WebControls.Label lbPeso;
         
         /// <summary>
-        /// rblActividad control.
+        /// lbActividad control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList rblActividad;
+        protected global::System.Web.UI.WebControls.Label lbActividad;
         
         /// <summary>
         /// btnEliminar control.
@@ -101,5 +101,14 @@ namespace Depositos_del_Oeste {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnEliminar;
+        
+        /// <summary>
+        /// btnVolver control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnVolver;
     }
 }

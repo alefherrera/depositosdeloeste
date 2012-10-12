@@ -35,8 +35,8 @@
                 <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
                 <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
                 <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
-                <asp:ScriptReference Name="JqueryMask" Path="~/Scripts/jquery.maskedinput-1.3.min.js" />
-<%--                <asp:ScriptReference Name="MsAjaxBundle" />
+              <%--   <asp:ScriptReference Name="JqueryMask.js" Path="~/Scripts/jquery.maskedinput-1.3.min.js" />
+               <asp:ScriptReference Name="MsAjaxBundle" />
                 <asp:ScriptReference Name="WebFormsBundle" />--%>
                 <%--Site scripts--%>
             </Scripts>

@@ -61,7 +61,6 @@ namespace Depositos_del_Oeste
                     postbackUrl = Request.UrlReferrer.AbsoluteUri;
                 }
 
-                //TODO: Si podemos hacer que el page base automaticamente lea el query string para errores y los imprima vendria genial.
                 StringBuilder sb = new StringBuilder();
                 sb.Append("<html>");
                 sb.AppendFormat(@"<body onload='document.forms[""form""].submit()'>");
