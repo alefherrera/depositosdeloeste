@@ -74,8 +74,29 @@ namespace BackEnd
             ISessionFactory factory = config.BuildSessionFactory();
             ISession session = factory.OpenSession();
             ITransaction tx = session.BeginTransaction();
-
             session.Save(this);
+
+            tx.Commit();
+
+            session.Close();
+        }
+
+        public virtual void BajaLogica()
+        {
+            this.GetType().GetProperty("Activo").SetValue(this, false);
+            Update();
+        }
+
+        public virtual void Update()
+        {
+            Configuration config = new Configuration();
+            config.Configure();
+
+            ISessionFactory factory = config.BuildSessionFactory();
+            ISession session = factory.OpenSession();
+            ITransaction tx = session.BeginTransaction();
+
+            session.Update(this);
 
             tx.Commit();
 
