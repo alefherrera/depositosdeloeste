@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace BackEnd
 {
-    public class LoginException : BackEndExcception
+    public class BackEndExcception : Exception
     {
-        public LoginException(string message) : base(message){}
+        public BackEndExcception(string message) : base(message) { }
     }
 }
