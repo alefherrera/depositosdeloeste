@@ -60,7 +60,9 @@
     <Compile Include="Clientes\Cliente.cs" />
     <Compile Include="Depositados\Depositado.cs" />
     <Compile Include="Exceptions\BackEndExcception.cs" />
-    <Compile Include="Exceptions\CargarDatosException.cs" />
+    <Compile Include="Exceptions\ErrorFormException.cs" />
+    <Compile Include="Exceptions\RedireccionDatosException.cs" />
+    <Compile Include="Exceptions\MailException.cs" />
     <Compile Include="Exceptions\LoginException.cs" />
     <Compile Include="Mail.cs" />
     <Compile Include="Grupos\Grupo.cs" />

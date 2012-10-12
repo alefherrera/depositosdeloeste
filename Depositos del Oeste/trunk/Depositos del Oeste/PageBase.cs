@@ -45,12 +45,13 @@ namespace Depositos_del_Oeste
         {
             base.OnError(e);
             Exception ex = Server.GetLastError();
-            if (ex is BackEndExcception)
+            if (ex is RedireccionDatosException)
             {
                 string postbackUrl;
 
                 Response.Clear();
 
+                string name = "errorRedireccion";
                 if (Request.UrlReferrer == null)
                 {
                     postbackUrl = "/Default.aspx";
@@ -59,13 +60,13 @@ namespace Depositos_del_Oeste
                 {
                     postbackUrl = Request.UrlReferrer.AbsoluteUri;
                 }
-                //TODO: Si podemos hacer que el page base automaticamente lea el query string para errores y los imprima vendria genial.
 
+                //TODO: Si podemos hacer que el page base automaticamente lea el query string para errores y los imprima vendria genial.
                 StringBuilder sb = new StringBuilder();
                 sb.Append("<html>");
                 sb.AppendFormat(@"<body onload='document.forms[""form""].submit()'>");
                 sb.AppendFormat("<form name='form' action='{0}' method='post'>", postbackUrl);
-                sb.AppendFormat("<input type='hidden' name='error' value='{0}'>", ex.Message);
+                sb.AppendFormat("<input type='hidden' name='{1}' value='{0}'>", ex.Message, name);
                 // Other params go here
                 sb.Append("</form>");
                 sb.Append("</body>");

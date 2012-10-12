@@ -17,12 +17,20 @@ namespace Depositos_del_Oeste
         {
             cargarCliente();
         }
-          
 
         private void cargarCliente()
         {
-            this.cliente = ServiceControles.cargarCliente(Request.QueryString["id"]);
-            lbCliente.Text = cliente.Razon_Social;
+            try
+            {
+                this.cliente = ServiceProductos.cargarCliente(Request.QueryString["id"]);
+                lbCliente.Text = cliente.Razon_Social;
+
+                ServiceProductos.insertarArticulo(new Articulo(), new Cliente());
+            }
+            catch (ErrorFormException ex)
+            {
+                lbError.Text = ex.Message;
+            }
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)
