@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BackEnd
 {
-    public class CargarDatosException : Exception
+    public class CargarDatosException : BackEndExcception
     {
         public CargarDatosException(string message) : base(message) { }
     }
