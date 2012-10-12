@@ -10,11 +10,11 @@ using BackEnd;
 
 namespace Services
 {
-    public class ServiceControles
+    public class ServiceProductos : ServiceBase
     {
         public static Cliente cargarCliente(string idCliente){
             if(!Validaciones.isNumeric(idCliente))
-                throw new CargarDatosException("Id de cliente incorrecta");
+                throw new RedireccionDatosException("Id de cliente incorrecta");
 
             int id = int.Parse(idCliente);
 
@@ -49,19 +49,7 @@ namespace Services
             gridArticulos.DataSource = articulo.Select();
             gridArticulos.DataBind();
         }
-        private static BoundField agregarColuma(string header, string field)
-        {
-            BoundField col = new BoundField();
-            col.HeaderText = header;
-            col.DataField = field;
-            return col; 
-        }
-        private static TemplateField agregarTemplate(string header, Control[] controles)
-        {
-            TemplateField col = new TemplateField();
-            return col;
-        }
-
+ 
         public static void cargarComboClientes(DropDownList ddlClientes)
         {
             string textField = "Id";
@@ -71,17 +59,25 @@ namespace Services
             cargarDropDownList<Cliente>(textField, dataField, ddlClientes, cliente.Select());
             ddlClientes.Items.Insert(0, new ListItem("Seleccione Cliente", "-1"));
         }
-        private static void cargarDropDownList<T>(string valueField, string textField, DropDownList control, List<T> lista)
+
+        public static int insertarArticulo(Articulo articulo, Cliente cliente)
         {
-            if (valueField == null || textField == null)
+            if (articulo == null || cliente == null)
             {
-                return;
+                StringBuilder sb = new StringBuilder();
+                sb.Append((articulo==null)?"Articulo es nulo <br />":"");
+                sb.Append((cliente==null)?"Cliente es nulo <br />":"");
+                sb.Append("insertarArticulo <br />");
+
+                throw new MailException(sb.ToString());
             }
-            control.DataTextField = textField;
-            control.DataValueField = valueField;
-            control.DataSource = lista;
-            control.DataBind();
-            return;
+            
+            if (cliente.Load())
+            {
+                throw new ErrorFormException("Cliente incorrecto");
+            }
+
+            return 1;
         }
     }
 }

@@ -15,11 +15,11 @@ namespace Depositos_del_Oeste
         {
             if (!IsPostBack)
             {
-                ServiceControles.cargarComboClientes(ddlClientes);
+                ServiceProductos.cargarComboClientes(ddlClientes);
             }
             else
             {
-                ServiceControles.cargarGridArticulos(gridArticulos, ddlClientes.SelectedItem.Value);
+                ServiceProductos.cargarGridArticulos(gridArticulos, ddlClientes.SelectedItem.Value);
             }
         }
 
@@ -28,7 +28,7 @@ namespace Depositos_del_Oeste
             DropDownList ddl = (DropDownList)sender;
             if (ddl.SelectedValue != "-1")
             {
-                location.HRef = "productos_alta.aspx?id" + ddl.SelectedValue; 
+                location.HRef = "productos_alta.aspx?id=" + ddl.SelectedValue; 
             }
         }
     }
