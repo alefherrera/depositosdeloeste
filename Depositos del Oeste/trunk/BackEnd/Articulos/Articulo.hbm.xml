@@ -26,5 +26,8 @@
     <property name="Peso">
       <column name="peso"/>
     </property>
+    <property name="Activo">
+      <column name="activo"/>
+    </property>
   </class>
 </hibernate-mapping>
