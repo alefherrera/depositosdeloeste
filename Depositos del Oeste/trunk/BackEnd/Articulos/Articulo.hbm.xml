@@ -26,6 +26,9 @@
     <property name="Peso">
       <column name="peso"/>
     </property>
+    <property name="Actividad">
+      <column name="actividad"/>
+    </property>
     <property name="Activo">
       <column name="activo"/>
     </property>

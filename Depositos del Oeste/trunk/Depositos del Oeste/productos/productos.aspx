@@ -11,7 +11,7 @@
             <asp:BoundField HeaderText="Descripcion" DataField="Descripcion" />
             <asp:TemplateField>
                 <ItemTemplate>
-                    <a href="producto_baja.aspx?id=<%# Eval("IdArticulo") %>">Eliminar
+                    <a href="productos_baja.aspx?id=<%# Eval("IdArticulo") %>">Eliminar
                     </a>
                 </ItemTemplate>
             </asp:TemplateField>
