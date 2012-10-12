@@ -22,5 +22,14 @@ namespace Depositos_del_Oeste
                 ServiceControles.cargarGridArticulos(gridArticulos, ddlClientes.SelectedItem.Value);
             }
         }
+
+        protected void ddlClientes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DropDownList ddl = (DropDownList)sender;
+            if (ddl.SelectedValue != "-1")
+            {
+                location.HRef = "productos_alta.aspx?id" + ddl.SelectedValue; 
+            }
+        }
     }
 }
