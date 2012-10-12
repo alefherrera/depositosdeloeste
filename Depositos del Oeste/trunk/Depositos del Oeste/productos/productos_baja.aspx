@@ -5,35 +5,33 @@
     <asp:Label runat="server" ID="lbError" CssClass="error"></asp:Label><br />
     <asp:Label runat="server" ID="lbCliente"></asp:Label><br />
     Nombre
-    <asp:Label runat="server" ID="txtNombre"></asp:Label><br />
+    <asp:Label runat="server" ID="lbNombre"></asp:Label><br />
     Descripcion
-    <asp:Label runat="server" ID="txtDescripcion"></asp:Label><br />
+    <asp:TextBox TextMode="MultiLine" Enabled="false" runat="server" ID="txtDescripcion"></asp:TextBox><br />
     Alto
-    <asp:Label runat="server" ID="txtAlto"></asp:Label>
+    <asp:Label runat="server" ID="lbAlto"></asp:Label>
     milímetros
     <br />
     Largo
-    <asp:Label runat="server" ID="txtLargo"></asp:Label>
+    <asp:Label runat="server" ID="lbLargo"></asp:Label>
     milímetros
     <br />
     Ancho
-    <asp:Label runat="server" ID="txtAncho"></asp:Label>
+    <asp:Label runat="server" ID="lbAncho"></asp:Label>
     milímetros
     <br />
     Peso
-    <asp:Label runat="server" ID="txtPeso"></asp:Label>
+    <asp:Label runat="server" ID="lbPeso"></asp:Label>
     gramos
     <br />
     Índice de Actividad 
-    <asp:RadioButtonList runat="server" ID="rblActividad">
-        <asp:ListItem Value="0">Bajo</asp:ListItem>
-        <asp:ListItem Value="1">Medio</asp:ListItem>
-        <asp:ListItem Value="2">Alto</asp:ListItem>
-    </asp:RadioButtonList>
+    <asp:Label runat="server" ID="lbActividad"></asp:Label>
+
     <asp:Button runat="server" ID="btnEliminar" CssClass="btnEliminar" Text="Eliminar" OnClick="btnEliminar_Click" />
+    <asp:Button id="btnVolver" runat="server" Text="Volver" OnClick="btnVolver_Click"/>
     <script type="text/ecmascript">
         $(".btnEliminar").click(function () {
-            return confirm("Esta seguro de eliminar el producto");
+            return confirm("¿Esta seguro de eliminar el producto?");
         });
     </script>
 </asp:Content>

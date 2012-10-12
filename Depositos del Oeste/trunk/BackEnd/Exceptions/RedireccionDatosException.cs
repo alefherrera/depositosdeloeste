@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace BackEnd
 {
-    public class ErrorFormException : BackEndExcception
+    public class RedireccionDatosException : BackEndExcception
     {
-        public ErrorFormException(string message)
+        public RedireccionDatosException(string message)
             : base(message)
         {
         }

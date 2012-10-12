@@ -30,6 +30,19 @@ namespace Services
                 throw new Exception("Los datos del cliente no se pudieron cargar");
         }
 
+        public static Articulo cargarArticulos(string id)
+        {
+            Articulo articulo = new Articulo();
+            if (!Validaciones.isNumeric(id))
+                throw new RedireccionDatosException("Articulo incorrecto");
+
+            articulo.IdArticulo = int.Parse(id);
+            if (!articulo.Load())
+                throw new RedireccionDatosException("Articulo incorrecto");
+           
+            return articulo;
+        }
+
         public static void cargarGridArticulos(GridView gridArticulos, string seleccion)
         {
             int sel = 0;
@@ -60,7 +73,7 @@ namespace Services
             ddlClientes.Items.Insert(0, new ListItem("Seleccione Cliente", "-1"));
         }
 
-        public static int insertarArticulo(Articulo articulo, Cliente cliente)
+        public static void insertarArticulo(Articulo articulo, Cliente cliente)
         {
             if (articulo == null || cliente == null)
             {
@@ -73,11 +86,34 @@ namespace Services
             }
             
             if (cliente.Load())
-            {
-                throw new ErrorFormException("Cliente incorrecto");
-            }
+                throw new RedireccionDatosException("Cliente incorrecto");
 
-            return 1;
+            //TODO: Deshardcodear la actividad, un enum o algo que te guste, despues iterarlo para saber la cantidad o algo asi.1
+            if (articulo.Actividad < 0 || articulo.Actividad >= 3)
+                throw new ErrorFormException("La actividad es incorrecta");
+
+            if (articulo.Nombre == "" || articulo.Nombre == null)
+                throw new ErrorFormException("El nombre del articulo es incorrecto");
+
+            if (articulo.Alto <= 0)
+                throw new ErrorFormException("El alto del articulo es incorrecto");
+
+            if (articulo.Largo <= 0)
+                throw new ErrorFormException("El largo del articulo es incorrecto");
+
+            if (articulo.Ancho <= 0)
+                throw new ErrorFormException("El ancho del articulo es incorrecto");
+
+            if (articulo.Peso <= 0)
+                throw new ErrorFormException("El peso del articulo es incorrecto");
+
+            if (articulo.Actividad < 0 || articulo.Actividad >= 3)
+                throw new ErrorFormException("La actividad es incorrecta");
+
+            articulo.IdCliente = cliente.Id;
+            articulo.Activo = 1;
+
+            articulo.Save();
         }
     }
 }

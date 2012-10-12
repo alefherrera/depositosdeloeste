@@ -16,11 +16,13 @@ namespace Depositos_del_Oeste
             if (!IsPostBack)
             {
                 ServiceProductos.cargarComboClientes(ddlClientes);
+                if (Request.QueryString["id"] != null)
+                {
+                    string id = Request.QueryString["id"];
+                    ddlClientes.SelectedValue = id;
+                }
             }
-            else
-            {
-                ServiceProductos.cargarGridArticulos(gridArticulos, ddlClientes.SelectedItem.Value);
-            }
+            ServiceProductos.cargarGridArticulos(gridArticulos, ddlClientes.SelectedItem.Value);
         }
 
         protected void ddlClientes_SelectedIndexChanged(object sender, EventArgs e)
