@@ -30,4 +30,6 @@
         <asp:ListItem Value="1">Medio</asp:ListItem>
         <asp:ListItem Value="2">Alto</asp:ListItem>
     </asp:RadioButtonList>
+    <br />
+    <asp:Button id="btnSubmit" runat="server" Text="Confirmar" OnClick="btnSubmit_Click"/>
 </asp:Content>
