@@ -45,12 +45,7 @@ namespace Services
             articulo.IdCliente = sel;
             gridArticulos.AutoGenerateColumns = false;
             gridArticulos.ShowHeader = true;
-            gridArticulos.Columns.Clear();
-            gridArticulos.Columns.Add(agregarColuma("Nombre", "Nombre"));
-            gridArticulos.Columns.Add(agregarColuma("Descripcion", "Descripcion"));
-            //gridArticulos.Columns.Add(agregarTemplate("hola",null)); 
-            gridArticulos.DataSource = articulo.Select();          
-
+            gridArticulos.DataSource = articulo.Select();
             gridArticulos.DataBind();
         }
         private static BoundField agregarColuma(string header, string field)
