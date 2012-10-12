@@ -43,6 +43,7 @@ namespace Services
 
             Articulo articulo = new Articulo();
             articulo.IdCliente = sel;
+            articulo.Activo = 1;
             gridArticulos.AutoGenerateColumns = false;
             gridArticulos.ShowHeader = true;
             gridArticulos.DataSource = articulo.Select();

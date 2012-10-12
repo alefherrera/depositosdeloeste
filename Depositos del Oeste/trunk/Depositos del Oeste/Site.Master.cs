@@ -51,6 +51,7 @@ namespace Depositos_del_Oeste
 
             Page.PreLoad += master_Page_PreLoad;
 
+            
         }
 
         protected void master_Page_PreLoad(object sender, EventArgs e)
@@ -151,7 +152,10 @@ namespace Depositos_del_Oeste
         protected void MainContent_PreRender(object sender, EventArgs e)
         {
             cssmenu.InnerHtml = ServiceMenu.generarMenu(this.user);
-
+            if (Request.Form["error"] != null)
+            {
+                errorLogin.Text = Request.Form["error"].ToString();
+            }
         }
     }
 }
