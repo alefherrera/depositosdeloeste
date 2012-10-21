@@ -7,10 +7,12 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using BackEnd;
+using System.Collections;
+using System.Data;
 
 namespace Services
 {
-    public class ServiceBase 
+    public class ServiceBase
     {
         protected static BoundField agregarColuma(string header, string field)
         {
@@ -30,6 +32,38 @@ namespace Services
             if (valueField == null || textField == null)
             {
                 return;
+            }
+            control.DataTextField = textField;
+            control.DataValueField = valueField;
+            control.DataSource = lista;
+            control.DataBind();
+            return;
+        }
+
+        protected static void cargarDropDownList(string valueField, string textField, DropDownList control, List<Hashtable> htlista)
+        {
+            if (valueField == null || textField == null)
+            {
+                return;
+            }
+
+            DataTable lista = new DataTable();
+
+            
+            lista.Columns.Add(textField);
+        
+            if (valueField != textField)
+                lista.Columns.Add(valueField);
+            
+            foreach (Hashtable htable in htlista)
+            {
+                foreach (DictionaryEntry entry in htable)
+                {
+                    DataRow row = lista.NewRow();
+                    row[entry.Key.ToString()] = entry.Value;
+
+                    lista.Rows.Add(row);
+                }
             }
             control.DataTextField = textField;
             control.DataValueField = valueField;

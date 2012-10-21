@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Criterion;
+using System.Collections;
+using NHibernate.Transform;
 
 namespace BackEnd
 {
@@ -161,7 +163,7 @@ namespace BackEnd
             return rtnList;
         }
 
-        public virtual List<T> Select(string query)
+        public virtual Object Select(string query)
         {
             List<T> rtnList = new List<T>();
 
@@ -171,11 +173,11 @@ namespace BackEnd
             ISessionFactory factory = config.BuildSessionFactory();
             ISession session = factory.OpenSession();
             IQuery squery = session.CreateQuery(query);
-
-            rtnList = (List<T>)squery.List<T>();
-
+            
+            var listResult = squery.SetResultTransformer(Transformers.AliasToEntityMap).List<Hashtable>();
+            
             session.Close();
-            return rtnList;
+            return listResult;
         }
 
         public virtual bool Load()
