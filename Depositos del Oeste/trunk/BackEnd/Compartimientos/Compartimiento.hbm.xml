@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="BackEnd">
+  <class name="BackEnd.Compartimiento, BackEnd" table="Compartimientos" lazy="true">
+    <id name="Id">
+      <column name="idcompartimiento"/>
+      <generator class="native" />
+    </id>
+    <property name="NroEstanteria">
+      <column name="nroestanteria"/>
+    </property>
+    <property name="Nivel">
+      <column name="nivel"/>
+    </property>
+    <property name="NroCompartimiento">
+      <column name="compartimiento"/>
+    </property>
+    <property name="Actividad">
+      <column name="actividad"/>
+    </property>
+    <property name="Estado">
+      <column name="estado"/>
+    </property>
+  </class>
+</hibernate-mapping>

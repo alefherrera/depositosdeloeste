@@ -58,29 +58,27 @@
     <Compile Include="Articulos\Articulo.cs" />
     <Compile Include="BusinessObject.cs" />
     <Compile Include="Clientes\Cliente.cs" />
+    <Compile Include="Compartimientos\Compartimiento.cs" />
     <Compile Include="Depositados\Depositado.cs" />
     <Compile Include="Exceptions\BackEndExcception.cs" />
     <Compile Include="Exceptions\ErrorFormException.cs" />
     <Compile Include="Exceptions\RedireccionDatosException.cs" />
     <Compile Include="Exceptions\MailException.cs" />
     <Compile Include="Exceptions\LoginException.cs" />
-    <Compile Include="Mail.cs" />
+    <Compile Include="Utils\Enums.cs" />
+    <Compile Include="Utils\Mail.cs" />
     <Compile Include="Grupos\Grupo.cs" />
     <Compile Include="Permisos\Permiso.cs" />
     <Compile Include="Reservas\Reserva.cs" />
-    <Compile Include="Ubicaciones\Ubicacion.cs" />
     <Compile Include="Usuarios\Usuario.cs" />
     <Compile Include="Menu\Menu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Validaciones.cs" />
+    <Compile Include="Utils\Validaciones.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Ubicaciones\Ubicacion.hbm.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
     <EmbeddedResource Include="Permisos\Permiso.hbm.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -94,6 +92,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Clientes\Cliente.hbm.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Compartimientos\Compartimiento.hbm.xml">
+      <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <Content Include="hibernate.cfg.xml">
