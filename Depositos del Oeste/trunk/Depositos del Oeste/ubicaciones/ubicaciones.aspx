@@ -4,7 +4,7 @@
     <h3>Ubicaciones</h3>
     <asp:Label runat="server" ID="lbError" CssClass="error"></asp:Label><br />
     Estanteria
-    <asp:DropDownList ID="ddlEstanteria" runat="server" AutoPostBack="True" CssClass="cliente" OnSelectedIndexChanged="ddlEstanteria_SelectedIndexChanged"></asp:DropDownList><br />
+    <asp:DropDownList ID="ddlEstanteria" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlEstanteria_SelectedIndexChanged"></asp:DropDownList><br />
     <asp:GridView ID="gridUbicaciones" runat="server">
         <Columns>
             <asp:BoundField HeaderText="Nivel" DataField="Nivel" />

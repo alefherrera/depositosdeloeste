@@ -26,7 +26,7 @@
     <br />
     Índice de Actividad 
     <asp:Label runat="server" ID="lbActividad"></asp:Label>
-
+    <br />
     <asp:Button runat="server" ID="btnEliminar" CssClass="btnEliminar" Text="Eliminar" OnClick="btnEliminar_Click" />
     <asp:Button id="btnVolver" runat="server" Text="Volver" OnClick="btnVolver_Click"/>
     <script type="text/ecmascript">

@@ -2,6 +2,8 @@
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
     <h3>Bienvenido:</h3>
-        Para comenzar a usar el sistema de control de ingreso y egreso de mercaderia de Depositos del Oeste, por favor ingrese su número de legajo y contraseña en la esquina superior derecha, si no tiene usuario
-                contacte con su superior inmediato para ser registrado. 
+        <p>Para comenzar a usar el sistema de control de ingreso y egreso de mercaderia de Depositos del Oeste, por favor ingrese su número de legajo y contraseña en la esquina superior derecha, si no tiene usuario
+                contacte con su superior inmediato para ser registrado. </p>
+    <br />
+    <img src="http://i.imgur.com/Yf2aL.png" />
 </asp:Content>

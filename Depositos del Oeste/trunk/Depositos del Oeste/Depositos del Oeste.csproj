@@ -188,12 +188,14 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Content\Images\banner.png" />
     <Content Include="Content\Images\user_icon.png" />
+    <Content Include="ingreso\ingreso.aspx" />
     <Content Include="productos\productos_baja.aspx" />
     <Content Include="productos\productos_alta.aspx" />
     <Content Include="productos\productos.aspx" />
     <Content Include="packages.config" />
     <None Include="Properties\PublishProfiles\Nacho.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
+    <Content Include="retiro\retiro.aspx" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.js" />
@@ -225,6 +227,7 @@
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="ubicaciones\reserva.aspx" />
     <Content Include="ubicaciones\ubicaciones.aspx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -232,6 +235,13 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\AuthConfig.cs" />
+    <Compile Include="ingreso\ingreso.aspx.cs">
+      <DependentUpon>ingreso.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ingreso\ingreso.aspx.designer.cs">
+      <DependentUpon>ingreso.aspx</DependentUpon>
+    </Compile>
     <Compile Include="productos\productos_baja.aspx.cs">
       <DependentUpon>productos_baja.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -267,12 +277,26 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="retiro\retiro.aspx.cs">
+      <DependentUpon>retiro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="retiro\retiro.aspx.designer.cs">
+      <DependentUpon>retiro.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="ubicaciones\reserva.aspx.cs">
+      <DependentUpon>reserva.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ubicaciones\reserva.aspx.designer.cs">
+      <DependentUpon>reserva.aspx</DependentUpon>
     </Compile>
     <Compile Include="ubicaciones\ubicaciones.aspx.cs">
       <DependentUpon>ubicaciones.aspx</DependentUpon>
