@@ -6,11 +6,21 @@
     <asp:DropDownList ID="ddlClientes" runat="server" AutoPostBack="True" CssClass="cliente" OnSelectedIndexChanged="ddlClientes_SelectedIndexChanged"></asp:DropDownList><br />
     <asp:Panel ID="pnlArticulosGeneral" runat="server" Visible="false">
         Articulos<br />
-        <asp:HiddenField ID="hdCantidadArticulos" runat="server" Value="1" />
-        <asp:Panel ID="pnlArticulos" runat="server">
-        </asp:Panel>
-        <br />
-        <asp:LinkButton ID="linkRemove" runat="server" OnClick="linkRemove_Click">Remover Articulo</asp:LinkButton>
+        <asp:DropDownList ID="ddlArticulo" runat="server">
+        </asp:DropDownList>
+        <asp:TextBox ID="txtCantidad" runat="server">
+        </asp:TextBox>
+        <asp:GridView ID="gridArticulos" runat="server">
+            <Columns>
+                <asp:TemplateField Visible = "false" HeaderText="ID">
+                </asp:TemplateField>
+                 <asp:TemplateField HeaderText="Articulo">
+                </asp:TemplateField>
+                 <asp:TemplateField HeaderText="Cantidad">
+                </asp:TemplateField>
+            </Columns>
+        </asp:GridView>
+       
         <br />
         <asp:LinkButton ID="linkAdd" runat="server" OnClick="linkAdd_Click">Agregar Articulo</asp:LinkButton>
         <br /><br />

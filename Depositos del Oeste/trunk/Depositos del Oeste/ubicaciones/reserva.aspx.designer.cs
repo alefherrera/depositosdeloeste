@@ -40,31 +40,31 @@ namespace Depositos_del_Oeste {
         protected global::System.Web.UI.WebControls.Panel pnlArticulosGeneral;
         
         /// <summary>
-        /// hdCantidadArticulos control.
+        /// ddlArticulo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdCantidadArticulos;
+        protected global::System.Web.UI.WebControls.DropDownList ddlArticulo;
         
         /// <summary>
-        /// pnlArticulos control.
+        /// txtCantidad control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlArticulos;
+        protected global::System.Web.UI.WebControls.TextBox txtCantidad;
         
         /// <summary>
-        /// linkRemove control.
+        /// gridArticulos control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton linkRemove;
+        protected global::System.Web.UI.WebControls.GridView gridArticulos;
         
         /// <summary>
         /// linkAdd control.
