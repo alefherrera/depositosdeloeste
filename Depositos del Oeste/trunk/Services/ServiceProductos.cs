@@ -65,12 +65,26 @@ namespace Services
  
         public static void cargarComboClientes(DropDownList ddlClientes)
         {
-            string textField = "Id";
-            string dataField = "Razon_Social";
+            string textField = "Razon_Social";
+            string dataField = "Id";
             Cliente cliente = new Cliente();
 
-            cargarDropDownList<Cliente>(textField, dataField, ddlClientes, cliente.Select());
+            cargarDropDownList<Cliente>(dataField, textField, ddlClientes, cliente.Select());
             ddlClientes.Items.Insert(0, new ListItem("Seleccione Cliente", "-1"));
+        }
+
+        public static void cargarComboArticulos(DropDownList ddlArticulos, Articulo articulo)
+        {
+            if (articulo == null)
+            {
+                throw new Exception("Articulo es nulo");
+            }
+
+            string textField = "Nombre";
+            string dataField = "IdArticulo";
+
+            cargarDropDownList<Articulo>(dataField, textField, ddlArticulos, articulo.Select());
+            ddlArticulos.Items.Insert(0, new ListItem("Seleccione Articulo", "-1"));
         }
 
         public static void insertarArticulo(Articulo articulo, Cliente cliente)
