@@ -8,6 +8,10 @@ namespace BackEnd.Utils
 {
     public class Enums
     {
+        public enum Combos
+        {
+            Seleccione = -1
+        }
         public enum Ubicaciones_Actividad
         {
             Baja =  0,
