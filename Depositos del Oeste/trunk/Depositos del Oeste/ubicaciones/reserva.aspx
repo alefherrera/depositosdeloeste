@@ -10,19 +10,22 @@
         </asp:DropDownList>
         <asp:TextBox ID="txtCantidad" runat="server">
         </asp:TextBox>
-        <asp:GridView ID="gridArticulos" runat="server">
-            <Columns>
-                <asp:TemplateField Visible = "false" HeaderText="ID">
-                </asp:TemplateField>
+        <asp:LinkButton ID="linkAdd" runat="server" OnClick="linkAdd_Click">Agregar Articulo</asp:LinkButton>
+        <asp:GridView ID="gridArticulos" runat="server" AutoGenerateColumns="false">
+            <Columns>                
+                <asp:BoundField HeaderText="Articulo" DataField="desc" />
+                <asp:BoundField HeaderText="Cantidad" DataField="cant"/>
                  <asp:TemplateField HeaderText="Articulo">
+                     <ItemTemplate>
+                         <asp:Button runat="server" ID="btnEliminar" Text="Eliminar" OnClick="Eliminar" CommandArgument='<%# Eval("index") %>' />
+                     </ItemTemplate>
                 </asp:TemplateField>
-                 <asp:TemplateField HeaderText="Cantidad">
-                </asp:TemplateField>
+                
             </Columns>
         </asp:GridView>
        
+        
         <br />
-        <asp:LinkButton ID="linkAdd" runat="server" OnClick="linkAdd_Click">Agregar Articulo</asp:LinkButton>
         <br /><br />
         <asp:Button ID="btnSubmit" runat="server" Text="Registrar Reserva"/>
     </asp:Panel>

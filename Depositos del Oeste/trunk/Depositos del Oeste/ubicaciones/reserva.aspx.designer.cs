@@ -58,15 +58,6 @@ namespace Depositos_del_Oeste {
         protected global::System.Web.UI.WebControls.TextBox txtCantidad;
         
         /// <summary>
-        /// gridArticulos control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gridArticulos;
-        
-        /// <summary>
         /// linkAdd control.
         /// </summary>
         /// <remarks>
@@ -74,6 +65,15 @@ namespace Depositos_del_Oeste {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton linkAdd;
+        
+        /// <summary>
+        /// gridArticulos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gridArticulos;
         
         /// <summary>
         /// btnSubmit control.
