@@ -84,6 +84,7 @@ namespace Services
             string dataField = "IdArticulo";
 
             cargarDropDownList<Articulo>(dataField, textField, ddlArticulos, articulo.Select());
+            ddlArticulos.Items.Insert(0, new ListItem("Seleccione Articulo", "-1"));
         }
 
         public static void insertarArticulo(Articulo articulo, Cliente cliente)

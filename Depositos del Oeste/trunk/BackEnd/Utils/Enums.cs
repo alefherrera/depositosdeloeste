@@ -8,6 +8,18 @@ namespace BackEnd.Utils
 {
     public class Enums
     {
+        public enum Pallet
+        {
+            Alto = 1000,
+            Ancho = 1200,
+            Largo = 1000,
+        }
+      
+        public enum Clientes_Estado
+        {
+            Correcto = 1,
+            Moroso = 2
+        }
         public enum Combos
         {
             Seleccione = -1
