@@ -15,18 +15,17 @@
             <Columns>                
                 <asp:BoundField HeaderText="Articulo" DataField="desc" />
                 <asp:BoundField HeaderText="Cantidad" DataField="cant"/>
-                 <asp:TemplateField HeaderText="Articulo">
+                 <asp:TemplateField HeaderText="Eliminar">
                      <ItemTemplate>
-                         <asp:Button runat="server" ID="btnEliminar" Text="Eliminar" OnClick="Eliminar" CommandArgument='<%# Eval("index") %>' />
+                         <asp:LinkButton runat="server" ID="btnEliminar" Text="Eliminar" OnClick="Eliminar" CommandArgument='<%# Eval("index") %>' />
                      </ItemTemplate>
                 </asp:TemplateField>
-                
             </Columns>
         </asp:GridView>
        
         
         <br />
         <br /><br />
-        <asp:Button ID="btnSubmit" runat="server" Text="Registrar Reserva"/>
+        <asp:Button ID="btnSubmit" runat="server" Text="Registrar Reserva" OnClick="btnSubmit_Click"/>
     </asp:Panel>
 </asp:Content>

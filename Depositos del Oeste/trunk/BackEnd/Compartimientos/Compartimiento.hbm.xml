@@ -20,5 +20,11 @@
     <property name="Estado">
       <column name="estado"/>
     </property>
+    <property name="IdArticulo">
+      <column name="articulos_id"/>
+    </property>
+    <property name="Cantidad">
+      <column name="cantidad"/>
+    </property>
   </class>
 </hibernate-mapping>
