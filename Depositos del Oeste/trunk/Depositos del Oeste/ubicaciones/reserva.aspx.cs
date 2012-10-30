@@ -112,18 +112,35 @@ namespace Depositos_del_Oeste
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             try{
+                bool error = false;
                 if (dt.Rows.Count == 0)
                 {
                     lbError.Text = "Debe agregar articulos para registrar la reserva";
                     return;
                 }
 
+                List<Compartimiento> compartimientos_posibles = new List<Compartimiento>();
+
                 foreach (DataRow articulo in dt.Rows)
                 {
-                    //Articulo que vamos a guardar
-                    Articulo oArticulo = ServiceProductos.cargarArticulos(articulo["id"].ToString());
-                    ServiceUbicaciones.posiblesUbicaciones(oArticulo, int.Parse(articulo["cant"].ToString()));
+                    try
+                    {
+
+                        //Articulo que vamos a guardar
+                        Articulo oArticulo = ServiceProductos.cargarArticulos(articulo["id"].ToString());
+                        ServiceUbicaciones.posiblesUbicaciones(oArticulo, int.Parse(articulo["cant"].ToString()), compartimientos_posibles);
+                    }
+                    catch (ErrorFormException ex)
+                    {
+                        lbError.Text += ex.Message + "<br/>";
+                        error = true;
+                    }
                 }
+
+                if (error)
+                    return;
+                gridUbicaciones.DataSource = compartimientos_posibles;
+                gridUbicaciones.DataBind();
             }
             catch(ErrorFormException ex)
             {

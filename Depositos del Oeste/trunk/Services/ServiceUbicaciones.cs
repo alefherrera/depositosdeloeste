@@ -49,18 +49,21 @@ namespace Services
             gridEstanteria.DataBind();
         }
 
+
         /// <summary>
         /// Trae las posibles ubicaciones para determinada actividad, solo las libres y reservadas del mismo articulo.
         /// </summary>
         /// <param name="?"></param>
         /// <returns></returns>
-        public static List<Compartimiento> posiblesUbicaciones(Articulo articulo, int cantidad)
+        public static List<Compartimiento> posiblesUbicaciones(Articulo articulo, int cantidad, List<Compartimiento> compartimientos_posibles)
         {
             if (articulo == null)
                 throw new Exception("Articulo es nulo");
-            if (cantidad == null || cantidad == 0)
+            if (cantidad == 0)
                 throw new Exception("Cantidad Incorrecta");
-            List<Compartimiento> compartimientos_posibles = new List<Compartimiento>();
+            if (compartimientos_posibles == null)
+                throw new Exception("Compartimientos_Posibles es nulo");
+
             List<int> actividad = new List<int>();
             actividad.Add((int)Enums.Ubicaciones_Actividad.Alta);
             actividad.Add((int)Enums.Ubicaciones_Actividad.Media);
@@ -68,26 +71,63 @@ namespace Services
 
             actividad.Remove(articulo.Actividad);
 
+            //Trato de llenar los bloques enteros
+            //Busco los libres por indice de actividad igual al articulo
+            Compartimiento oCompartimiento = new Compartimiento();
+            oCompartimiento.Estado = (int)Enums.Ubicaciones_Estado.Libre;
+            oCompartimiento.Actividad = articulo.Actividad;
+
+            List<Compartimiento> compartimientos = oCompartimiento.Select();
+            compartimientos = oCompartimiento.Select();
+            foreach (Compartimiento compartimiento in compartimientos)
+            {
+                //Me fijo en todos si que el compartimiento agarrado no tenga uno de los posibles anteriores
+                if (compartimientos_posibles.Find(
+                    delegate (Compartimiento cm)
+                    {
+                        return cm.Id == compartimiento.Id;
+                    }
+                    ) == null)
+                {
+                    int cantidadPallet = compartimiento.cantidad_maxima(articulo);
+                    int cantidadEntera = cantidadPallet * (cantidad / cantidadPallet);
+                    if (compartimiento.Cantidad == 0 && cantidadEntera > 0)
+                    {
+                        cantidad = cantidad - cantidadPallet;
+                        compartimiento.Cantidad = cantidadPallet;
+                        compartimiento.IdArticulo = articulo.IdArticulo;
+                        compartimientos_posibles.Add(compartimiento);
+                    }
+                }
+            }
+
             //Busco en las ubicaciones ocupadas si hay alguna con espacios libres, no tomo en cuenta la actividad
             //Lista de Compartimientos ocupados con el mismo articulo
-            Compartimiento oCompartimiento = new Compartimiento();
+            oCompartimiento = new Compartimiento();
             oCompartimiento.Estado = (int)Enums.Ubicaciones_Estado.Ocupada;
             oCompartimiento.IdArticulo = articulo.IdArticulo;
 
-            List<Compartimiento> compartimientos = oCompartimiento.Select();
             foreach (Compartimiento compartimiento in compartimientos)
             {
-                int cantidadPallet = compartimiento.cantidad_maxima(articulo);
-                int guardar;
-                if (compartimiento.Cantidad < cantidadPallet && cantidad > 0)
+                if (compartimientos_posibles.Find(
+                    delegate(Compartimiento cm)
+                    {
+                        return cm.Id == compartimiento.Id;
+                    }
+                    ) == null)
                 {
-                    guardar = cantidadPallet - compartimiento.Cantidad;
-                    if (guardar > cantidad)
-                        guardar = cantidad;
-                    cantidad = cantidad - guardar;
-
-                    compartimiento.Cantidad = cantidad;
-                    compartimientos_posibles.Add(compartimiento);
+                    int cantidadPallet = compartimiento.cantidad_maxima(articulo);
+                    int guardar;
+                    if (compartimiento.Cantidad < cantidadPallet && cantidad > 0)
+                    {
+                        guardar = cantidadPallet - compartimiento.Cantidad;
+                        if (guardar > cantidad)
+                            guardar = cantidad;
+                        cantidad = cantidad - guardar;
+                        compartimiento.IdArticulo = articulo.IdArticulo;
+                        compartimiento.Cantidad = guardar;
+                        compartimientos_posibles.Add(compartimiento);
+                    }
                 }
             }
 
@@ -100,17 +140,26 @@ namespace Services
             compartimientos = oCompartimiento.Select();
             foreach (Compartimiento compartimiento in compartimientos)
             {
-                int cantidadPallet = compartimiento.cantidad_maxima(articulo);
-                int guardar;
-                if (compartimiento.Cantidad < cantidadPallet && cantidad > 0)
+                if (compartimientos_posibles.Find(
+                    delegate(Compartimiento cm)
+                    {
+                        return cm.Id == compartimiento.Id;
+                    }
+                    ) == null)
                 {
-                    guardar = cantidadPallet - compartimiento.Cantidad;
-                    if (guardar > cantidad)
-                        guardar = cantidad;
-                    cantidad = cantidad - guardar;
+                    int cantidadPallet = compartimiento.cantidad_maxima(articulo);
+                    int guardar;
+                    if (compartimiento.Cantidad < cantidadPallet && cantidad > 0)
+                    {
+                        guardar = cantidadPallet - compartimiento.Cantidad;
+                        if (guardar > cantidad)
+                            guardar = cantidad;
+                        cantidad = cantidad - guardar;
 
-                    compartimiento.Cantidad = cantidad;
-                    compartimientos_posibles.Add(compartimiento);
+                        compartimiento.IdArticulo = articulo.IdArticulo;
+                        compartimiento.Cantidad = guardar;
+                        compartimientos_posibles.Add(compartimiento);
+                    }
                 }
             }
 
@@ -123,18 +172,29 @@ namespace Services
             compartimientos = oCompartimiento.Select();
             foreach (Compartimiento compartimiento in compartimientos)
             {
-                int cantidadPallet = compartimiento.cantidad_maxima(articulo);
-                int guardar;
-                if (compartimiento.Cantidad < cantidadPallet && cantidad > 0)
+                if (!compartimientos_posibles.Contains(compartimiento))
                 {
-                    guardar = cantidadPallet - compartimiento.Cantidad;
-                    if (guardar > cantidad)
-                        guardar = cantidad;
-                    cantidad = cantidad - guardar;
+                    if (compartimientos_posibles.Find(
+                    delegate(Compartimiento cm)
+                    {
+                        return cm.Id == compartimiento.Id;
+                    }
+                    ) == null)
+                    {
+                        int cantidadPallet = compartimiento.cantidad_maxima(articulo);
+                        int guardar;
+                        if (compartimiento.Cantidad < cantidadPallet && cantidad > 0)
+                        {
+                            guardar = cantidadPallet - compartimiento.Cantidad;
+                            if (guardar > cantidad)
+                                guardar = cantidad;
+                            cantidad = cantidad - guardar;
 
-                    compartimiento.Cantidad = cantidad;
-                    compartimiento.Estado = (int)Enums.Ubicaciones_Estado.Reservada
-                    compartimientos_posibles.Add(compartimiento);
+                            compartimiento.IdArticulo = articulo.IdArticulo;
+                            compartimiento.Cantidad = guardar;
+                            compartimientos_posibles.Add(compartimiento);
+                        }
+                    }
                 }
             }
 
@@ -147,18 +207,26 @@ namespace Services
             compartimientos = oCompartimiento.Select();
             foreach (Compartimiento compartimiento in compartimientos)
             {
-                int cantidadPallet = compartimiento.cantidad_maxima(articulo);
-                int guardar;
-                if (compartimiento.Cantidad < cantidadPallet && cantidad > 0)
+                if (compartimientos_posibles.Find(
+                    delegate(Compartimiento cm)
+                    {
+                        return cm.Id == compartimiento.Id;
+                    }
+                    ) == null)
                 {
-                    guardar = cantidadPallet - compartimiento.Cantidad;
-                    if (guardar > cantidad)
-                        guardar = cantidad;
-                    cantidad = cantidad - guardar;
+                    int cantidadPallet = compartimiento.cantidad_maxima(articulo);
+                    int guardar;
+                    if (compartimiento.Cantidad < cantidadPallet && cantidad > 0)
+                    {
+                        guardar = cantidadPallet - compartimiento.Cantidad;
+                        if (guardar > cantidad)
+                            guardar = cantidad;
+                        cantidad = cantidad - guardar;
 
-                    compartimiento.Cantidad = cantidad;
-                    compartimiento.Estado = (int)Enums.Ubicaciones_Estado.Reservada
-                    compartimientos_posibles.Add(compartimiento);
+                        compartimiento.IdArticulo = articulo.IdArticulo;
+                        compartimiento.Cantidad = guardar;
+                        compartimientos_posibles.Add(compartimiento);
+                    }
                 }
             }
 
@@ -171,21 +239,31 @@ namespace Services
             compartimientos = oCompartimiento.Select();
             foreach (Compartimiento compartimiento in compartimientos)
             {
-                int cantidadPallet = compartimiento.cantidad_maxima(articulo);
-                int guardar;
-                if (compartimiento.Cantidad < cantidadPallet && cantidad > 0)
+                if (compartimientos_posibles.Find(
+                    delegate(Compartimiento cm)
+                    {
+                        return cm.Id == compartimiento.Id;
+                    }
+                    ) == null)
                 {
-                    guardar = cantidadPallet - compartimiento.Cantidad;
-                    if (guardar > cantidad)
-                        guardar = cantidad;
-                    cantidad = cantidad - guardar;
+                    int cantidadPallet = compartimiento.cantidad_maxima(articulo);
+                    int guardar;
+                    if (compartimiento.Cantidad < cantidadPallet && cantidad > 0)
+                    {
+                        guardar = cantidadPallet - compartimiento.Cantidad;
+                        if (guardar > cantidad)
+                            guardar = cantidad;
+                        cantidad = cantidad - guardar;
 
-                    compartimiento.Cantidad = cantidad;
-                    compartimiento.Estado = (int)Enums.Ubicaciones_Estado.Reservada;
-                    compartimientos_posibles.Add(compartimiento);
+                        compartimiento.IdArticulo = articulo.IdArticulo;
+                        compartimiento.Cantidad = guardar;
+                        compartimientos_posibles.Add(compartimiento);
+                    }
                 }
             }
-
+            if(cantidad > 0){
+                throw new ErrorFormException("No se pueden almacenar " + cantidad.ToString() + " " + articulo.Nombre + "/s");
+            }
             return compartimientos_posibles;
         }
     }
