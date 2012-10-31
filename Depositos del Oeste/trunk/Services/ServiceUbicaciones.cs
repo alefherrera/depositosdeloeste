@@ -15,7 +15,44 @@ namespace Services
 {
     public class ServiceUbicaciones : ServiceBase
     {
-         public static string generarCodigo()
+        public static void registrarReserva(List<Compartimiento> compartimientos_posibles, Cliente cliente, DateTime FechaRetiro, string codigo)
+        {
+            //TODO: Registrar la reserva
+            //Registro la Reserva
+            Reserva oReserva = new Reserva();
+            oReserva.IdCliente = cliente.Id;
+            oReserva.Codigo = codigo;
+            oReserva.FechaReserva = DateTime.Today;
+            oReserva.FechaRetiro = FechaRetiro.Date;
+            oReserva.Activo = true;
+            oReserva.Save();
+
+            //Registro los compartimientos y su ocupacion
+            foreach (Compartimiento compartimiento in compartimientos_posibles)
+            {
+                if (compartimiento.Estado == (int)Enums.Ubicaciones_Estado.Libre)
+                    compartimiento.Estado = (int)Enums.Ubicaciones_Estado.Reservada;
+                else
+                {
+                    Compartimiento cmpAnt = new Compartimiento();
+                    cmpAnt.Id = compartimiento.Id;
+                    cmpAnt.Load();
+                    compartimiento.Cantidad += cmpAnt.Cantidad;
+                }
+                
+                compartimiento.Update();
+
+                ReservaDetalle oReservaDetalle = new ReservaDetalle();
+                oReservaDetalle.IdArticulo = compartimiento.IdArticulo;
+                oReservaDetalle.IdCompartimiento = compartimiento.Id;
+                oReservaDetalle.CodigoReserva = codigo;
+                oReservaDetalle.IdArticulo = compartimiento.IdArticulo;
+                oReservaDetalle.Cantidad = compartimiento.Cantidad;
+
+                oReservaDetalle.Save();
+            }
+        }
+        public static string generarCodigo()
         {
             Random rnd = new Random();
             string charPool
@@ -96,7 +133,6 @@ namespace Services
             oCompartimiento.Actividad = articulo.Actividad;
 
             List<Compartimiento> compartimientos = oCompartimiento.Select();
-            compartimientos = oCompartimiento.Select();
             foreach (Compartimiento compartimiento in compartimientos)
             {
                 //Me fijo en todos si que el compartimiento agarrado no tenga uno de los posibles anteriores
@@ -125,6 +161,7 @@ namespace Services
             oCompartimiento.Estado = (int)Enums.Ubicaciones_Estado.Ocupada;
             oCompartimiento.IdArticulo = articulo.IdArticulo;
 
+            compartimientos = oCompartimiento.Select();
             foreach (Compartimiento compartimiento in compartimientos)
             {
                 if (compartimientos_posibles.Find(

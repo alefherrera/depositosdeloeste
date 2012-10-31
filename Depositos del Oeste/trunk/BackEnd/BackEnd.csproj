@@ -59,7 +59,6 @@
     <Compile Include="BusinessObject.cs" />
     <Compile Include="Clientes\Cliente.cs" />
     <Compile Include="Compartimientos\Compartimiento.cs" />
-    <Compile Include="Depositados\Depositado.cs" />
     <Compile Include="Exceptions\BackEndExcception.cs" />
     <Compile Include="Exceptions\ErrorFormException.cs" />
     <Compile Include="Exceptions\RedireccionDatosException.cs" />
