@@ -13,5 +13,11 @@ namespace BackEnd
         public virtual int IdCliente { get; set; }
         public virtual bool Activo { get; set; }
         public virtual DateTime FechaReserva { get; set; }
+        /*public virtual List<Compartimiento> Detalles{ get; set; }
+        public override void Save()
+        {
+            base.Save();
+
+        }*/
     }
 }

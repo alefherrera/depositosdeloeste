@@ -19,6 +19,8 @@
                     <asp:Label ID="Label1" runat="server" Text='<%# Enums.EstadoDesc(int.Parse(Eval("Estado").ToString())) %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
+            <asp:BoundField HeaderText="Articulo" DataField="IdArticulo" />
+            <asp:BoundField HeaderText="Cantidad" DataField="Cantidad" />
         </Columns>
     </asp:GridView>
     <br />

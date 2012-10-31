@@ -17,7 +17,8 @@ namespace Depositos_del_Oeste
             get { return (DataTable)ViewState["dt"];}
             set { ViewState["dt"] = value; } 
         }
-        
+        protected List<Compartimiento> compartimientos_posibles = new List<Compartimiento>();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             lbError.Text = "";
@@ -112,35 +113,27 @@ namespace Depositos_del_Oeste
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             try{
-                bool error = false;
                 if (dt.Rows.Count == 0)
                 {
                     lbError.Text = "Debe agregar articulos para registrar la reserva";
                     return;
                 }
 
-                List<Compartimiento> compartimientos_posibles = new List<Compartimiento>();
-
-                foreach (DataRow articulo in dt.Rows)
+                List<Compartimiento> compartimientos_posibles;
+                try
                 {
-                    try
-                    {
-
-                        //Articulo que vamos a guardar
-                        Articulo oArticulo = ServiceProductos.cargarArticulos(articulo["id"].ToString());
-                        ServiceUbicaciones.posiblesUbicaciones(oArticulo, int.Parse(articulo["cant"].ToString()), compartimientos_posibles);
-                    }
-                    catch (ErrorFormException ex)
-                    {
-                        lbError.Text += ex.Message + "<br/>";
-                        error = true;
-                    }
+                    compartimientos_posibles = posibles_Ubicaciones();
                 }
+                catch(ErrorFormException)
+                {
+                    return;
+                }
+                
+
                 pnlSeleccion.Visible = false;
                 pnlPreview.Visible = true;
 
-                if (error)
-                    return;
+                
                 gridUbicaciones.DataSource = compartimientos_posibles;
                 gridUbicaciones.DataBind();
             }
@@ -157,17 +150,44 @@ namespace Depositos_del_Oeste
             pnlPreview.Visible = false;
         }
 
+        
+
+        protected List<Compartimiento> posibles_Ubicaciones()
+        {
+            bool error = false;
+
+            foreach (DataRow articulo in dt.Rows)
+            {
+                try
+                {
+                    //Articulo que vamos a guardar
+                    Articulo oArticulo = ServiceProductos.cargarArticulos(articulo["id"].ToString());
+                    compartimientos_posibles = ServiceUbicaciones.posiblesUbicaciones(oArticulo, int.Parse(articulo["cant"].ToString()), compartimientos_posibles);
+                }
+                catch (ErrorFormException ex)
+                {
+                    lbError.Text += ex.Message + "<br/>";
+                }
+            }
+            if (error)
+                throw new ErrorFormException("");
+
+            return compartimientos_posibles;
+
+        }
+
         protected void btnConfirmar_Click(object sender, EventArgs e)
         {
             //Valido la fecha de retiro
             DateTime FechaRetiro = Validaciones.isDate(txtFechaRetiro.Text);
-            if(FechaRetiro == null)
+            if (FechaRetiro == null || DateTime.Today.CompareTo(FechaRetiro) >= 0)
             {
                 lbError.Text = "Fecha de Retiro Incorrecta";
                 return;
             }
 
             btnSubmit_Click(this, new EventArgs());
+
             pnlPreviewControles.Visible = false;
 
             string codigo = ServiceUbicaciones.generarCodigo();
@@ -176,15 +196,11 @@ namespace Depositos_del_Oeste
             lbNota.Text = "Código: " + codigo;
             lbCorreo.Text = "Un correo fue enviado a " + cliente.Mail + " indicando el codigo de reserva";
 
-            //TODO: Registrar la reserva y generar y mandar mail con el codigo
-            Reserva oReserva = new Reserva();
-            oReserva.IdCliente = int.Parse(ddlClientes.SelectedItem.Value.ToString());
-            oReserva.Codigo = codigo;
-            oReserva.FechaReserva = DateTime.Today;
-            oReserva.FechaRetiro = FechaRetiro.Date;
-            oReserva.Activo = true;
+            ServiceUbicaciones.registrarReserva(compartimientos_posibles, cliente, FechaRetiro, codigo);
 
             Lista_Mails.Codigo_Reserva(codigo, cliente.Mail);
+
+            //TODO: En vez de imprimir el IdArticulo en la grilla imprimir el nombre de articulo
         }
     }
 }
