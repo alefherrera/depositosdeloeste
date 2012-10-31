@@ -65,6 +65,7 @@
     <Compile Include="Exceptions\RedireccionDatosException.cs" />
     <Compile Include="Exceptions\MailException.cs" />
     <Compile Include="Exceptions\LoginException.cs" />
+    <Compile Include="Utils\Lista_Mails.cs" />
     <Compile Include="Utils\Enums.cs" />
     <Compile Include="Utils\Mail.cs" />
     <Compile Include="Grupos\Grupo.cs" />
@@ -79,6 +80,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Reservas\Reserva.hbm.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="Permisos\Permiso.hbm.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>

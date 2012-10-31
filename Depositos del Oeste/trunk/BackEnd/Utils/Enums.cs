@@ -8,6 +8,10 @@ namespace BackEnd.Utils
 {
     public class Enums
     {
+        public enum Codigo_Ubicacion
+        {
+            longitud = 8
+        }
         public enum Pallet
         {
             Alto = 1000,
