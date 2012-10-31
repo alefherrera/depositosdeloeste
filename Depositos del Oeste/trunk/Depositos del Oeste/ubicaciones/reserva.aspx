@@ -60,7 +60,7 @@
         <asp:Panel ID="pnlPreviewControles" runat="server">
             <asp:Label ID="lbRetiro" runat="server" Text="Ingrese la fecha aproximada de retiro: dd/MM/aaaa"></asp:Label>
             <br />
-            <asp:TextBox ID="txtFechaRetiro" runat="server"></asp:TextBox>
+            <asp:TextBox ID="txtFechaRetiro" runat="server" CssClass="fecha"></asp:TextBox>
             <br />
             <br />
             <asp:Button ID="btnConfirmar" class="btnConfirmar" runat="server" Text="Confirmar Reserva" OnClick="btnConfirmar_Click" />
@@ -73,5 +73,6 @@
         $(".btnConfirmar").click(function () {
             return confirm("¿Esta seguro que los datos son correctos?");
         });
+        $(".fecha").datepicker({ dateFormat: 'dd/mm/yy', changeMonth: true,changeYear: true });//.mask("99/99/9999");
     </script>
 </asp:Content>
