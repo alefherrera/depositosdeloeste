@@ -73,6 +73,6 @@
         $(".btnConfirmar").click(function () {
             return confirm("¿Esta seguro que los datos son correctos?");
         });
-        $(".fecha").datepicker({ dateFormat: 'dd/mm/yy', changeMonth: true,changeYear: true });//.mask("99/99/9999");
+        $(".fecha").datepicker({ dateFormat: 'dd/mm/yy', changeMonth: true, changeYear: true }).mask("99/99/9999", { placeholder: " " });
     </script>
 </asp:Content>
