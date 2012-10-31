@@ -196,6 +196,7 @@
     <None Include="Properties\PublishProfiles\Nacho.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="retiro\retiro.aspx" />
+    <Content Include="Scripts\datepickeresp.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.js" />
