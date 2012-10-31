@@ -14,5 +14,8 @@
     <property name="Estado">
       <column name="estado"/>
     </property>
+    <property name="Mail">
+      <column name="mail"/>
+    </property>
   </class>
 </hibernate-mapping>

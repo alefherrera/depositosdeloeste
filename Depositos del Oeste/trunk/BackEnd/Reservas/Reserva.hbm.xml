@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="BackEnd">
+  <class name="BackEnd.Reserva, BackEnd" table="Reservas" lazy="true">
+    <id name="Codigo">
+      <column name="codigo"/>
+    </id>
+    <property name="FechaRetiro">
+      <column name="fecha_retiro"/>
+    </property>
+    <property name="FechaReserva">
+      <column name="fecha_reserva"/>
+    </property>
+    <property name="IdCliente">
+      <column name="clientes_id"/>
+    </property>
+    <property name="Activo">
+      <column name="activo"/>
+    </property>
+  </class>
+</hibernate-mapping>

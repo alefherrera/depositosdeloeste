@@ -136,6 +136,8 @@ namespace Depositos_del_Oeste
                         error = true;
                     }
                 }
+                pnlSeleccion.Visible = false;
+                pnlPreview.Visible = true;
 
                 if (error)
                     return;
@@ -148,6 +150,41 @@ namespace Depositos_del_Oeste
             }
         }
 
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            gridUbicaciones.Dispose();
+            pnlSeleccion.Visible = true;
+            pnlPreview.Visible = false;
+        }
 
+        protected void btnConfirmar_Click(object sender, EventArgs e)
+        {
+            //Valido la fecha de retiro
+            DateTime FechaRetiro = Validaciones.isDate(txtFechaRetiro.Text);
+            if(FechaRetiro == null)
+            {
+                lbError.Text = "Fecha de Retiro Incorrecta";
+                return;
+            }
+
+            btnSubmit_Click(this, new EventArgs());
+            pnlPreviewControles.Visible = false;
+
+            string codigo = ServiceUbicaciones.generarCodigo();
+            Cliente cliente = ServiceProductos.cargarCliente(ddlClientes.SelectedItem.Value);
+
+            lbNota.Text = "Código: " + codigo;
+            lbCorreo.Text = "Un correo fue enviado a " + cliente.Mail + " indicando el codigo de reserva";
+
+            //TODO: Registrar la reserva y generar y mandar mail con el codigo
+            Reserva oReserva = new Reserva();
+            oReserva.IdCliente = int.Parse(ddlClientes.SelectedItem.Value.ToString());
+            oReserva.Codigo = codigo;
+            oReserva.FechaReserva = DateTime.Today;
+            oReserva.FechaRetiro = FechaRetiro.Date;
+            oReserva.Activo = true;
+
+            Lista_Mails.Codigo_Reserva(codigo, cliente.Mail);
+        }
     }
 }

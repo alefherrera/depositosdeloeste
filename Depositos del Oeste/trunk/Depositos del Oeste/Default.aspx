@@ -5,5 +5,7 @@
         <p>Para comenzar a usar el sistema de control de ingreso y egreso de mercaderia de Depositos del Oeste, por favor ingrese su número de legajo y contraseña en la esquina superior derecha, si no tiene usuario
                 contacte con su superior inmediato para ser registrado. </p>
     <br />
-    <img src="http://i.imgur.com/Yf2aL.png" />
+    <div style="text-align:center">
+        <img  src="http://i.imgur.com/4V74z.png" />
+    </div>
 </asp:Content>
