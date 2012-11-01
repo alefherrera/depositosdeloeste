@@ -1,8 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="BackEnd">
   <class name="BackEnd.Reserva, BackEnd" table="Reservas" lazy="true">
-    <id name="Codigo">
+    <id name="Codigo" type="string" >
       <column name="codigo"/>
+      <generator class="assigned"/>
     </id>
     <property name="FechaRetiro">
       <column name="fecha_retiro"/>

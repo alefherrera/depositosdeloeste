@@ -52,24 +52,7 @@ namespace Services
                 oReservaDetalle.Save();
             }
         }
-        public static string generarCodigo()
-        {
-            Random rnd = new Random();
-            string charPool
-            = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-            StringBuilder rs = new StringBuilder();
-
-            for(int i = 0; i < (int)Enums.Codigo_Ubicacion.longitud; i++)
-                rs.Append(charPool[(int)(rnd.NextDouble() * charPool.Length)]);
-
-            Reserva oReserva = new Reserva();
-            oReserva.Codigo = rs.ToString();
-            oReserva.Load();
-            if (oReserva.Loaded)
-                return generarCodigo();
-
-            return rs.ToString();
-        }
+      
         public static void cargarComboEstanteria(DropDownList ddlUbicaciones)
         {
             string textField = "NroEstanteria";

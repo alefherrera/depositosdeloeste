@@ -36,8 +36,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Apache">
+      <HintPath>..\packages\CassandraLog4NetAppender.1.0.8\lib\net45\Apache.dll</HintPath>
+    </Reference>
+    <Reference Include="CassandraLog4NetAppenderLibrary">
+      <HintPath>..\packages\CassandraLog4NetAppender.1.0.8\lib\net45\CassandraLog4NetAppenderLibrary.dll</HintPath>
+    </Reference>
     <Reference Include="Iesi.Collections">
       <HintPath>..\packages\Iesi.Collections.3.2.0.4000\lib\Net35\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\packages\log4net.2.0.0\lib\net40-full\log4net.dll</HintPath>
     </Reference>
     <Reference Include="MySql.Data, Version=6.5.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <Private>True</Private>
@@ -53,6 +62,9 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="Thrift">
+      <HintPath>..\packages\CassandraLog4NetAppender.1.0.8\lib\net45\Thrift.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Articulos\Articulo.cs" />
@@ -82,9 +94,11 @@
   <ItemGroup>
     <EmbeddedResource Include="ReservasDetalle\ReservaDetalle.hbm.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Reservas\Reserva.hbm.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Permisos\Permiso.hbm.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
