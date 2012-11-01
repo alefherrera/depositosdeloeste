@@ -19,5 +19,17 @@ namespace BackEnd
             base.Save();
 
         }*/
+        public override bool Equals(object obj)
+        {
+            Reserva rsv = obj as Reserva;
+            return base.Equals(obj) && rsv.Codigo == Codigo;
+        }
+        public override int GetHashCode()
+        {
+            int hash = 13;
+            hash = (hash * 7) + Codigo.GetHashCode();
+            return hash;
+        }
+
     }
 }

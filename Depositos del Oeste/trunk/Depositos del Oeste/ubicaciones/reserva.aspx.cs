@@ -190,7 +190,7 @@ namespace Depositos_del_Oeste
 
             pnlPreviewControles.Visible = false;
 
-            string codigo = ServiceUbicaciones.generarCodigo();
+            string codigo = ServiceReservas.generarCodigo();
             Cliente cliente = ServiceProductos.cargarCliente(ddlClientes.SelectedItem.Value);
 
             lbNota.Text = "Código: " + codigo;

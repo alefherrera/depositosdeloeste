@@ -43,13 +43,15 @@ namespace BackEnd
  
         public class Parameter
         {
-            public Parameter(string name, object value)
+            public Parameter(string name, object value, Type type)
             {
                 Name = name;
                 Value = value;
+                Tipo = type;
             }
             public string Name { get; set; }
             public object Value { get; set; }
+            public Type Tipo { get; set; }
         }
 
 
@@ -62,7 +64,7 @@ namespace BackEnd
 
                 if (valor != null && Dic.ContainsKey(valor.GetType()) && valor.ToString() != Dic[valor.GetType()].ToString())
                 {
-                    param.Add(new Parameter(item.Name, valor));
+                    param.Add(new Parameter(item.Name, valor, valor.GetType()));
                 }
             }
             return this.Select(param.ToArray());
@@ -158,7 +160,7 @@ namespace BackEnd
             }
 
             rtnList = (List<T>)criteria.List<T>();
-
+            
             session.Close();
             return rtnList;
         }
