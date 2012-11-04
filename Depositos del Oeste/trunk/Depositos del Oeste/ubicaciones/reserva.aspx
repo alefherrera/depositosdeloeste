@@ -17,8 +17,8 @@
             <br />
             <asp:GridView ID="gridArticulos" runat="server" AutoGenerateColumns="false">
                 <Columns>
-                    <asp:BoundField HeaderText="IdArticulo" DataField="IdArticulo" />
-                    <asp:BoundField HeaderText="Cantidad" DataField="Cantidad" />
+                    <asp:BoundField HeaderText="Articulo" DataField="desc" />
+                    <asp:BoundField HeaderText="Cantidad" DataField="cant" />
                     <asp:TemplateField HeaderText="Eliminar">
                         <ItemTemplate>
                             <asp:LinkButton runat="server" ID="btnEliminar" Text="Eliminar" OnClick="Eliminar" CommandArgument='<%# Eval("index") %>' />

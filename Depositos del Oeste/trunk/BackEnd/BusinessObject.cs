@@ -44,15 +44,13 @@ namespace BackEnd
  
         public class Parameter
         {
-            public Parameter(string name, object value, Type type)
+            public Parameter(string name, object value)
             {
                 Name = name;
                 Value = value;
-                Tipo = type;
             }
             public string Name { get; set; }
             public object Value { get; set; }
-            public Type Tipo { get; set; }
         }
 
 
@@ -65,7 +63,7 @@ namespace BackEnd
 
                 if (valor != null && Dic.ContainsKey(valor.GetType()) && valor.ToString() != Dic[valor.GetType()].ToString())
                 {
-                    param.Add(new Parameter(item.Name, valor, valor.GetType()));
+                    param.Add(new Parameter(item.Name, valor));
                 }
             }
             return this.Select(param.ToArray());

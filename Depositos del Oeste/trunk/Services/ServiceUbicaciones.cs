@@ -30,6 +30,13 @@ namespace Services
             //Registro los compartimientos y su ocupacion
             foreach (Compartimiento compartimiento in compartimientos_posibles)
             {
+                ReservaDetalle oReservaDetalle = new ReservaDetalle();
+                oReservaDetalle.IdArticulo = compartimiento.IdArticulo;
+                oReservaDetalle.IdCompartimiento = compartimiento.Id;
+                oReservaDetalle.CodigoReserva = codigo;
+                oReservaDetalle.IdArticulo = compartimiento.IdArticulo;
+                oReservaDetalle.Cantidad = compartimiento.Cantidad;
+
                 if (compartimiento.Estado == (int)Enums.Ubicaciones_Estado.Libre)
                     compartimiento.Estado = (int)Enums.Ubicaciones_Estado.Reservada;
                 else
@@ -42,12 +49,6 @@ namespace Services
                 
                 compartimiento.Update();
 
-                ReservaDetalle oReservaDetalle = new ReservaDetalle();
-                oReservaDetalle.IdArticulo = compartimiento.IdArticulo;
-                oReservaDetalle.IdCompartimiento = compartimiento.Id;
-                oReservaDetalle.CodigoReserva = codigo;
-                oReservaDetalle.IdArticulo = compartimiento.IdArticulo;
-                oReservaDetalle.Cantidad = compartimiento.Cantidad;
 
                 oReservaDetalle.Save();
             }
@@ -203,7 +204,6 @@ namespace Services
             //Busco los libres por indice de actividad igual al articulo
             oCompartimiento = new Compartimiento();
             oCompartimiento.Estado = (int)Enums.Ubicaciones_Estado.Libre;
-            oCompartimiento.IdArticulo = articulo.IdArticulo;
             oCompartimiento.Actividad = articulo.Actividad;
 
             compartimientos = oCompartimiento.Select();
@@ -270,7 +270,6 @@ namespace Services
             //Busco los libres por indice de actividad distintos al articulo
             oCompartimiento = new Compartimiento();
             oCompartimiento.Estado = (int)Enums.Ubicaciones_Estado.Libre;
-            oCompartimiento.IdArticulo = articulo.IdArticulo;
             oCompartimiento.Actividad = actividad[1];
 
             compartimientos = oCompartimiento.Select();
@@ -305,8 +304,50 @@ namespace Services
         }
         public static List<Compartimiento> ingresoUbicaciones(Articulo articulo, int cantidad, string codigo)
         {
+            if (cantidad == 0)
+            {
+                return new List<Compartimiento>();
+            }
+            ReservaDetalle oReservaDetalle = new ReservaDetalle();
+            oReservaDetalle.CodigoReserva = codigo;
+            oReservaDetalle.IdArticulo = articulo.IdArticulo;
+            List<ReservaDetalle> reservadetalles = oReservaDetalle.Select();
+            reservadetalles.Sort(
+                delegate(ReservaDetalle p1, ReservaDetalle p2)
+                {
+                    return p1.Cantidad.CompareTo(p2.Cantidad);
+                }
+            );
 
-            return 10;
+            List<Compartimiento> compartimientos = new List<Compartimiento>();
+            foreach (ReservaDetalle detalle in reservadetalles)
+            {
+                if(cantidad > 0)
+                {
+                    Compartimiento compartimiento = new Compartimiento();
+                    compartimiento.Id = detalle.IdCompartimiento;
+                    compartimiento.Load();
+
+                    compartimiento.IdArticulo = articulo.IdArticulo;
+                    compartimiento.Estado = (int)Enums.Ubicaciones_Estado.Ocupada;
+
+                    if (detalle.Cantidad <= cantidad)
+                    {
+                        cantidad -= detalle.Cantidad;
+                        compartimiento.Cantidad_Guardar = detalle.Cantidad;
+                    }
+                    else
+                    {
+                        cantidad = 0;
+                        compartimiento.Cantidad -= detalle.Cantidad;
+                        compartimiento.Cantidad += cantidad;
+                        compartimiento.Cantidad_Guardar = cantidad;
+                    }
+                    compartimientos.Add(compartimiento);
+                }
+            }
+
+            return compartimientos;
         }
     }
 }

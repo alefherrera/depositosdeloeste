@@ -71,6 +71,8 @@
     <Compile Include="BusinessObject.cs" />
     <Compile Include="Clientes\Cliente.cs" />
     <Compile Include="Compartimientos\Compartimiento.cs" />
+    <Compile Include="RemitosDetalle\RemitosDetalle.cs" />
+    <Compile Include="Remitos\Remito.cs" />
     <Compile Include="Exceptions\BackEndExcception.cs" />
     <Compile Include="Exceptions\ErrorFormException.cs" />
     <Compile Include="Exceptions\RedireccionDatosException.cs" />
@@ -119,6 +121,14 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="RemitosDetalle\RemitosDetalle.hbm.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Remitos\Remito.hbm.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <Content Include="hibernate.cfg.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
@@ -128,10 +138,7 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="PedidosDetalle\" />
-    <Folder Include="Pedidos\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
