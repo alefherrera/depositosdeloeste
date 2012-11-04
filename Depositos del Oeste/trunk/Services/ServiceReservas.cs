@@ -59,5 +59,16 @@ namespace Services
 
             return rs.ToString();
         }
+        public static DataTable detallesCodigo(string codigo)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("SELECT CodigoReserva AS CodigoReserva, IdArticulo AS IdArticulo, sum(Cantidad) as Cantidad ");
+            sb.Append("From ReservaDetalle ");
+            sb.Append("Where CodigoReserva = '" + codigo + "' group by IdArticulo");
+            string query = sb.ToString();
+
+            ReservaDetalle oDetalle = new ReservaDetalle();
+            return oDetalle.Select(query);
+        }
     }
 }

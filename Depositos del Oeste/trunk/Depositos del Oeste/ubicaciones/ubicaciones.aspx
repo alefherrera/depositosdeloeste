@@ -11,12 +11,12 @@
             <asp:BoundField HeaderText="Compartimiento" DataField="NroCompartimiento" />
              <asp:TemplateField HeaderText="Actividad">
                 <ItemTemplate>
-                    <asp:Label ID="Label1" runat="server" Text='<%# Enums.ActividadDesc(int.Parse(Eval("Actividad").ToString())) %>'></asp:Label>
+                    <asp:Label ID="lbActividad" runat="server" Text='<%# Enums.ActividadDesc(int.Parse(Eval("Actividad").ToString())) %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
              <asp:TemplateField HeaderText="Estado">
                 <ItemTemplate>
-                    <asp:Label ID="Label1" runat="server" Text='<%# Enums.EstadoDesc(int.Parse(Eval("Estado").ToString())) %>'></asp:Label>
+                    <asp:Label ID="lbEstado" runat="server" Text='<%# Enums.EstadoDesc(int.Parse(Eval("Estado").ToString())) %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:BoundField HeaderText="Articulo" DataField="IdArticulo" />

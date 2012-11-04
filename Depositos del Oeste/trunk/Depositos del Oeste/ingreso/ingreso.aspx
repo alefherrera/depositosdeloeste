@@ -17,21 +17,30 @@
         <br />
         <asp:Label runat="server" ID="lbFechaReserva"></asp:Label>
         <br />
-        <asp:Panel ID="pnlArticulios" runat="server">
-
-        </asp:Panel>
-        <asp:Label ID="lbFechaRemito" Text="Fecha de Remito" CssClass="fecha" runat="server"></asp:Label>
-        <asp:TextBox ID="txtFechaRemito" runat="server"></asp:TextBox>
+        <asp:GridView ID="gridArticulos" runat="server" AutoGenerateColumns="false">
+            <Columns>
+                <asp:BoundField HeaderText="IdArticulo" DataField="IdArticulo" />
+                <asp:BoundField HeaderText="Cantidad Reservada" DataField="Cantidad" />
+                <asp:TemplateField HeaderText="Cantidad Remito">
+                    <ItemTemplate>
+                        <asp:TextBox ID="txtCantidad" runat="server"></asp:TextBox>
+                    </ItemTemplate>
+                </asp:TemplateField>
+            </Columns>
+        </asp:GridView>
+        <asp:Label ID="lbFechaRemito" Text="Fecha de Remito"  runat="server"></asp:Label>
+        <asp:TextBox ID="txtFechaRemito" CssClass="fecha" runat="server"></asp:TextBox>
         <br />
         <asp:Label ID="lbDescripcion" Text="Detalles" runat="server"></asp:Label>
         <br />
         <asp:TextBox ID="txtDescripcion" TextMode="MultiLine" runat="server" Height="100px" Width="300px"></asp:TextBox>
         <br />
-        <asp:Button ID="btnSubmit" Text="Registrar Ingreso" runat="server" />
+        <asp:Button ID="btnSubmit" Text="Registrar Ingreso" runat="server" OnClick="btnSubmit_Click" />
+        <asp:Button ID="Button1" Text="Registrar Ingreso" runat="server" OnClick="btnSubmit_Click" />
     </asp:Panel>
     <script type="text/ecmascript">
         $(".btnSubmit").click(function () {
-            return confirm("¿Esta seguro que los datos son correctos?");
+            return confirm("¿Esta seguro que los datos son correctos? Las cantidades no ingresadas se tomaran como 0.");
         });
         $(".fecha").datepicker({ dateFormat: 'dd/mm/yy', changeMonth: true, changeYear: true }).mask("99/99/9999", { placeholder: " " });
     </script>

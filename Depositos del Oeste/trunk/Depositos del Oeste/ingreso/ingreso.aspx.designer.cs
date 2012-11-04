@@ -94,13 +94,13 @@ namespace Depositos_del_Oeste {
         protected global::System.Web.UI.WebControls.Label lbFechaReserva;
         
         /// <summary>
-        /// pnlArticulios control.
+        /// gridArticulos control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlArticulios;
+        protected global::System.Web.UI.WebControls.GridView gridArticulos;
         
         /// <summary>
         /// lbFechaRemito control.
@@ -146,5 +146,14 @@ namespace Depositos_del_Oeste {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSubmit;
+        
+        /// <summary>
+        /// Button1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button1;
     }
 }

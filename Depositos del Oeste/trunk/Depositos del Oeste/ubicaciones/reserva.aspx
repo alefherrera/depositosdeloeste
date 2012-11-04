@@ -17,8 +17,8 @@
             <br />
             <asp:GridView ID="gridArticulos" runat="server" AutoGenerateColumns="false">
                 <Columns>
-                    <asp:BoundField HeaderText="Articulo" DataField="desc" />
-                    <asp:BoundField HeaderText="Cantidad" DataField="cant" />
+                    <asp:BoundField HeaderText="IdArticulo" DataField="IdArticulo" />
+                    <asp:BoundField HeaderText="Cantidad" DataField="Cantidad" />
                     <asp:TemplateField HeaderText="Eliminar">
                         <ItemTemplate>
                             <asp:LinkButton runat="server" ID="btnEliminar" Text="Eliminar" OnClick="Eliminar" CommandArgument='<%# Eval("index") %>' />
@@ -63,7 +63,7 @@
             <asp:TextBox ID="txtFechaRetiro" runat="server" CssClass="fecha"></asp:TextBox>
             <br />
             <br />
-            <asp:Button ID="btnConfirmar" class="btnConfirmar" runat="server" Text="Confirmar Reserva" OnClick="btnConfirmar_Click" />
+            <asp:Button ID="btnConfirmar" CssClass="btnConfirmar" runat="server" Text="Confirmar Reserva" OnClick="btnConfirmar_Click" />
             <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" OnClick="btnCancelar_Click" />
         </asp:Panel>
         <asp:Label ID="lbCorreo" Text="" runat="server"></asp:Label>
