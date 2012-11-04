@@ -8,6 +8,7 @@ using NHibernate.Cfg;
 using NHibernate.Criterion;
 using System.Collections;
 using NHibernate.Transform;
+using System.Data;
 
 namespace BackEnd
 {
@@ -165,7 +166,7 @@ namespace BackEnd
             return rtnList;
         }
 
-        public virtual Object Select(string query)
+        public virtual DataTable Select(string query)
         {
             List<T> rtnList = new List<T>();
 
@@ -177,9 +178,29 @@ namespace BackEnd
             IQuery squery = session.CreateQuery(query);
             
             var listResult = squery.SetResultTransformer(Transformers.AliasToEntityMap).List<Hashtable>();
-            
             session.Close();
-            return listResult;
+
+            DataTable datatable = new DataTable();
+            if (listResult.Count > 0)
+            {
+                Hashtable htable = listResult[0];
+                foreach (DictionaryEntry entry in htable)
+                {
+                    datatable.Columns.Add(entry.Key.ToString());
+                }
+
+            }
+            foreach (Hashtable htable in listResult)
+            {
+                DataRow row = datatable.NewRow();
+                foreach (DictionaryEntry entry in htable)
+                {
+                    row[entry.Key.ToString()] = entry.Value;
+                }
+                datatable.Rows.Add(row);
+            }
+
+            return datatable;
         }
 
         public virtual bool Load()

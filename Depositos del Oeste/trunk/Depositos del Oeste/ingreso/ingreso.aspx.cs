@@ -26,8 +26,8 @@ namespace Depositos_del_Oeste
                 lbCliente.Text = "Cliente: " + oCliente.Razon_Social;
                 lbCodigo.Text = "Codigo: " + oReserva.Codigo;
                 lbFechaReserva.Text = "Fecha de Reserva: " + oReserva.FechaReserva.ToShortDateString();
-
-                
+                gridArticulos.DataSource = ServiceReservas.detallesCodigo(oReserva.Codigo);
+                gridArticulos.DataBind();
 
                 pnlCodigo.Visible = false;
                 pnlReserva.Visible = true;
@@ -36,6 +36,18 @@ namespace Depositos_del_Oeste
             {
                 lbError.Text = ex.Message;
             }
+        }
+
+        protected void btnSubmit_Click(object sender, EventArgs e)
+        {
+            //Valido la fecha de retiro
+            DateTime FechaRemito = Validaciones.isDate(txtFechaRemito.Text);
+            if (FechaRemito == null || DateTime.Today.CompareTo(FechaRemito) >= 0)
+            {
+                lbError.Text = "Fecha de Remito Incorrecta";
+                return;
+            }
+
         }
     }
 }

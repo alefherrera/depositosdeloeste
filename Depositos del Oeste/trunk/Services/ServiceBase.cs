@@ -40,31 +40,13 @@ namespace Services
             return;
         }
 
-        protected static void cargarDropDownList(string valueField, string textField, DropDownList control, List<Hashtable> htlista)
+        protected static void cargarDropDownList(string valueField, string textField, DropDownList control, DataTable lista)
         {
             if (valueField == null || textField == null)
             {
                 return;
             }
 
-            DataTable lista = new DataTable();
-
-            
-            lista.Columns.Add(textField);
-        
-            if (valueField != textField)
-                lista.Columns.Add(valueField);
-            
-            foreach (Hashtable htable in htlista)
-            {
-                foreach (DictionaryEntry entry in htable)
-                {
-                    DataRow row = lista.NewRow();
-                    row[entry.Key.ToString()] = entry.Value;
-
-                    lista.Rows.Add(row);
-                }
-            }
             control.DataTextField = textField;
             control.DataValueField = valueField;
             control.DataSource = lista;

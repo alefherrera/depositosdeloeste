@@ -61,8 +61,7 @@ namespace Services
 
             Compartimiento compartimiento = new Compartimiento();
 
-            List<Hashtable> lista;
-            lista = (List<Hashtable>)compartimiento.Select(query);
+            DataTable lista = compartimiento.Select(query);
 
             cargarDropDownList(dataField, textField, ddlUbicaciones, lista);
             ddlUbicaciones.Items.Insert(0, new ListItem("Seleccione Estanteria", "-1"));
@@ -303,6 +302,11 @@ namespace Services
                 throw new ErrorFormException("No se pueden almacenar " + cantidad.ToString() + " " + articulo.Nombre + "/s");
             }
             return compartimientos_posibles;
+        }
+        public static List<Compartimiento> ingresoUbicaciones(Articulo articulo, int cantidad, string codigo)
+        {
+
+            return 10;
         }
     }
 }
