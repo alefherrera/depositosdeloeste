@@ -35,12 +35,17 @@
         <br />
         <asp:TextBox ID="txtDescripcion" TextMode="MultiLine" runat="server" Height="100px" Width="300px"></asp:TextBox>
         <br />
-        <asp:Button ID="btnSubmit" Text="Registrar Ingreso" runat="server" OnClick="btnSubmit_Click" />
-        <asp:Button ID="Button1" Text="Registrar Ingreso" runat="server" OnClick="btnSubmit_Click" />
+        <asp:Button ID="btnSubmit" CssClass="btnSubmit" Text="Registrar Ingreso" runat="server" OnClick="btnSubmit_Click" />
+        <asp:Button ID="btnCancel" CssClass="btnCancel" Text="Cancelar Reserva" runat="server"/>
     </asp:Panel>
     <script type="text/ecmascript">
         $(".btnSubmit").click(function () {
             return confirm("¿Esta seguro que los datos son correctos? Las cantidades no ingresadas se tomaran como 0.");
+        });
+        $(".btnCancel").click(function () {
+            if (!confirm("¿Esta seguro que desea CANCELAR la reserva?."))
+                return false;
+            return confirm("Confirme la cancelación de la reserva");
         });
         $(".fecha").datepicker({ dateFormat: 'dd/mm/yy', changeMonth: true, changeYear: true }).mask("99/99/9999", { placeholder: " " });
     </script>

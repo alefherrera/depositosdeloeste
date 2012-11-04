@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="BackEnd">
+  <class name="BackEnd.Remito, BackEnd" table="Remitos" lazy="true">
+    <id name="Id">
+      <column name="id"/>
+      <generator class="native"/>
+    </id>
+    <property name="FechaRetiro">
+      <column name="fecha_retiro"/>
+    </property>
+    <property name="FechaRemito">
+      <column name="fecha_remito"/>
+    </property>
+    <property name="Descripcion">
+      <column name="descripcion"/>
+    </property>
+    <property name="IdCliente">
+      <column name="clientes_id"/>
+    </property>
+    <property name="Activo">
+      <column name="activo"/>
+    </property>
+  </class>
+</hibernate-mapping>

@@ -17,6 +17,7 @@ namespace BackEnd
         public virtual int Estado { get; set; }
         public virtual int IdArticulo { get; set; }
         public virtual int Cantidad { get; set; }
+        public virtual int Cantidad_Guardar { get; set; }
         public virtual int cantidad_maxima(Articulo articulo)
         {
             //TODO: Hacer el enum de esto y deshardcodear esta negrada

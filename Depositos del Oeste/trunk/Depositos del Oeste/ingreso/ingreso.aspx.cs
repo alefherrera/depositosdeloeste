@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using BackEnd;
 using Services;
 using System.IO;
+using System.Data;
 
 namespace Depositos_del_Oeste
 {
@@ -47,7 +48,42 @@ namespace Depositos_del_Oeste
                 lbError.Text = "Fecha de Remito Incorrecta";
                 return;
             }
+            DataTable articulos = ServiceReservas.detallesCodigo(txtCodigo.Text);
+            List<Compartimiento> ingresados = new List<Compartimiento>();
+            int cliente = 0;
 
+            foreach (DataRow articulo in articulos.Rows)
+            {
+                int cantidadReservada;
+                if (articulo["Cantidad"].ToString() == "")
+                    cantidadReservada = 0;
+                else
+                    cantidadReservada = int.Parse(articulo["Cantidad"].ToString());
+
+                //TODO: Leer la cantidad del textbox
+                int cantidadRemito = cantidadReservada;
+
+                if (cantidadRemito > cantidadReservada)
+                {
+                    lbError.Text = "Cantidad en el remito mayor a la cantidad reservada";
+                    return;
+                }
+
+                Articulo oArticulo = new Articulo();
+                oArticulo.IdArticulo = int.Parse(articulo["IdArticulo"].ToString());
+                oArticulo.Load();
+                if (!oArticulo.Loaded)
+                {
+                    lbError.Text = "Ocurrio un error al querer ingresar los articulos de la reserva, intente más tarde";
+                    return;
+                }
+                //Aprovecho que hago un select para traer el cliente
+                cliente = oArticulo.IdCliente;
+
+                ingresados.AddRange(ServiceUbicaciones.ingresoUbicaciones(oArticulo, cantidadRemito, txtCodigo.Text));
+            }
+
+            ServiceIngreso.registrarIngreso(ingresados, FechaRemito, txtDescripcion.Text, cliente, txtCodigo.Text);
         }
     }
 }
