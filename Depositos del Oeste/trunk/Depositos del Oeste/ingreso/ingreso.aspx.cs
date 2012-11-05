@@ -43,6 +43,9 @@ namespace Depositos_del_Oeste
         {
             //Valido la fecha de retiro
             DateTime FechaRemito = Validaciones.isDate(txtFechaRemito.Text);
+            //ASI SACAS EL VALOR DEL TEXTBOX ;)
+            //((TextBox)gridArticulos.Rows[0].FindControl("txtCantidad")).Text
+
             if (FechaRemito == null || DateTime.Today.CompareTo(FechaRemito) >= 0)
             {
                 lbError.Text = "Fecha de Remito Incorrecta";
