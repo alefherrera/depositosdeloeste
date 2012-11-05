@@ -315,19 +315,19 @@ namespace Services
             reservadetalles.Sort(
                 delegate(ReservaDetalle p1, ReservaDetalle p2)
                 {
-                    return p1.Cantidad.CompareTo(p2.Cantidad);
+                    return p2.Cantidad.CompareTo(p1.Cantidad);
                 }
             );
 
             List<Compartimiento> compartimientos = new List<Compartimiento>();
             foreach (ReservaDetalle detalle in reservadetalles)
             {
-                if(cantidad > 0)
-                {
-                    Compartimiento compartimiento = new Compartimiento();
-                    compartimiento.Id = detalle.IdCompartimiento;
-                    compartimiento.Load();
+                Compartimiento compartimiento = new Compartimiento();
+                compartimiento.Id = detalle.IdCompartimiento;
+                compartimiento.Load();
 
+                if (cantidad > 0)
+                {
                     compartimiento.IdArticulo = articulo.IdArticulo;
                     compartimiento.Estado = (int)Enums.Ubicaciones_Estado.Ocupada;
 
@@ -338,13 +338,24 @@ namespace Services
                     }
                     else
                     {
-                        cantidad = 0;
-                        compartimiento.Cantidad -= detalle.Cantidad;
-                        compartimiento.Cantidad += cantidad;
                         compartimiento.Cantidad_Guardar = cantidad;
+                        compartimiento.Cantidad += cantidad;
+                        compartimiento.Cantidad -= detalle.Cantidad;
+                        cantidad = 0;
                     }
-                    compartimientos.Add(compartimiento);
                 }
+                else
+                {
+                    if (compartimiento.Estado == (int)Enums.Ubicaciones_Estado.Reservada && compartimiento.Cantidad == detalle.Cantidad)
+                    {
+                        compartimiento.Estado = (int)Enums.Ubicaciones_Estado.Libre;
+                        compartimiento.IdArticulo = 0;
+                    }
+                    compartimiento.Cantidad -= detalle.Cantidad;
+                    compartimiento.Cantidad_Guardar = -detalle.Cantidad;
+                }
+
+                compartimientos.Add(compartimiento);
             }
 
             return compartimientos;

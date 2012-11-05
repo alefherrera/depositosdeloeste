@@ -35,6 +35,7 @@ namespace Services
             
             Reserva oReserva = new Reserva();
             oReserva.Codigo = codigo;
+            oReserva.Activo = true;
             oReserva.Load();
             if (!oReserva.Loaded)
                 throw new ErrorFormException("Reserva no encontrada");

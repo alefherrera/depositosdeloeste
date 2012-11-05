@@ -187,6 +187,8 @@ namespace Depositos_del_Oeste
             }
 
             btnSubmit_Click(this, new EventArgs());
+            if (lbError.Text != "")
+                return;
 
             pnlPreviewControles.Visible = false;
 

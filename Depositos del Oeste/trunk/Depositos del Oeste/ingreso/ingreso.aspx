@@ -38,6 +38,9 @@
         <asp:Button ID="btnSubmit" CssClass="btnSubmit" Text="Registrar Ingreso" runat="server" OnClick="btnSubmit_Click" />
         <asp:Button ID="btnCancel" CssClass="btnCancel" Text="Cancelar Reserva" runat="server"/>
     </asp:Panel>
+    <br />
+    <asp:Label Visible="false" runat="server" ID="lbSuccess" Text="Ingreso correcto, para verificar el remito ingrese en Ingreso -> Remitos"></asp:Label>
+
     <script type="text/ecmascript">
         $(".btnSubmit").click(function () {
             return confirm("¿Esta seguro que los datos son correctos? Las cantidades no ingresadas se tomaran como 0.");
