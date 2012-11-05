@@ -44,7 +44,7 @@ namespace Depositos_del_Oeste
             //Valido la fecha de retiro
             DateTime FechaRemito = Validaciones.isDate(txtFechaRemito.Text);
             //ASI SACAS EL VALOR DEL TEXTBOX ;)
-            //((TextBox)gridArticulos.Rows[0].FindControl("txtCantidad")).Text
+            
 
             if (FechaRemito == null || DateTime.Today.CompareTo(FechaRemito) >= 0)
             {
@@ -62,9 +62,14 @@ namespace Depositos_del_Oeste
                     cantidadReservada = 0;
                 else
                     cantidadReservada = int.Parse(articulo["Cantidad"].ToString());
-
+                
                 //TODO: Leer la cantidad del textbox
-                int cantidadRemito = cantidadReservada;
+                if(!Validaciones.isNumeric(((TextBox)gridArticulos.Rows[articulos.Rows.IndexOf(articulo)].FindControl("txtCantidad")).Text))
+                {
+                    lbError.Text = "Cantidad incorrecta";
+                    return;
+                }
+                int cantidadRemito = int.Parse(((TextBox)gridArticulos.Rows[articulos.Rows.IndexOf(articulo)].FindControl("txtCantidad")).Text);
 
                 if (cantidadRemito > cantidadReservada)
                 {
@@ -86,10 +91,20 @@ namespace Depositos_del_Oeste
                 ingresados.AddRange(ServiceUbicaciones.ingresoUbicaciones(oArticulo, cantidadRemito, txtCodigo.Text));
             }
 
-            ServiceIngreso.registrarIngreso(ingresados, FechaRemito, txtDescripcion.Text, cliente, txtCodigo.Text);
+            ServiceUbicaciones.registrarIngreso(ingresados, FechaRemito, txtDescripcion.Text, cliente, txtCodigo.Text);
             
             pnlReserva.Visible = false;
             lbSuccess.Visible = true;
+        }
+
+        protected void btnCancel_Click(object sender, EventArgs e)
+        {
+            Reserva oReserva = ServiceReservas.cargarReserva(txtCodigo.Text);
+            ServiceUbicaciones.cancelarReserva(oReserva);
+
+            pnlReserva.Visible = false;
+            lbSuccess.Visible = true;
+            lbSuccess.Text = "La reserva se ha dado de baja con exito.";
         }
     }
 }
