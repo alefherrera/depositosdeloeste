@@ -36,7 +36,7 @@
         <asp:TextBox ID="txtDescripcion" TextMode="MultiLine" runat="server" Height="100px" Width="300px"></asp:TextBox>
         <br />
         <asp:Button ID="btnSubmit" CssClass="btnSubmit" Text="Registrar Ingreso" runat="server" OnClick="btnSubmit_Click" />
-        <asp:Button ID="btnCancel" CssClass="btnCancel" Text="Cancelar Reserva" runat="server"/>
+        <asp:Button ID="btnCancel" CssClass="btnCancel" Text="Cancelar Reserva" runat="server" OnClick="btnCancel_Click"/>
     </asp:Panel>
     <br />
     <asp:Label Visible="false" runat="server" ID="lbSuccess" Text="Ingreso correcto, para verificar el remito ingrese en Ingreso -> Remitos"></asp:Label>
