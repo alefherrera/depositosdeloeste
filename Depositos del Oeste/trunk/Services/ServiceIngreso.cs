@@ -25,12 +25,15 @@ namespace Services
             
             foreach (Compartimiento ingreso in ingresados)
             {
-                RemitosDetalle oRemitoDetalle = new RemitosDetalle();
-                oRemitoDetalle.IdRemito = oRemito.Id;
-                oRemitoDetalle.IdArticulo = ingreso.IdArticulo;
-                oRemitoDetalle.Cantidad = ingreso.Cantidad_Guardar;
-                oRemitoDetalle.IdCompartimiento = ingreso.Id;
-                oRemitoDetalle.Save();
+                if (ingreso.Cantidad_Guardar > 0)
+                {
+                    RemitosDetalle oRemitoDetalle = new RemitosDetalle();
+                    oRemitoDetalle.IdRemito = oRemito.Id;
+                    oRemitoDetalle.IdArticulo = ingreso.IdArticulo;
+                    oRemitoDetalle.Cantidad = ingreso.Cantidad_Guardar;
+                    oRemitoDetalle.IdCompartimiento = ingreso.Id;
+                    oRemitoDetalle.Save();
+                }
 
                 ingreso.Update();
             }

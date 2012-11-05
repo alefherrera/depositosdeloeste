@@ -84,6 +84,9 @@ namespace Depositos_del_Oeste
             }
 
             ServiceIngreso.registrarIngreso(ingresados, FechaRemito, txtDescripcion.Text, cliente, txtCodigo.Text);
+            
+            pnlReserva.Visible = false;
+            lbSuccess.Visible = true;
         }
     }
 }
