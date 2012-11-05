@@ -55,21 +55,22 @@ namespace Depositos_del_Oeste
             List<Compartimiento> ingresados = new List<Compartimiento>();
             int cliente = 0;
 
-            foreach (DataRow articulo in articulos.Rows)
+            for (int i = 0; i <= articulos.Rows.Count - 1; i++)
             {
+                DataRow articulo = articulos.Rows[i];
                 int cantidadReservada;
                 if (articulo["Cantidad"].ToString() == "")
                     cantidadReservada = 0;
                 else
                     cantidadReservada = int.Parse(articulo["Cantidad"].ToString());
-                
+
                 //TODO: Leer la cantidad del textbox
-                if(!Validaciones.isNumeric(((TextBox)gridArticulos.Rows[articulos.Rows.IndexOf(articulo)].FindControl("txtCantidad")).Text))
+                if (!Validaciones.isNumeric(((TextBox)gridArticulos.Rows[i].FindControl("txtCantidad")).Text))
                 {
                     lbError.Text = "Cantidad incorrecta";
                     return;
                 }
-                int cantidadRemito = int.Parse(((TextBox)gridArticulos.Rows[articulos.Rows.IndexOf(articulo)].FindControl("txtCantidad")).Text);
+                int cantidadRemito = int.Parse(((TextBox)gridArticulos.Rows[i].FindControl("txtCantidad")).Text);
 
                 if (cantidadRemito > cantidadReservada)
                 {
