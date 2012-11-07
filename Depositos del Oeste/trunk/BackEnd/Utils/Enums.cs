@@ -42,6 +42,7 @@ namespace BackEnd.Utils
 
         public enum Ubicaciones_Estado
         {
+            Nada = -1,
             Libre = 0,
             Reservada = 1,
             Ocupada = 2

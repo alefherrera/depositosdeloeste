@@ -27,6 +27,8 @@ namespace BackEnd
             CultureInfo culture; culture = CultureInfo.CreateSpecificCulture("es-ARG"); 
             info.ShortDatePattern = "dd/MM/yyyy";
             DateTime.TryParse(date, info, DateTimeStyles.None, out Result);
+            if (Result.ToShortDateString() == "01/01/0001")
+                throw new ErrorFormException("Fecha incorrecta");
             return Result;
         }
     }

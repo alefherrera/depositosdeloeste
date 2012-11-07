@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="BackEnd">
+  <class name="BackEnd.PedidosDetalle, BackEnd" table="pedidos_detalle" lazy="true">
+    <composite-id>
+      <key-property name="IdPedido" column="pedidos_id" />
+      <key-property name="IdCompartimiento" column="idcompartimiento" />
+      <key-property name="IdArticulo" column="articulos_idarticulo" />
+    </composite-id>
+    <property name="Cantidad">
+      <column name="cantidad"/>
+    </property>
+  </class>
+</hibernate-mapping>

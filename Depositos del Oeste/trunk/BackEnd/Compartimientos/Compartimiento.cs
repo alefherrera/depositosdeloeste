@@ -4,6 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BackEnd.Utils;
+using System.Data;
+using NHibernate.Cfg;
+using NHibernate;
+using NHibernate.Transform;
+using System.Collections;
 
 namespace BackEnd
 {
@@ -55,6 +60,43 @@ namespace BackEnd
 
             return cantidadTotal;
         }
+        public virtual DataTable Select_Detalles(int cliente)
+        {
+            List<Compartimiento> rtnList = new List<Compartimiento>();
+
+            Configuration config = new Configuration();
+            config.Configure();
+
+            ISessionFactory factory = config.BuildSessionFactory();
+            ISession session = factory.OpenSession();
+            IQuery squery = session.CreateSQLQuery("call compartimientos_reservas(" + this.Id + ", " + this.NroEstanteria + ", " + cliente + ", " + this.Estado + ")");
+            
+            var listResult = squery.SetResultTransformer(Transformers.AliasToEntityMap).List<Hashtable>();
+            session.Close();
+
+            DataTable datatable = new DataTable();
+            if (listResult.Count > 0)
+            {
+                Hashtable htable = listResult[0];
+                foreach (DictionaryEntry entry in htable)
+                {
+                    datatable.Columns.Add(entry.Key.ToString());
+                }
+
+            }
+            foreach (Hashtable htable in listResult)
+            {
+                DataRow row = datatable.NewRow();
+                foreach (DictionaryEntry entry in htable)
+                {
+                    row[entry.Key.ToString()] = entry.Value;
+                }
+                datatable.Rows.Add(row);
+            }
+
+            return datatable;
+        }
+
     }
 }
 

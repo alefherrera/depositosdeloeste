@@ -71,6 +71,8 @@
     <Compile Include="BusinessObject.cs" />
     <Compile Include="Clientes\Cliente.cs" />
     <Compile Include="Compartimientos\Compartimiento.cs" />
+    <Compile Include="PedidosDetalle\PedidosDetalle.cs" />
+    <Compile Include="Pedidos\Pedido.cs" />
     <Compile Include="RemitosDetalle\RemitosDetalle.cs" />
     <Compile Include="Remitos\Remito.cs" />
     <Compile Include="Exceptions\BackEndExcception.cs" />
@@ -126,6 +128,14 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Remitos\Remito.hbm.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pedidos\Pedido.hbm.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PedidosDetalle\PedidosDetalle.hbm.xml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
