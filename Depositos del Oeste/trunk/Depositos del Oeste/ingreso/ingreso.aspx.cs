@@ -42,10 +42,16 @@ namespace Depositos_del_Oeste
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             //Valido la fecha de retiro
-            DateTime FechaRemito = Validaciones.isDate(txtFechaRemito.Text);
-            //ASI SACAS EL VALOR DEL TEXTBOX ;)
-            
-
+            DateTime FechaRemito;
+            try
+            {
+                FechaRemito = Validaciones.isDate(txtFechaRemito.Text);
+            }
+            catch(ErrorFormException)
+            {
+                lbError.Text = "Fecha de Remito Incorrecta";
+                return;
+            }
             if (FechaRemito == null || DateTime.Today.CompareTo(FechaRemito) >= 0)
             {
                 lbError.Text = "Fecha de Remito Incorrecta";
@@ -54,24 +60,29 @@ namespace Depositos_del_Oeste
             DataTable articulos = ServiceReservas.detallesCodigo(txtCodigo.Text);
             List<Compartimiento> ingresados = new List<Compartimiento>();
             int cliente = 0;
+            int ingreso_total = 0;
 
             for (int i = 0; i <= articulos.Rows.Count - 1; i++)
             {
                 DataRow articulo = articulos.Rows[i];
                 int cantidadReservada;
-                if (articulo["Cantidad"].ToString() == "")
-                    cantidadReservada = 0;
+                int cantidadRemito;
+                cantidadReservada = int.Parse(articulo["Cantidad"].ToString());
+
+                if (((TextBox)gridArticulos.Rows[i].FindControl("txtCantidad")).Text == "")
+                    cantidadRemito = 0;
                 else
-                    cantidadReservada = int.Parse(articulo["Cantidad"].ToString());
-
-                //TODO: Leer la cantidad del textbox
-                if (!Validaciones.isNumeric(((TextBox)gridArticulos.Rows[i].FindControl("txtCantidad")).Text))
                 {
-                    lbError.Text = "Cantidad incorrecta";
-                    return;
+                    if (!Validaciones.isNumeric(((TextBox)gridArticulos.Rows[i].FindControl("txtCantidad")).Text))
+                    {
+                        lbError.Text = "Cantidad incorrecta";
+                        return;
+                    }
+                    cantidadRemito = int.Parse(((TextBox)gridArticulos.Rows[i].FindControl("txtCantidad")).Text);
                 }
-                int cantidadRemito = int.Parse(((TextBox)gridArticulos.Rows[i].FindControl("txtCantidad")).Text);
 
+                cantidadRemito = int.Parse(((TextBox)gridArticulos.Rows[i].FindControl("txtCantidad")).Text);
+                ingreso_total += cantidadRemito;
                 if (cantidadRemito > cantidadReservada)
                 {
                     lbError.Text = "Cantidad en el remito mayor a la cantidad reservada";
@@ -91,7 +102,11 @@ namespace Depositos_del_Oeste
 
                 ingresados.AddRange(ServiceUbicaciones.ingresoUbicaciones(oArticulo, cantidadRemito, txtCodigo.Text));
             }
-
+            if (ingreso_total == 0)
+            {
+                lbError.Text = "No se ha especificado ningun ingreso";
+                return;
+            }
             ServiceUbicaciones.registrarIngreso(ingresados, FechaRemito, txtDescripcion.Text, cliente, txtCodigo.Text);
             
             pnlReserva.Visible = false;

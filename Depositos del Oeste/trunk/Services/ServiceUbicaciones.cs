@@ -138,15 +138,17 @@ namespace Services
                 sel = int.Parse(seleccion);
 
             if (sel < 0)
-            {
                 return;
-            }
 
+            //Compartimiento compartimiento = new Compartimiento();
+            //compartimiento.NroEstanteria = sel;
+            //gridEstanteria.AutoGenerateColumns = false;
+            //gridEstanteria.ShowHeader = true;
+            //gridEstanteria.DataSource = compartimiento.Select();
+            //gridEstanteria.DataBind();
             Compartimiento compartimiento = new Compartimiento();
             compartimiento.NroEstanteria = sel;
-            gridEstanteria.AutoGenerateColumns = false;
-            gridEstanteria.ShowHeader = true;
-            gridEstanteria.DataSource = compartimiento.Select();
+            gridEstanteria.DataSource = compartimiento.Select_Detalles(-1);
             gridEstanteria.DataBind();
         }
 

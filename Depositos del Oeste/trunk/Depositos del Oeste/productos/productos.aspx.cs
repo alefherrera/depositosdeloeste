@@ -29,9 +29,7 @@ namespace Depositos_del_Oeste
         {
             DropDownList ddl = (DropDownList)sender;
             if (ddl.SelectedValue != "-1")
-            {
                 location.HRef = "productos_alta.aspx?id=" + ddl.SelectedValue; 
-            }
         }
     }
 }

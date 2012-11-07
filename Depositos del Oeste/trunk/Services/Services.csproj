@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ServiceRetiro.cs" />
     <Compile Include="ServiceIngreso.cs" />
     <Compile Include="ServiceReservas.cs" />
     <Compile Include="HashTable.cs" />
