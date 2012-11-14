@@ -52,7 +52,7 @@ namespace Depositos_del_Oeste
                 lbError.Text = "Fecha de Remito Incorrecta";
                 return;
             }
-            if (FechaRemito == null || DateTime.Today.CompareTo(FechaRemito) >= 0)
+            if (FechaRemito == null)
             {
                 lbError.Text = "Fecha de Remito Incorrecta";
                 return;
