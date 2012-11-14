@@ -15,7 +15,7 @@ namespace Services
 {
     public class ServiceRetiro : ServiceBase
     {
-        public static void registrarIngreso(List<Compartimiento> compartimientos, int cliente, DateTime fechapedido)
+        public static void registrarRetiro(List<Compartimiento> compartimientos, int cliente, DateTime fechapedido)
         {
             Pedido pedido = new Pedido();
             pedido.IdCliente = cliente;

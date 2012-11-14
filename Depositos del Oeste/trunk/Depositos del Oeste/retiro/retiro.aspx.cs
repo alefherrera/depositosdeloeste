@@ -117,7 +117,7 @@ namespace Depositos_del_Oeste
                 return;
             }
 
-            ServiceRetiro.registrarIngreso(compartimientos, int.Parse(ddlClientes.SelectedItem.Value.ToString()), FechaPedido);
+            ServiceRetiro.registrarRetiro(compartimientos, int.Parse(ddlClientes.SelectedItem.Value.ToString()), FechaPedido);
             pnlPedido.Visible = false;
             lbSuccess.Visible = true;
         }
