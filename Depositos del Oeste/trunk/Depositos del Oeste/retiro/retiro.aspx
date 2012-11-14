@@ -26,7 +26,7 @@
             <asp:BoundField HeaderText="Cantidad Ingresada" DataField="cantidad" />
             <asp:TemplateField HeaderText="Cantidad Pedido">
                 <ItemTemplate>
-                    <asp:TextBox ID="txtCantidad" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtCantidad" runat="server" MaxLength="8"></asp:TextBox>
                 </ItemTemplate>
             </asp:TemplateField>
         </Columns>

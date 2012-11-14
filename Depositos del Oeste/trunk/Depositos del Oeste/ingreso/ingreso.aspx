@@ -29,7 +29,7 @@
                 <asp:BoundField HeaderText="Cantidad Reservada" DataField="Cantidad" />
                 <asp:TemplateField HeaderText="Cantidad Remito">
                     <ItemTemplate>
-                        <asp:TextBox ID="txtCantidad" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtCantidad" MaxLength="8" runat="server"></asp:TextBox>
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>
@@ -39,7 +39,7 @@
         <br />
         <asp:Label ID="lbDescripcion" Text="Detalles" runat="server"></asp:Label>
         <br />
-        <asp:TextBox ID="txtDescripcion" TextMode="MultiLine" runat="server" Height="100px" Width="300px"></asp:TextBox>
+        <asp:TextBox ID="txtDescripcion" TextMode="MultiLine" MaxLength="1000" runat="server" Height="100px" Width="300px"></asp:TextBox>
         <br />
         <asp:Button ID="btnSubmit" CssClass="btnSubmit" Text="Registrar Ingreso" runat="server" OnClick="btnSubmit_Click" />
         <asp:Button ID="btnCancel" CssClass="btnCancel" Text="Cancelar Reserva" runat="server" OnClick="btnCancel_Click"/>

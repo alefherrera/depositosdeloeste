@@ -29,5 +29,9 @@
             <asp:BoundField HeaderText="Cantidad Reservada" DataField="reservados" />
         </Columns>
     </asp:GridView>--%>
+    <br />
+    Descripcion:
+    <br />
+    <asp:TextBox ID="txtDescripcion" ReadOnly="true" runat="server" TextMode="MultiLine" Width="600px"></asp:TextBox>
 </body>
 </html>
