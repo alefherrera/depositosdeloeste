@@ -12,7 +12,7 @@
             Articulos<br />
             <asp:DropDownList ID="ddlArticulo" runat="server">
             </asp:DropDownList>
-            <asp:TextBox ID="txtCantidad" runat="server">
+            <asp:TextBox ID="txtCantidad" MaxLength="8" runat="server">
             </asp:TextBox>
             <asp:LinkButton ID="linkAdd" runat="server" OnClick="linkAdd_Click">Agregar Articulo</asp:LinkButton>
             <br />
