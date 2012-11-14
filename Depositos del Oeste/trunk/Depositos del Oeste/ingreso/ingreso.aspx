@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ingreso.aspx.cs" Inherits="Depositos_del_Oeste._Ingreso" %>
 
+<%@ Import Namespace="Services" %>
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
     <asp:Label runat="server" ID="lbError" CssClass="error"></asp:Label><br />
     <h3>Ingreso de Mercadería</h3>
@@ -19,7 +20,12 @@
         <br />
         <asp:GridView ID="gridArticulos" runat="server" AutoGenerateColumns="false">
             <Columns>
-                <asp:BoundField HeaderText="IdArticulo" DataField="IdArticulo" />
+                <asp:BoundField Visible="false" HeaderText="IdArticulo" DataField="IdArticulo" />
+                <asp:TemplateField HeaderText="Articulo">
+                    <ItemTemplate>
+                        <asp:Label runat="server" Text='<%# ServiceProductos.cargarArticulos(Eval("IdArticulo").ToString()).Nombre%>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:BoundField HeaderText="Cantidad Reservada" DataField="Cantidad" />
                 <asp:TemplateField HeaderText="Cantidad Remito">
                     <ItemTemplate>

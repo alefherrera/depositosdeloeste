@@ -86,6 +86,11 @@ namespace Depositos_del_Oeste
                         return;
                     }
                     cantidadPedido = int.Parse(((TextBox)gridIngresados.Rows[i].FindControl("txtCantidad")).Text);
+                    if (cantidadPedido < 0)
+                    {
+                        lbError.Text = "Cantidad de articulos negativa";
+                        return;
+                    }
                 }
 
                 int cantidadIngresada = int.Parse(row["cantidad"].ToString());
