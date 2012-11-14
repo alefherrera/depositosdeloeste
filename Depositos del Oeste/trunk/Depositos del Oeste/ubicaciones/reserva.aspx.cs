@@ -86,6 +86,11 @@ namespace Depositos_del_Oeste
                 lbError.Text = "Ingrese una cantidad correcta";
                 return;
             }
+            if (int.Parse(txtCantidad.Text) < 0)
+            {
+                lbError.Text = "Ingrese una cantidad positiva";
+                return;
+            }
 
             foreach (DataRow row in dt.Rows)
             {

@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="reserva.aspx.cs" Inherits="Depositos_del_Oeste._Reserva" %>
 
 <%@ Import Namespace="BackEnd.Utils" %>
+<%@ Import Namespace="Services" %>
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
     <h3>Reserva</h3>
     <asp:Label runat="server" ID="lbError" CssClass="error"></asp:Label><br />
@@ -52,7 +53,12 @@
                         <asp:Label runat="server" Text='<%# Enums.EstadoDesc(int.Parse(Eval("Estado").ToString())) %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:BoundField HeaderText="Articulo" DataField="IdArticulo" />
+                <asp:TemplateField HeaderText="Articulo">
+                    <ItemTemplate>
+                        <asp:Label runat="server" Text='<%# ServiceProductos.cargarArticulos(Eval("IdArticulo").ToString()).Nombre%>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:BoundField Visible="false" HeaderText="Articulo" DataField="IdArticulo" />
                 <asp:BoundField HeaderText="Cantidad" DataField="Cantidad" />
             </Columns>
         </asp:GridView>

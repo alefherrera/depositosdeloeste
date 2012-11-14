@@ -79,6 +79,11 @@ namespace Depositos_del_Oeste
                         return;
                     }
                     cantidadRemito = int.Parse(((TextBox)gridArticulos.Rows[i].FindControl("txtCantidad")).Text);
+                    if (cantidadRemito < 0)
+                    {
+                        lbError.Text = "Cantidad de articulos negativa";
+                        return;
+                    }
                 }
 
                 cantidadRemito = int.Parse(((TextBox)gridArticulos.Rows[i].FindControl("txtCantidad")).Text);
