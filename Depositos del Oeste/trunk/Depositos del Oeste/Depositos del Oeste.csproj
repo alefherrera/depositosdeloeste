@@ -200,6 +200,7 @@
     <Content Include="packages.config" />
     <None Include="Properties\PublishProfiles\Nacho.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
+    <Content Include="reportes\reportes.aspx" />
     <Content Include="retiro\retiro.aspx" />
     <Content Include="Scripts\datepickeresp.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
@@ -297,6 +298,13 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="reportes\reportes.aspx.cs">
+      <DependentUpon>reportes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="reportes\reportes.aspx.designer.cs">
+      <DependentUpon>reportes.aspx</DependentUpon>
+    </Compile>
     <Compile Include="retiro\retiro.aspx.cs">
       <DependentUpon>retiro.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
