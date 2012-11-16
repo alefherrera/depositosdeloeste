@@ -26,7 +26,7 @@
             <asp:BoundField HeaderText="Cantidad Ingresada" DataField="cantidad" />
             <asp:TemplateField HeaderText="Cantidad Pedido">
                 <ItemTemplate>
-                    <asp:TextBox ID="txtCantidad" runat="server" MaxLength="8"></asp:TextBox>
+                    <asp:TextBox ID="txtCantidad" runat="server" MaxLength="8" CssClass="number"></asp:TextBox>
                 </ItemTemplate>
             </asp:TemplateField>
         </Columns>
@@ -44,6 +44,5 @@
         $(".btnSubmit").click(function () {
             return confirm("¿Esta seguro que los datos son correctos? Las cantidades no ingresadas se tomaran como 0.");
         });
-        $(".fecha").datepicker({ dateFormat: 'dd/mm/yy', changeMonth: true, changeYear: true }).mask("99/99/9999", { placeholder: " " });
     </script>
 </asp:Content>

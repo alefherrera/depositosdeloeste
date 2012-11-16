@@ -5,23 +5,23 @@
     <asp:Label runat="server" ID="lbError" CssClass="error"></asp:Label><br />
     <asp:Label runat="server" ID="lbCliente"></asp:Label><br />
     Nombre
-    <asp:TextBox runat="server" ID="txtNombre" MaxLength="45"></asp:TextBox><br />
+    <asp:TextBox runat="server" ID="txtNombre" MaxLength="45" CssClass="required"></asp:TextBox><br />
     Descripcion
-    <asp:TextBox runat="server" ID="txtDescripcion" MaxLength="45"></asp:TextBox><br />
+    <asp:TextBox runat="server" ID="txtDescripcion" MaxLength="45" CssClass="required"></asp:TextBox><br />
     Alto
-    <asp:TextBox runat="server" ID="txtAlto" MaxLength="8"></asp:TextBox>
+    <asp:TextBox runat="server" ID="txtAlto" MaxLength="8" CssClass="required number"></asp:TextBox>
     milímetros
     <br />
     Largo
-    <asp:TextBox runat="server" ID="txtLargo" MaxLength="8"></asp:TextBox>
+    <asp:TextBox runat="server" ID="txtLargo" MaxLength="8" CssClass="required number"></asp:TextBox>
     milímetros
     <br />
     Ancho
-    <asp:TextBox runat="server" ID="txtAncho" MaxLength="8"></asp:TextBox>
+    <asp:TextBox runat="server" ID="txtAncho" MaxLength="8" CssClass="required number"></asp:TextBox>
     milímetros
     <br />
     Peso
-    <asp:TextBox runat="server" ID="txtPeso" MaxLength="8"></asp:TextBox>
+    <asp:TextBox runat="server" ID="txtPeso" MaxLength="8" CssClass="required number"></asp:TextBox>
     gramos
     <br />
     Índice de Actividad 

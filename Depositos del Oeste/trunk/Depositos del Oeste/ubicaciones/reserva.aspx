@@ -12,7 +12,7 @@
             Articulos<br />
             <asp:DropDownList ID="ddlArticulo" runat="server">
             </asp:DropDownList>
-            <asp:TextBox ID="txtCantidad" MaxLength="8" runat="server">
+            <asp:TextBox ID="txtCantidad" MaxLength="8" runat="server" CssClass="number">
             </asp:TextBox>
             <asp:LinkButton ID="linkAdd" runat="server" OnClick="linkAdd_Click">Agregar Articulo</asp:LinkButton>
             <br />
@@ -79,6 +79,5 @@
         $(".btnConfirmar").click(function () {
             return confirm("¿Esta seguro que los datos son correctos?");
         });
-        $(".fecha").datepicker({ dateFormat: 'dd/mm/yy', changeMonth: true, changeYear: true }).mask("99/99/9999", { placeholder: " " });
     </script>
 </asp:Content>

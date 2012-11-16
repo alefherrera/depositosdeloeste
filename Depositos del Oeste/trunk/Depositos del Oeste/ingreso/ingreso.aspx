@@ -6,7 +6,7 @@
     <h3>Ingreso de Mercadería</h3>
     <asp:Panel ID="pnlCodigo" runat="server">
         <asp:Label Text="Ingrese Codigo: " runat="server" ID="lbIngreseCodigo"></asp:Label>
-        <asp:TextBox ID="txtCodigo" MaxLength="8" runat="server"></asp:TextBox>
+        <asp:TextBox ID="txtCodigo" MaxLength="8" runat="server" CssClass="required"></asp:TextBox>
         <br />
         <br />
         <asp:Button ID="btnCodigo" runat="server" Text="Buscar Reserva" OnClick="btnCodigo_Click" />
@@ -29,7 +29,7 @@
                 <asp:BoundField HeaderText="Cantidad Reservada" DataField="Cantidad" />
                 <asp:TemplateField HeaderText="Cantidad Remito">
                     <ItemTemplate>
-                        <asp:TextBox ID="txtCantidad" MaxLength="8" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtCantidad" MaxLength="8" runat="server" CssClass="number"></asp:TextBox>
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>
@@ -56,6 +56,6 @@
                 return false;
             return confirm("Confirme la cancelación de la reserva");
         });
-        $(".fecha").datepicker({ dateFormat: 'dd/mm/yy', changeMonth: true, changeYear: true }).mask("99/99/9999", { placeholder: " " });
+
     </script>
 </asp:Content>
