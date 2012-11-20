@@ -5,7 +5,7 @@
     <h3>Retiro de Mercaderia</h3>
     <asp:Label runat="server" ID="lbError" CssClass="error"></asp:Label><br />
     <asp:Panel runat="server" ID="pnlCliente"> 
-    <asp:DropDownList ID="ddlClientes" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlClientes_SelectedIndexChanged"></asp:DropDownList><br />
+    <asp:DropDownList ID="ddlClientes" CssClass="ddlclientes" Width="200px" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlClientes_SelectedIndexChanged"></asp:DropDownList><br />
     <br />
     </asp:Panel>
     <asp:Panel ID="pnlPedido" runat="server" Visible="false">

@@ -52,7 +52,7 @@
                 <div id="banner">
                     <div id="log">
                         <asp:Label ID="errorLogin" runat="server" CssClass="error"></asp:Label>
-                        <asp:Login ID="login" runat="server" PasswordLabelText="Contraseña" UserNameLabelText="Legajo" RememberMeText="Recordar Datos" LoginButtonText="Entrar" TitleText="" CheckBoxStyle-CssClass="remember"
+                        <asp:Login  ID="login" runat="server" PasswordLabelText="Contraseña" UserNameLabelText="Legajo" RememberMeText="Recordar Datos" LoginButtonText="Entrar" TitleText="" CheckBoxStyle-CssClass="remember"
                             Visible="true" CssClass="login" FailureText="" LoginButtonStyle-CssClass="button" LoginButtonType="Link" OnAuthenticate="login_Authenticate" PasswordRequiredErrorMessage="Complete todos los campos" UserNameRequiredErrorMessage="Complete todos los campos">
                         </asp:Login>
                         <asp:Panel ID="logcorrecto" runat="server" Visible="false">

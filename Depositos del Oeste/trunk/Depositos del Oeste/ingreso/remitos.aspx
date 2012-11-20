@@ -4,7 +4,7 @@
     <h3>Remitos</h3>
     <asp:Label runat="server" ID="lbError" CssClass="error"></asp:Label><br />
     Cliente
-    <asp:DropDownList ID="ddlClientes" runat="server" AutoPostBack="True" CssClass="cliente"></asp:DropDownList><br />
+    <asp:DropDownList ID="ddlClientes" runat="server" AutoPostBack="True" Width="200px" CssClass="ddlcliente"></asp:DropDownList><br />
     <asp:GridView ID="gridRemitos" runat="server">
         <Columns>
             <asp:BoundField HeaderText="Codigo de Remito" DataField="Id" />
