@@ -7,14 +7,30 @@
     <asp:Label runat="server" ID="lbError" CssClass="error"></asp:Label><br />
     <asp:Panel ID="pnlSeleccion" runat="server">
         Cliente
-    <asp:DropDownList ID="ddlClientes" runat="server" AutoPostBack="True" CssClass="cliente" OnSelectedIndexChanged="ddlClientes_SelectedIndexChanged"></asp:DropDownList><br />
+    <asp:DropDownList ID="ddlClientes" CssClass="ddlclientes" Width="200px" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlClientes_SelectedIndexChanged"></asp:DropDownList><br />
         <asp:Panel ID="pnlArticulosGeneral" runat="server" Visible="false">
-            Articulos<br />
-            <asp:DropDownList ID="ddlArticulo" runat="server">
-            </asp:DropDownList>
-            <asp:TextBox ID="txtCantidad" MaxLength="8" runat="server" CssClass="number">
-            </asp:TextBox>
-            <asp:LinkButton ID="linkAdd" runat="server" OnClick="linkAdd_Click">Agregar Articulo</asp:LinkButton>
+            <br />
+            <table>
+                <tr>
+                    <td>Articulos
+                    </td>
+                    <td>Cantidad
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:DropDownList Width="200px" ID="ddlArticulo" runat="server"></asp:DropDownList>
+                    </td>
+                    <td>
+                        <asp:TextBox ID="txtCantidad" MaxLength="8" runat="server" CssClass="number">
+                        </asp:TextBox>
+                    </td>
+                    <td>
+                        <asp:LinkButton ID="linkAdd" runat="server" OnClick="linkAdd_Click">Agregar Articulo</asp:LinkButton>
+                    </td>
+                </tr>
+            </table>
             <br />
             <asp:GridView ID="gridArticulos" runat="server" AutoGenerateColumns="false">
                 <Columns>

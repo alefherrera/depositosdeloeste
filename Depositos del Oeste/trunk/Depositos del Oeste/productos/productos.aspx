@@ -4,7 +4,7 @@
     <h3>Gestion de Productos</h3>
     <asp:Label runat="server" ID="lbError" CssClass="error"></asp:Label><br />
     Cliente
-    <asp:DropDownList ID="ddlClientes" runat="server" AutoPostBack="True" CssClass="cliente" OnSelectedIndexChanged="ddlClientes_SelectedIndexChanged"></asp:DropDownList><br />
+    <asp:DropDownList ID="ddlClientes" runat="server" AutoPostBack="True" CssClass="ddlcliente" Width="200px" OnSelectedIndexChanged="ddlClientes_SelectedIndexChanged"></asp:DropDownList><br />
     <asp:GridView ID="gridArticulos" runat="server">
         <Columns>
             <asp:BoundField HeaderText="Nombre" DataField="Nombre" />

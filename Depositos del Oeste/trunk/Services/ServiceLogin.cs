@@ -14,17 +14,20 @@ namespace Services
             Usuario user = new Usuario();
             if (!Validaciones.isNumeric(legajo))
             {
-                throw new LoginException("Numero de Legajo incorrecto");
+                throw new LoginException("Numero de Legajo incorrecto, tiene que ser numerico");
             };
 
             user.Legajo = int.Parse(legajo);
-            user.Dni = dni;
 
             List<Usuario> usuarios = user.Select();
             if (usuarios.Count != 1)
-            {
-                throw new LoginException("Error, el numero de legajo o la contraseña es incorrecto/a");
-            }
+                throw new LoginException("Error, numero de legajo inexistente");
+
+            user.Dni = dni;
+            usuarios = user.Select();
+
+            if (usuarios.Count != 1)
+                throw new LoginException("Error, contraseña incorrecta");
 
             user.Load();
 

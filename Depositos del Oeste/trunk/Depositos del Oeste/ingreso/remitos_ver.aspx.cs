@@ -36,7 +36,13 @@ namespace Depositos_del_Oeste
             lbCliente.Text = oCliente.Razon_Social;
             lbFechaRemito.Text = oRemito.FechaRemito.ToShortDateString();
             lbRemito.Text = oRemito.Id.ToString();
-            txtDescripcion.Text = oRemito.Descripcion;
+            lbDescripcion.Text = oRemito.Descripcion;
+
+
+            RemitosDetalle oRemitosDetalle = new RemitosDetalle();
+            oRemitosDetalle.IdRemito = oRemito.Id;
+            gridRemitoDetalles.DataSource = oRemitosDetalle.Select();
+            gridRemitoDetalles.DataBind();
         }
     }
 }

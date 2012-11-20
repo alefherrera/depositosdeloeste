@@ -58,12 +58,30 @@ namespace Depositos_del_Oeste {
         protected global::System.Web.UI.WebControls.Label lbFechaRemito;
         
         /// <summary>
-        /// txtDescripcion control.
+        /// gridRemitoDetalles control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDescripcion;
+        protected global::System.Web.UI.WebControls.GridView gridRemitoDetalles;
+        
+        /// <summary>
+        /// lbDescripcion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbDescripcion;
+        
+        /// <summary>
+        /// imgImprimir control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image imgImprimir;
     }
 }
