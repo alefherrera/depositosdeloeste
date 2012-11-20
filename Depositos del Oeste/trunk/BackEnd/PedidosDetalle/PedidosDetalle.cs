@@ -6,12 +6,37 @@ using System.Threading.Tasks;
 
 namespace BackEnd
 {
-    public class PedidosDetalle : BusinessObject<ReservaDetalle>
+    public class PedidosDetalle : BusinessObject<PedidosDetalle>
     {
         public virtual int IdCompartimiento{ get; set; }
         public virtual int IdPedido { get; set; }
         public virtual int IdArticulo { get; set; }
         public virtual int Cantidad{ get; set; }
+        public virtual Compartimiento Compartimiento { get; set; }
+
+        public override bool Load()
+        {
+            base.Load();
+            Compartimiento cmp = new Compartimiento();
+            cmp.Id = this.IdCompartimiento;
+            cmp.Load();
+            Compartimiento = cmp;
+            if (this.Loaded && cmp.Loaded)
+                return true;
+            return false;
+        }
+
+        public override List<PedidosDetalle> Select()
+        {
+            List<PedidosDetalle> lista = base.Select();
+            foreach (PedidosDetalle detalle in lista)
+            {
+                detalle.Compartimiento = new Compartimiento();
+                detalle.Compartimiento.Id = detalle.IdCompartimiento;
+                detalle.Compartimiento.Load();
+            }
+            return lista;
+        }
 
         public override bool Equals(object obj)
         {

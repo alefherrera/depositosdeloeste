@@ -3,7 +3,6 @@
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
     <h3>Ubicaciones</h3>
     <asp:Label runat="server" ID="lbError" CssClass="error"></asp:Label><br />
-    Estanteria
     <asp:DropDownList ID="ddlEstanteria" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlEstanteria_SelectedIndexChanged"></asp:DropDownList><br />
     <asp:GridView ID="gridUbicaciones" runat="server" AutoGenerateColumns="false">
         <Columns>
