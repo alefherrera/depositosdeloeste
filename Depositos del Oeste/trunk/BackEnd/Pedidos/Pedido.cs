@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BackEnd
 {
-    public class Pedido : BusinessObject<Reserva>
+    public class Pedido : BusinessObject<Pedido>
     {
         public virtual int Id { get; set; }
         public virtual DateTime FechaPedido { get; set; }

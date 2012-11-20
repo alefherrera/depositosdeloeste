@@ -6,7 +6,6 @@
     <h3>Reserva</h3>
     <asp:Label runat="server" ID="lbError" CssClass="error"></asp:Label><br />
     <asp:Panel ID="pnlSeleccion" runat="server">
-        Cliente
     <asp:DropDownList ID="ddlClientes" CssClass="ddlclientes" Width="200px" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlClientes_SelectedIndexChanged"></asp:DropDownList><br />
         <asp:Panel ID="pnlArticulosGeneral" runat="server" Visible="false">
             <br />
