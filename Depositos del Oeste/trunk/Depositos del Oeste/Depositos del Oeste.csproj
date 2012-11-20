@@ -210,6 +210,12 @@
     <Content Include="Scripts\jquery.maskedinput-1.3.min.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="Scripts\select2-release-3.2\select2.css" />
+    <Content Include="Scripts\select2-release-3.2\select2.js" />
+    <Content Include="Scripts\select2-release-3.2\select2.min.js" />
+    <Content Include="Scripts\select2-release-3.2\select2.png" />
+    <Content Include="Scripts\select2-release-3.2\select2x2.png" />
+    <Content Include="Scripts\select2-release-3.2\spinner.gif" />
     <Content Include="Scripts\WebForms\DetailsView.js" />
     <Content Include="Scripts\WebForms\Focus.js" />
     <Content Include="Scripts\WebForms\GridView.js" />
@@ -342,6 +348,9 @@
     <Content Include="Site.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Scripts\select2-release-3.2\LICENSE" />
+    <Content Include="Scripts\select2-release-3.2\README.md" />
+    <Content Include="Scripts\select2-release-3.2\release.sh" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
