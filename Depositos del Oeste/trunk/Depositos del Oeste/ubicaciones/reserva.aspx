@@ -6,7 +6,7 @@
     <h3>Reserva</h3>
     <asp:Label runat="server" ID="lbError" CssClass="error"></asp:Label><br />
     <asp:Panel ID="pnlSeleccion" runat="server">
-    <asp:DropDownList ID="ddlClientes" CssClass="ddlclientes" Width="200px" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlClientes_SelectedIndexChanged"></asp:DropDownList><br />
+    <asp:DropDownList ID="ddlClientes" CssClass="ddlcliente" Width="200px" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlClientes_SelectedIndexChanged"></asp:DropDownList><br />
         <asp:Panel ID="pnlArticulosGeneral" runat="server" Visible="false">
             <br />
             <table>
@@ -19,7 +19,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <asp:DropDownList Width="200px" ID="ddlArticulo" runat="server"></asp:DropDownList>
+                        <asp:DropDownList Width="200px" ID="ddlArticulo" runat="server" CssClass="ddlarticulo"></asp:DropDownList>
                     </td>
                     <td>
                         <asp:TextBox ID="txtCantidad" MaxLength="8" runat="server" CssClass="number">

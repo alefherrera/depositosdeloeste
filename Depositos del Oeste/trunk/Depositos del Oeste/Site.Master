@@ -52,7 +52,7 @@
                 <div id="banner">
                     <div id="log">
                         <asp:Label ID="errorLogin" runat="server" CssClass="error"></asp:Label>
-                        <asp:Login  ID="login" runat="server" PasswordLabelText="Contraseña" UserNameLabelText="Legajo" RememberMeText="Recordar Datos" LoginButtonText="Entrar" TitleText="" CheckBoxStyle-CssClass="remember"
+                        <asp:Login ID="login" runat="server" PasswordLabelText="Contraseña" UserNameLabelText="Legajo" RememberMeText="Recordar Datos" LoginButtonText="Entrar" TitleText="" CheckBoxStyle-CssClass="remember"
                             Visible="true" CssClass="login" FailureText="" LoginButtonStyle-CssClass="button" LoginButtonType="Link" OnAuthenticate="login_Authenticate" PasswordRequiredErrorMessage="Complete todos los campos" UserNameRequiredErrorMessage="Complete todos los campos">
                         </asp:Login>
                         <asp:Panel ID="logcorrecto" runat="server" Visible="false">
@@ -111,14 +111,32 @@
                                 min: jQuery.validator
                                         .format("Please enter a value greater than or equal to {0}.")
                             });
+
+            jQuery.fn.center = function () {
+                this.css("position", "absolute");
+                this.css("top", Math.max(0, (($(window).height() - this.outerHeight()) / 2) +
+                                                            $(window).scrollTop()) + "px");
+                this.css("left", Math.max(0, (($(window).width() - this.outerWidth()) / 2) +
+                                                            $(window).scrollLeft()) + "px");
+                return this;
+            }
+
         </script>
         <script type="text/javascript">
             $(function () {
-
+                
                 $(".fecha").datepicker({ dateFormat: 'dd/mm/yy', changeMonth: true, changeYear: true }).mask("99/99/9999", { placeholder: " " });
 
-                $("select").each(function () {
+                $(".ddlcliente,.ddlarticulo").each(function () {
                     $(this).select2();
+                });
+
+                $("a.lnkver").each(function () {
+                    $(this).click(function (event) {
+                        event.preventDefault();                        
+                        window.open(this.href, "", "fullscreen=no,resizable=no,height=500,width=800,left=300,top=200");                   
+
+                    });
                 });
 
                 $("form").each(function () {
