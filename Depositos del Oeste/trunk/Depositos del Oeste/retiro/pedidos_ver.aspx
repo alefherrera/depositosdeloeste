@@ -8,7 +8,7 @@
         <asp:Literal runat="server" ID="ltTitle"></asp:Literal></title>
 </head>
 <body>
-    <form runat="server" style="position:absolute; left:10%;">
+    <form runat="server" style="position: absolute; left: 10%;">
         <asp:Label runat="server" ID="lbError" CssClass="error"></asp:Label>
         <h4>Pedido:
         <asp:Label runat="server" ID="lbPedido"></asp:Label></h4>
@@ -35,8 +35,10 @@
         </asp:GridView>
         <br />
         <br />
-        <div ID="Imprimir">
-        <asp:Image runat="server" ID="imgImprimir" ImageUrl="~/Content/Images/imprimir.gif" />
+        <div id="Imprimir">
+            <a href="javascript:window.print();">
+                <asp:Image runat="server" ID="imgImprimir" ImageUrl="~/Content/Images/imprimir.gif" />
+            </a>
         </div>
     </form>
 </body>
