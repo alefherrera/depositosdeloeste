@@ -21,6 +21,7 @@ namespace BackEnd
         public virtual int Actividad { get; set; }
         public virtual int Estado { get; set; }
         public virtual int IdArticulo { get; set; }
+        public virtual DateTime FechaRetiroProbable { get; set; }
         public virtual int Cantidad { get; set; }
         public virtual int Cantidad_Guardar { get; set; }
         public virtual int cantidad_maxima(Articulo articulo)

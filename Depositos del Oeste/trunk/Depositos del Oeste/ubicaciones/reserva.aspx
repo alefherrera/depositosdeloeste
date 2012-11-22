@@ -14,7 +14,6 @@
                     <td>Articulos
                     </td>
                     <td>Cantidad
-
                     </td>
                 </tr>
                 <tr>

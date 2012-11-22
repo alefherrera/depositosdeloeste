@@ -200,14 +200,12 @@ namespace Depositos_del_Oeste
             string codigo = ServiceReservas.generarCodigo();
             Cliente cliente = ServiceProductos.cargarCliente(ddlClientes.SelectedItem.Value);
 
+            ServiceUbicaciones.registrarReserva(compartimientos_posibles, cliente, FechaRetiro, codigo);
+
             lbNota.Text = "Código: " + codigo;
             lbCorreo.Text = "Un correo fue enviado a " + cliente.Mail + " indicando el codigo de reserva";
 
-            ServiceUbicaciones.registrarReserva(compartimientos_posibles, cliente, FechaRetiro, codigo);
-
             Lista_Mails.Codigo_Reserva(codigo, cliente.Mail);
-
-            //TODO: En vez de imprimir el IdArticulo en la grilla imprimir el nombre de articulo
         }
     }
 }

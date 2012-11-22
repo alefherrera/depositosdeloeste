@@ -21,6 +21,7 @@
             <asp:BoundField HeaderText="Articulo" DataField="nombre" />
             <asp:BoundField HeaderText="Cantidad Ingresada" DataField="cantidad" />
             <asp:BoundField HeaderText="Cantidad Reservada" DataField="reservados" />
+            <asp:BoundField HeaderText="Fecha de Retiro Probable" DataField="fecha_retiro_probable" DataFormatString="{0:d}" />
         </Columns>
     </asp:GridView>
     <br />

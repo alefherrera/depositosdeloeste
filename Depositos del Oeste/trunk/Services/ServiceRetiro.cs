@@ -29,9 +29,12 @@ namespace Services
                 pedidosDetalle.IdArticulo = cmp.IdArticulo;
                 pedidosDetalle.IdCompartimiento = cmp.Id;
                 pedidosDetalle.Cantidad = cmp.Cantidad_Guardar;
-                
-                if(cmp.Estado == (int)Enums.Ubicaciones_Estado.Libre)
+
+                if (cmp.Estado == (int)Enums.Ubicaciones_Estado.Libre)
+                {
                     cmp.IdArticulo = 0;
+                    cmp.FechaRetiroProbable = DateTime.Parse("1900-01-01");
+                }
                 cmp.Update();
                 pedidosDetalle.Save();
             }

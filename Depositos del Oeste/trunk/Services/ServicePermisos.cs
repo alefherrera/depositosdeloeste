@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BackEnd;
+using BackEnd.Utils;
 
 namespace Services
 {
@@ -11,18 +12,26 @@ namespace Services
     {
         public static bool VerificarPermisos(Usuario user, string perm)
         {
+            //Verifico si es publico primero
+            Permiso permiso = new Permiso();
+            permiso.IdGrupo = (int)Enums.Grupos.Publico;
+            permiso.PermisoDesc = perm;
+
+            if (permiso.Select().Count > 0)
+                return true;
+
+            //Verifico en base al usuario
             if (user == null || user.Legajo == -1)
             {
                 return false;
             }
-            Permiso permiso = new Permiso();
+           
             permiso.IdGrupo = user.IdGrupo;
-            permiso.PermisoDesc = perm;
 
             if (permiso.Select().Count == 0)
                 return false;
-            else
-                return true;
+
+            return true;
         }
 
         public static List<Permiso> CargarPermisos(Usuario user)

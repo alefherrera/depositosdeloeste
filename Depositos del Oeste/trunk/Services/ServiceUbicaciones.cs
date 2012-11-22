@@ -109,7 +109,7 @@ namespace Services
                     cmpAnt.Load();
                     compartimiento.Cantidad += cmpAnt.Cantidad;
                 }
-                
+                compartimiento.FechaRetiroProbable = FechaRetiro;
                 compartimiento.Update();
 
 
@@ -181,6 +181,7 @@ namespace Services
             oCompartimiento.Actividad = articulo.Actividad;
 
             List<Compartimiento> compartimientos = oCompartimiento.Select();
+
             foreach (Compartimiento compartimiento in compartimientos)
             {
                 //Me fijo en todos si que el compartimiento agarrado no tenga uno de los posibles anteriores
