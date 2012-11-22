@@ -192,6 +192,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Content\Images\banner.png" />
     <Content Include="Content\Images\user_icon.png" />
+    <Content Include="guiauso.html" />
     <Content Include="ingreso\remitos_ver.aspx" />
     <Content Include="ingreso\ingreso.aspx" />
     <Content Include="ingreso\remitos.aspx" />

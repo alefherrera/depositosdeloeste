@@ -153,7 +153,7 @@
 
                 <div class="float-left">
                     <p>
-                        &copy; <%: DateTime.Now.Year %> - RAMONLABS
+                        &copy; <%: DateTime.Now.Year %> - RAMONLABS - <asp:HyperLink runat="server" NavigateUrl="~/guiauso.html">Guia de Uso</asp:HyperLink>
                     </p>
                 </div>
             </div>
