@@ -1,48 +1,114 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <!-- saved from url=(0039)http://localhost:32353/guiausuario.html -->
-<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Depositos del Oeste - Guia de Uso</title>
-<style type="text/css"></style></head>
+    <style type="text/css"></style>
+</head>
 <body>
-    <h3>Introduccion</h3>
+    <ul>
+        <li><a href="#intro">Introducción</a>
+        </li>
+        <li><a href="#etapas">Etapas</a>
+            <ul>
+                <li><a href="#productos">Gestion de Productos</a>
+                </li>        
+                <li><a href="#reserva">Reserva de Ubicaciones</a>
+                </li>        
+                <li><a href="#ingreso">Ingreso de Mercaderia</a>
+                </li>        
+                <li><a href="#retiro">Retiro de Mercaderia</a>
+                </li>        
+            </ul>            
+        </li>                
+        <li><a href="#roles">Roles de Usuario</a>
+            <ul>           
+                <li><a href="#administrador">Administrador</a>
+                </li>      
+                <li><a href="#encargado">Encargado</a>
+                </li>        
+                <li><a href="#ventas">Empleado de Ventas</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <h3 id="intro">Introduccion</h3>
     <p>
         El sistema Depositos del Oeste maneja el ingreso y egreso de mercadería al depósito, desde la reserva de las ubicaciones (buscando la mejor ubicacion posible de acuerdo a la mercadería entrante), hasta
-        el retiro de los articulos y liberacion de los mismos. <br>
-        Cuenta tres roles de usuarios con acceso a distintas etapas del proceso. <br>
+        el retiro de los articulos y liberacion de los mismos.
+        <br />
+        Cuenta tres roles de usuarios con acceso a distintas etapas del proceso.
+        <br />
     </p>
-    <br>
-    <h3>Etapas</h3>
-    <h4>Gestion de Productos:</h4>
+    <br />
+    <h3 id="etapas">Etapas</h3>
+    <h4 id="productos">Gestion de Productos:</h4>
     <p>
         Esta es la primer etapa, en Gestión de Productos se pueden realizar cargas de productos a los diferentes clientes de la empresa, se les debe definir el <b>PESO</b>, <b>ANCHO</b>, <b>LARGO</b> y <b>ALTO</b>,
         que luego sera utilizado para el calculo de la mejor posición de la mercadería. Tambien se deberá ingresar una breve descripción del producto mismo.
+   
     </p>
-    <br>
-    <h4>Reserva de Ubicaciones</h4>
+    <br />
+    <h4 id="reserva">Reserva de Ubicaciones</h4>
     <p>
         En base a los articulos que necesite el cliente se calcula la mejor posición para los mismos y se genera el <b>CODIGO DE RESERVA</b>, que será mostrado en pantalla y enviado al mail del cliente y al mail de
-        Depositos del Oeste.<br>
+        Depositos del Oeste.<br />
         El <b>CODIGO DE RESERVA</b> deberá ser utilizado en el próximo paso.
+   
     </p>
-    <br>
-    <h4>Ingreso de Mercadería</h4>
+    <br />
+    <h4 id="ingreso">Ingreso de Mercadería</h4>
     <p>
-        Se ingresa el <b>CODIGO DE RESERVA</b> y se ingresan los datos del remito, junto con una descripción del estado de los articulos o alguna mención especial. <br>
-        Esto genera un remito que contiene la mejor ubicacion para los articulos, el mismo se puede ver en Ingreso -&gt; Remitos. En esta pantalla figuran los remitos ordenados por orden de ingreso, los mismos 
+        Se ingresa el <b>CODIGO DE RESERVA</b> y se ingresan los datos del remito, junto con una descripción del estado de los articulos o alguna mención especial.
+        <br />
+        Esto genera un remito que contiene la mejor ubicacion para los articulos, el mismo se puede ver en Ingreso -> Remitos. En esta pantalla figuran los remitos ordenados por orden de ingreso, los mismos 
         permiten verse e imprimir.
+   
     </p>
-    <br>
-    <h4>Ingreso de Mercadería</h4>
+    <br />
+    <h4 id="retiro">Retiro de Mercadería</h4>
     <p>
-        Se ingresa el <b>CODIGO DE RESERVA</b> y se ingresan los datos del remito, junto con una descripción del estado de los articulos o alguna mención especial. <br>
-        Esto genera un remito que contiene la mejor ubicacion para los articulos, el mismo se puede ver en Ingreso -&gt; Remitos. En esta pantalla figuran los remitos ordenados por orden de ingreso, los mismos 
-        permiten verse e imprimir.
+        Al seleccionar un cliente se detallan todas las mercaderías que tiene ingresadas, cuando se termina de elegir los articulos y se confirma se genera un pedido que contiene la mejor ubicacion para retirarlos.
+        Para ver los pedidos hay que ingresar en Retiro -> Pedidos.
+   
     </p>
-    <br>
-    <h4>Retiro de Mercadería</h4>
+    <br />
+    <h3 id="roles">Roles de Usuario</h3>
+    <h4 id="administrador">Administrador</h4>
     <p>
-        
+        El administrador tiene acceso a todos el sistema y tambien puede ver el Reporte que indica el porcentaje de ocupación del Depósito.
+    </p>
+    <br />
+    <h4 id="ventas">Empleado de Ventas</h4>
+    <p>
+        El Empleado de Ventas tiene acceso a:
+    </p>
+    <ul>
+        <li>Reserva de Compartimientos
+        </li>
+        <li>Gestion de Producto
+        </li>
+    </ul>
+
+    <br />
+    <h4 id="encargado">Encargado</h4>
+    <p>
+        El Encargado tiene acceso a:
     </p>
 
-
-</body></html>
+    <ul>
+        <li>Ingreso de Mercadería
+        </li>
+        <li>Remitos
+        </li>
+        <li>Retiro de Mercadería
+        </li>
+        <li>Pedidos
+        </li>
+        <li>Consulta de Ubicaciones
+        </li>
+    </ul>
+    <br />
+</body>
+</html>
