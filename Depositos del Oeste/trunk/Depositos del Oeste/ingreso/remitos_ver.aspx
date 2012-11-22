@@ -12,37 +12,39 @@
     <script type="text/javascript" src="/Scripts/jquery.print.js"></script>
     <form runat="server" style="position: absolute; left: 10%;">
         <div class="imprimir">
-        <asp:Label runat="server" ID="lbError" CssClass="error"></asp:Label>
-        <h4>Remito:
+            <asp:Label runat="server" ID="lbError" CssClass="error"></asp:Label>
+            <h4>Remito:
         <asp:Label runat="server" ID="lbRemito"></asp:Label></h4>
-        <div style="font-weight: bold">
-            Cliente:
+            <div style="font-weight: bold">
+                Cliente:
         <asp:Label ID="lbCliente" runat="server"></asp:Label>
-        </div>
-        Fecha de Remito:
+            </div>
+            Fecha de Remito:
     <asp:Label ID="lbFechaRemito" runat="server"></asp:Label><br />
-        <br />
-        <asp:GridView ID="gridRemitoDetalles" Width="600px" runat="server" AutoGenerateColumns="false">
-            <Columns>
-                <asp:BoundField HeaderText="Estanteria" DataField="Compartimiento.NroEstanteria" />
-                <asp:BoundField HeaderText="Nivel" DataField="Compartimiento.Nivel" />
-                <asp:BoundField HeaderText="Compartimiento" DataField="Compartimiento.NroCompartimiento" />
-                <asp:BoundField Visible="false" HeaderText="IdArticulo" DataField="IdArticulo" />
-                <asp:TemplateField HeaderText="Articulo">
-                    <ItemTemplate>
-                        <asp:Label runat="server" Text='<%# ServiceProductos.cargarArticulos(Eval("IdArticulo").ToString()).Nombre%>'></asp:Label>
-                    </ItemTemplate>
-                </asp:TemplateField>
-                <asp:BoundField HeaderText="Cantidad Ingresada" DataField="Cantidad" />
-            </Columns>
-        </asp:GridView>
-        <br />
-        Descripcion:
-    <br />
-        <asp:Label ID="lbDescripcion" runat="server" Width="600px"></asp:Label>
+            <br />
+            <asp:GridView ID="gridRemitoDetalles" Width="600px" runat="server" AutoGenerateColumns="false">
+                <Columns>
+                    <asp:BoundField HeaderText="Estanteria" DataField="Compartimiento.NroEstanteria" />
+                    <asp:BoundField HeaderText="Nivel" DataField="Compartimiento.Nivel" />
+                    <asp:BoundField HeaderText="Compartimiento" DataField="Compartimiento.NroCompartimiento" />
+                    <asp:BoundField Visible="false" HeaderText="IdArticulo" DataField="IdArticulo" />
+                    <asp:TemplateField HeaderText="Articulo">
+                        <ItemTemplate>
+                            <asp:Label runat="server" Text='<%# ServiceProductos.cargarArticulos(Eval("IdArticulo").ToString()).Nombre%>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:BoundField HeaderText="Cantidad Ingresada" DataField="Cantidad" />
+                </Columns>
+            </asp:GridView>
+            <div id="Detalles" runat="server">
+                <br />
+                Detalles:
+                <br />
+                <asp:Label ID="lbDescripcion" runat="server" Width="600px"></asp:Label>
+            </div>
         </div>
         <br />
-        <br />        
+        <br />
         <div id="Imprimir">
             <a href="javascript:$('.imprimir').print();">
                 <asp:Image runat="server" ID="imgImprimir" ImageUrl="~/Content/Images/imprimir.gif" />
