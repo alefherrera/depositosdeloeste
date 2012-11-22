@@ -8,7 +8,10 @@
         <asp:Literal runat="server" ID="ltTitle"></asp:Literal></title>
 </head>
 <body>
+    <script type="text/javascript" src="/Scripts/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="/Scripts/jquery.print.js"></script>
     <form runat="server" style="position: absolute; left: 10%;">
+        <div class="imprimir">
         <asp:Label runat="server" ID="lbError" CssClass="error"></asp:Label>
         <h4>Remito:
         <asp:Label runat="server" ID="lbRemito"></asp:Label></h4>
@@ -37,10 +40,11 @@
         Descripcion:
     <br />
         <asp:Label ID="lbDescripcion" runat="server" Width="600px"></asp:Label>
+        </div>
         <br />
-        <br />
+        <br />        
         <div id="Imprimir">
-            <a href="javascript:window.print();">
+            <a href="javascript:$('.imprimir').print();">
                 <asp:Image runat="server" ID="imgImprimir" ImageUrl="~/Content/Images/imprimir.gif" />
             </a>
         </div>
