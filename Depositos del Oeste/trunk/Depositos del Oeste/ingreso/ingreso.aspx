@@ -2,8 +2,8 @@
 
 <%@ Import Namespace="Services" %>
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
-    <asp:Label runat="server" ID="lbError" CssClass="error"></asp:Label><br />
     <h3>Ingreso de Mercadería</h3>
+    <asp:Label runat="server" ID="lbError" CssClass="error"></asp:Label><br />
     <asp:Panel ID="pnlCodigo" runat="server">
         <asp:Label Text="Ingrese Codigo: " runat="server" ID="lbIngreseCodigo"></asp:Label>
         <asp:TextBox ID="txtCodigo" MaxLength="8" runat="server" CssClass="required"></asp:TextBox>

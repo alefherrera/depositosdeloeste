@@ -57,6 +57,13 @@ namespace Depositos_del_Oeste
                 lbError.Text = "Fecha de Remito Incorrecta";
                 return;
             }
+            if (FechaRemito.CompareTo(DateTime.Today) == 1)
+            {
+                lbError.Text = "Fecha de Remito Incorrecta";
+                return;
+            }
+
+
             DataTable articulos = ServiceReservas.detallesCodigo(txtCodigo.Text);
             List<Compartimiento> ingresados = new List<Compartimiento>();
             int cliente = 0;

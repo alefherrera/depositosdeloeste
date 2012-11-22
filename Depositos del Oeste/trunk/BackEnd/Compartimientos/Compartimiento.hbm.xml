@@ -26,5 +26,8 @@
     <property name="Cantidad">
       <column name="cantidad"/>
     </property>
+    <property name="FechaRetiroProbable">
+      <column name="fecha_retiro_probable"/>
+    </property>
   </class>
 </hibernate-mapping>

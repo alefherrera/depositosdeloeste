@@ -52,5 +52,13 @@ namespace BackEnd.Utils
             Enums.Ubicaciones_Estado enumDisplay = ((Enums.Ubicaciones_Estado)estado);
             return enumDisplay.ToString();
         }
+
+        public enum Grupos
+        {
+            Publico = 0,
+            Administrador = 1,
+            Encargado = 2,
+            Ventas = 3
+        }
     }
 }
