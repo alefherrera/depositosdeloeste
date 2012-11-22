@@ -65,6 +65,7 @@ namespace Services
                 {
                     cmp.IdArticulo = 0;
                     cmp.Estado = (int)Enums.Ubicaciones_Estado.Libre;
+                    cmp.FechaRetiroProbable = DateTime.Parse("1900-01-01");
                 }
 
                 if (cmp.Cantidad > detalle.Cantidad)
@@ -416,6 +417,7 @@ namespace Services
                     {
                         compartimiento.Estado = (int)Enums.Ubicaciones_Estado.Libre;
                         compartimiento.IdArticulo = 0;
+                        compartimiento.FechaRetiroProbable = DateTime.Parse("1900-01-01");
                     }
                     compartimiento.Cantidad -= detalle.Cantidad;
                     compartimiento.Cantidad_Guardar = -detalle.Cantidad;

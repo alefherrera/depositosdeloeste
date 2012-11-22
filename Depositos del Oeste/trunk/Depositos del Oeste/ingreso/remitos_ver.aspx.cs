@@ -36,7 +36,10 @@ namespace Depositos_del_Oeste
             lbCliente.Text = oCliente.Razon_Social;
             lbFechaRemito.Text = oRemito.FechaRemito.ToShortDateString();
             lbRemito.Text = oRemito.Id.ToString();
-            lbDescripcion.Text = oRemito.Descripcion;
+            if (oRemito.Descripcion.Length > 0)
+                lbDescripcion.Text = oRemito.Descripcion;
+            else
+                Detalles.Visible = false;
 
 
             RemitosDetalle oRemitosDetalle = new RemitosDetalle();
