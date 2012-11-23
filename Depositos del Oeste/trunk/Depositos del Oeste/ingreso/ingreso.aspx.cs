@@ -8,6 +8,7 @@ using BackEnd;
 using Services;
 using System.IO;
 using System.Data;
+using BackEnd.Utils;
 
 namespace Depositos_del_Oeste
 {
@@ -119,8 +120,21 @@ namespace Depositos_del_Oeste
                 lbError.Text = "No se ha especificado ningun ingreso";
                 return;
             }
+
+            List<Compartimiento> comp_mail = new List<Compartimiento>();
+            foreach (Compartimiento cmp in ingresados)
+            if (cmp.IdArticulo == 0)
+            {
+                comp_mail.Add(cmp);
+                cmp.FechaReserva = DateTime.Parse("1900-01-01");
+            }
+
             ServiceUbicaciones.registrarIngreso(ingresados, FechaRemito, txtDescripcion.Text, cliente, txtCodigo.Text);
             
+            Cliente oCliente = ServiceProductos.cargarCliente(cliente.ToString());
+            Lista_Mails.Facturacion(comp_mail, oCliente.Razon_Social);
+
+
             pnlReserva.Visible = false;
             lbSuccess.Visible = true;
         }
@@ -128,7 +142,25 @@ namespace Depositos_del_Oeste
         protected void btnCancel_Click(object sender, EventArgs e)
         {
             Reserva oReserva = ServiceReservas.cargarReserva(txtCodigo.Text);
+
+            ReservaDetalle oRsvDetalle = new ReservaDetalle();
+            oRsvDetalle.CodigoReserva = oReserva.Codigo;
+
+            List<Compartimiento> comp_mail = new List<Compartimiento>();
+
+            List<ReservaDetalle> lsDetalle = oRsvDetalle.Select();
+            foreach (ReservaDetalle detalle in lsDetalle)
+            {
+                Compartimiento cmp = new Compartimiento();
+                cmp.Id = detalle.IdCompartimiento;
+                cmp.Load();
+                if (cmp.Estado == (int)Enums.Ubicaciones_Estado.Reservada && cmp.Cantidad == detalle.Cantidad)
+                    comp_mail.Add(cmp);
+            }
+
             ServiceUbicaciones.cancelarReserva(oReserva);
+            Cliente oCliente = ServiceProductos.cargarCliente(oReserva.IdCliente.ToString());
+            Lista_Mails.Facturacion(comp_mail, oCliente.Razon_Social);
 
             pnlReserva.Visible = false;
             lbSuccess.Visible = true;

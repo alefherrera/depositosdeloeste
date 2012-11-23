@@ -29,5 +29,8 @@
     <property name="FechaRetiroProbable">
       <column name="fecha_retiro_probable"/>
     </property>
+    <property name="FechaReserva">
+      <column name="fecha_reserva"/>
+    </property>
   </class>
 </hibernate-mapping>

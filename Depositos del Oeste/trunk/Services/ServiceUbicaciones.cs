@@ -34,7 +34,6 @@ namespace Services
                     oRemitoDetalle.IdCompartimiento = ingreso.Id;
                     oRemitoDetalle.Save();
                 }
-
                 ingreso.Update();
             }
 
@@ -66,6 +65,7 @@ namespace Services
                     cmp.IdArticulo = 0;
                     cmp.Estado = (int)Enums.Ubicaciones_Estado.Libre;
                     cmp.FechaRetiroProbable = DateTime.Parse("1900-01-01");
+                    cmp.FechaReserva = DateTime.Parse("1900-01-01");
                 }
 
                 if (cmp.Cantidad > detalle.Cantidad)
@@ -110,6 +110,7 @@ namespace Services
                     cmpAnt.Load();
                     compartimiento.Cantidad += cmpAnt.Cantidad;
                 }
+                compartimiento.FechaReserva = DateTime.Today;
                 compartimiento.FechaRetiroProbable = FechaRetiro;
                 compartimiento.Update();
 
@@ -417,6 +418,7 @@ namespace Services
                 {
                     if (compartimiento.Estado == (int)Enums.Ubicaciones_Estado.Reservada && compartimiento.Cantidad == detalle.Cantidad)
                     {
+
                         compartimiento.Estado = (int)Enums.Ubicaciones_Estado.Libre;
                         compartimiento.IdArticulo = 0;
                         compartimiento.FechaRetiroProbable = DateTime.Parse("1900-01-01");
