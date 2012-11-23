@@ -9,7 +9,7 @@
     <asp:Button runat="server" ID="btnBuscar" Text="Buscar" OnClick="btnBuscar_Click" />
 
     <asp:GridView runat="server" ID="tblReporte" RowStyle-HorizontalAlign="Center">
-
     </asp:GridView>
-
+    <br />
+    <asp:Label runat="server" ID="lbError" CssClass="error"></asp:Label><br />
 </asp:Content>
