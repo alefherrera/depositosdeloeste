@@ -19,7 +19,7 @@ namespace Services
             int id = int.Parse(idCliente);
 
             if (id < 0)
-                throw new Exception("Id de cliente incorrecta");
+                throw new ErrorFormException("Id de cliente incorrecta");
 
             Cliente cliente = new Cliente();
             cliente.Id = id;
@@ -27,7 +27,7 @@ namespace Services
             if (cliente.Loaded)
                 return cliente;
             else
-                throw new Exception("Los datos del cliente no se pudieron cargar");
+                throw new ErrorFormException("Los datos del cliente no se pudieron cargar");
         }
 
         public static Articulo cargarArticulos(string id)
