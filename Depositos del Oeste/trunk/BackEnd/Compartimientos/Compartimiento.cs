@@ -71,7 +71,7 @@ namespace BackEnd
 
             ISessionFactory factory = config.BuildSessionFactory();
             ISession session = factory.OpenSession();
-            IQuery squery = session.CreateSQLQuery("call compartimientos_reservas(" + this.Id + ", " + this.NroEstanteria + ", " + cliente + ", " + this.Estado + ")");
+            IQuery squery = session.CreateSQLQuery("call compartimientos_reservas(" + this.Id + ", " + this.NroEstanteria + ", " + cliente + ", " + this.Estado + ", " + this.IdArticulo + ")");
             
             var listResult = squery.SetResultTransformer(Transformers.AliasToEntityMap).List<Hashtable>();
             session.Close();
