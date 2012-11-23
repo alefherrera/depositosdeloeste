@@ -32,7 +32,7 @@
     </asp:RadioButtonList>
     <br />
     <asp:Button id="btnSubmit" runat="server" Text="Confirmar" CssClass="btnConfirmar" OnClick="btnSubmit_Click"/>
-    <asp:Button id="btnVolver" runat="server" Text="Volver" OnClick="btnVolver_Click"/>
+    <asp:Button id="btnVolver" runat="server" Text="Volver" OnClick="btnVolver_Click" CssClass="cancel"/>
     <script type="text/ecmascript">
         $(".btnConfirmar").click(function () {
             return confirm("¿Esta seguro que los datos son correctos?");
