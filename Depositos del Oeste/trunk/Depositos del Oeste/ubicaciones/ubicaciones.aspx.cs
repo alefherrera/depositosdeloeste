@@ -13,6 +13,7 @@ namespace Depositos_del_Oeste
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            lbError.Text = "";
             if (!IsPostBack)
             {
                 ServiceUbicaciones.cargarComboEstanteria(ddlEstanteria);
@@ -24,11 +25,15 @@ namespace Depositos_del_Oeste
         protected void btnBuscarEstanteria_Click(object sender, EventArgs e)
         {
             ServiceUbicaciones.cargarGridEstanteria(gridUbicaciones, ddlEstanteria.SelectedValue, "-1");
+            ddlArticulo.SelectedIndex = 0;
         }
 
         protected void btnBuscarArt_Click(object sender, EventArgs e)
         {
             ServiceUbicaciones.cargarGridEstanteria(gridUbicaciones, "-1", ddlArticulo.SelectedValue);
+            if (gridUbicaciones.Rows.Count == 0)
+                lbError.Text = "No se encontro el articulo seleccionado";
+            ddlEstanteria.SelectedIndex = 0;
         }
     }
 }
