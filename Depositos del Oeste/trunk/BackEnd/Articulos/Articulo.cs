@@ -17,7 +17,7 @@ namespace BackEnd
         public virtual int Ancho { get; set; }
         public virtual int Peso { get; set; }
         public virtual int Actividad { get; set; }
-        public virtual int Activo { get; set; }
+        public virtual bool Activo { get; set; }
 
         public virtual string nombre_actividad()
         {

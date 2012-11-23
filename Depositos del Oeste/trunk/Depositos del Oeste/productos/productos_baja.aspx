@@ -7,6 +7,7 @@
     Nombre
     <asp:Label runat="server" ID="lbNombre"></asp:Label><br />
     Descripcion
+    <br />
     <asp:TextBox TextMode="MultiLine" Enabled="false" runat="server" ID="txtDescripcion"></asp:TextBox><br />
     Alto
     <asp:Label runat="server" ID="lbAlto"></asp:Label>

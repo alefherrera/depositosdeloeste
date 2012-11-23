@@ -56,7 +56,7 @@ namespace Services
 
             Articulo articulo = new Articulo();
             articulo.IdCliente = sel;
-            articulo.Activo = 1;
+            articulo.Activo = true;
             gridArticulos.AutoGenerateColumns = false;
             gridArticulos.ShowHeader = true;
             gridArticulos.DataSource = articulo.Select();
@@ -124,8 +124,13 @@ namespace Services
             if (articulo.Actividad < 0 || articulo.Actividad >= 3)
                 throw new ErrorFormException("La actividad es incorrecta");
 
+            Compartimiento cmp = new Compartimiento();
+            cmp.Nivel = 1;
+            if (cmp.cantidad_maxima(articulo) == 0)
+                throw new ErrorFormException("El articulo no entra en ninguna ubicacion");
+
             articulo.IdCliente = cliente.Id;
-            articulo.Activo = 1;
+            articulo.Activo = true;
 
             articulo.Save();
         }

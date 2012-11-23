@@ -379,12 +379,14 @@ namespace Services
             oReservaDetalle.CodigoReserva = codigo;
             oReservaDetalle.IdArticulo = articulo.IdArticulo;
             List<ReservaDetalle> reservadetalles = oReservaDetalle.Select();
-            reservadetalles.Sort(
-                delegate(ReservaDetalle p1, ReservaDetalle p2)
-                {
-                    return p2.Cantidad.CompareTo(p1.Cantidad);
-                }
-            );
+            reservadetalles.Sort((x, y) =>
+            {
+                int compare = y.Compartimiento.Estado.CompareTo(x.Compartimiento.Estado);
+                if (compare != 0)
+                    return compare;
+
+                return compare = y.Cantidad.CompareTo(x.Cantidad);
+            });
 
             List<Compartimiento> compartimientos = new List<Compartimiento>();
             foreach (ReservaDetalle detalle in reservadetalles)

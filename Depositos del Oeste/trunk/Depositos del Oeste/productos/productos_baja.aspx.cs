@@ -28,9 +28,8 @@ namespace Depositos_del_Oeste
 
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
-            Articulo articulo = new Articulo();
-            articulo.IdArticulo = int.Parse(Request.QueryString["id"]);
             articulo.BajaLogica();
+            Response.Redirect("/productos/productos.aspx?id=" + articulo.IdCliente);
         }
         protected void btnVolver_Click(object sender, EventArgs e)
         {
