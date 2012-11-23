@@ -10,7 +10,7 @@
             <asp:BoundField HeaderText="Fecha de Remito" DataField="FechaRemito" DataFormatString="{0:d}"/>
             <asp:TemplateField>
                 <ItemTemplate>
-                    <a href="remitos_ver.aspx?id=<%# Eval("Id") %>" class="lnkver">Ver</a>
+                    <a href="remitos_detalles.aspx?id=<%# Eval("Id") %>">Ver</a>
                 </ItemTemplate>
             </asp:TemplateField>
         </Columns>

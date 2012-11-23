@@ -10,7 +10,7 @@
             <asp:BoundField HeaderText="Fecha de Pedido" DataField="FechaPedido" DataFormatString="{0:d}"/>
             <asp:TemplateField>
                 <ItemTemplate>
-                    <a href="pedidos_ver.aspx?id=<%# Eval("Id") %>" class="lnkver">Ver</a>
+                    <a href="pedidos_detalles.aspx?id=<%# Eval("Id") %>">Ver</a>
                 </ItemTemplate>
             </asp:TemplateField>
         </Columns>

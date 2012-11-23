@@ -193,6 +193,7 @@
     <Content Include="Content\Images\banner.png" />
     <Content Include="Content\Images\user_icon.png" />
     <Content Include="guiauso.html" />
+    <Content Include="ingreso\remitos_detalles.aspx" />
     <Content Include="ingreso\remitos_ver.aspx" />
     <Content Include="ingreso\ingreso.aspx" />
     <Content Include="ingreso\remitos.aspx" />
@@ -203,6 +204,7 @@
     <None Include="Properties\PublishProfiles\Nacho.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="reportes\reportes.aspx" />
+    <Content Include="retiro\pedidos_detalles.aspx" />
     <Content Include="retiro\pedidos.aspx" />
     <Content Include="retiro\pedidos_ver.aspx" />
     <Content Include="retiro\retiro.aspx" />
@@ -254,6 +256,13 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\AuthConfig.cs" />
+    <Compile Include="ingreso\remitos_detalles.aspx.cs">
+      <DependentUpon>remitos_detalles.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ingreso\remitos_detalles.aspx.designer.cs">
+      <DependentUpon>remitos_detalles.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ingreso\remitos_ver.aspx.cs">
       <DependentUpon>remitos_ver.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -316,6 +325,13 @@
     </Compile>
     <Compile Include="reportes\reportes.aspx.designer.cs">
       <DependentUpon>reportes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="retiro\pedidos_detalles.aspx.cs">
+      <DependentUpon>pedidos_detalles.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="retiro\pedidos_detalles.aspx.designer.cs">
+      <DependentUpon>pedidos_detalles.aspx</DependentUpon>
     </Compile>
     <Compile Include="retiro\pedidos.aspx.cs">
       <DependentUpon>pedidos.aspx</DependentUpon>

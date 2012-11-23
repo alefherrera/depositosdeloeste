@@ -6,7 +6,7 @@
     <table>
         <tr>
             <td>
-                <asp:DropDownList ID="ddlEstanteria" runat="server" CssClass="ddlarticulo"></asp:DropDownList><br />
+                <asp:DropDownList ID="ddlEstanteria" runat="server" Width="200px" CssClass="ddlarticulo"></asp:DropDownList><br />
             </td>
 
             <td>
@@ -17,7 +17,7 @@
 
         <tr>
             <td>
-                <asp:DropDownList ID="ddlArticulo" runat="server" CssClass="ddlarticulo"></asp:DropDownList></td>
+                <asp:DropDownList ID="ddlArticulo" runat="server" Width="200px" CssClass="ddlarticulo"></asp:DropDownList></td>
             <td>
                 <asp:Button runat="server" ID="btnBuscarArt" OnClick="btnBuscarArt_Click" Text="Buscar por Articulo" />
             </td>
