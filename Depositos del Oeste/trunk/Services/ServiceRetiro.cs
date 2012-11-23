@@ -34,6 +34,8 @@ namespace Services
                 {
                     cmp.IdArticulo = 0;
                     cmp.FechaRetiroProbable = DateTime.Parse("1900-01-01");
+                    cmp.FechaReserva = DateTime.Parse("1900-01-01");
+
                 }
                 cmp.Update();
                 pedidosDetalle.Save();

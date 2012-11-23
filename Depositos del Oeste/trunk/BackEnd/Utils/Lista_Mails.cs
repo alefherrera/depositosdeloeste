@@ -30,6 +30,45 @@ namespace BackEnd
             oMail.Copia_Oculta = "nacho692@gmail.com";
             oMail.enviar();
         }
+
+        public static void Facturacion(List<Compartimiento> compartimientos, string cliente)
+        {
+            string asunto = "Facturacion ubicaciones";
+            string cuerpo;
+
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Los siguientes compartimientos fueron reservados por " + cliente + "<br/>");
+            foreach (Compartimiento cmp in compartimientos)
+            {
+                sb.Append("<table>");
+                sb.Append("<tr>");
+                sb.Append("<td>Estanteria:</td><td>" + cmp.NroEstanteria);
+                sb.Append("</tr>");
+                sb.Append("<tr>");
+                sb.Append("<td>Nivel:</td><td>" + cmp.Nivel);
+                sb.Append("</tr>");
+                sb.Append("<tr>");
+                sb.Append("<td>Compartimiento:</td><td>" + cmp.NroCompartimiento);
+                sb.Append("</tr>");
+                sb.Append("<tr>");
+                sb.Append("<td>Fecha de Reserva:</td><td>" + cmp.FechaReserva.ToShortDateString());
+                sb.Append("</tr>");
+                sb.Append("<tr>");
+                sb.Append("<td>Fecha de Fin de Reserva:</td><td>" + DateTime.Today.ToShortDateString());
+                sb.Append("</tr>");
+                sb.Append("</table><br/>");
+            }
+
+            cuerpo = sb.ToString();
+
+            Mail oMail = new Mail();
+            oMail.Asunto = asunto;
+            oMail.Cuerpo = cuerpo;
+            oMail.Para = "alef.herrera@gmail.com";
+            oMail.Copia_Oculta = "nacho692@gmail.com";
+            oMail.enviar();
+        }
+     
      
     }
 }

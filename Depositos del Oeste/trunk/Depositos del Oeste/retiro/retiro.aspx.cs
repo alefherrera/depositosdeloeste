@@ -123,6 +123,8 @@ namespace Depositos_del_Oeste
             }
 
             ServiceRetiro.registrarRetiro(compartimientos, int.Parse(ddlClientes.SelectedItem.Value.ToString()), FechaPedido);
+            Lista_Mails.Facturacion(compartimientos, lbCliente.Text);
+
             pnlPedido.Visible = false;
             lbSuccess.Visible = true;
         }
