@@ -133,14 +133,21 @@ namespace Services
             ddlUbicaciones.Items.Insert(0, new ListItem("Seleccione Estanteria", "-1"));
         }
 
-        public static void cargarGridEstanteria(GridView gridEstanteria, string seleccion)
+        public static void cargarGridEstanteria(GridView gridEstanteria, string seleccion, string idArticulo)
         {
             int sel = 0;
+            int idart = 0;
             if (Validaciones.isNumeric(seleccion))
                 sel = int.Parse(seleccion);
 
-            if (sel < 0)
+            if (Validaciones.isNumeric(idArticulo))
+                idart = int.Parse(idArticulo);
+
+            if (sel < 0 && idart < 0)
                 return;
+
+            //if (sel < 0)
+            //    return;
 
             //Compartimiento compartimiento = new Compartimiento();
             //compartimiento.NroEstanteria = sel;
@@ -150,6 +157,7 @@ namespace Services
             //gridEstanteria.DataBind();
             Compartimiento compartimiento = new Compartimiento();
             compartimiento.NroEstanteria = sel;
+            compartimiento.IdArticulo = idart;
             gridEstanteria.DataSource = compartimiento.Select_Detalles(-1);
             gridEstanteria.DataBind();
         }
