@@ -11,15 +11,24 @@ namespace Depositos_del_Oeste
 {
     public partial class _Ubicaciones : PageBase
     {
-         protected void Page_Load(object sender, EventArgs e)
-          {
+        protected void Page_Load(object sender, EventArgs e)
+        {
             if (!IsPostBack)
+            {
                 ServiceUbicaciones.cargarComboEstanteria(ddlEstanteria);
-            ServiceUbicaciones.cargarGridEstanteria(gridUbicaciones, ddlEstanteria.SelectedItem.Value);
+                ServiceProductos.cargarComboArticulos(ddlArticulo, new Articulo() { Activo = true });
+            }
         }
 
-        protected void ddlEstanteria_SelectedIndexChanged(object sender, EventArgs e)
+
+        protected void btnBuscarEstanteria_Click(object sender, EventArgs e)
         {
+            ServiceUbicaciones.cargarGridEstanteria(gridUbicaciones, ddlEstanteria.SelectedValue, "-1");
+        }
+
+        protected void btnBuscarArt_Click(object sender, EventArgs e)
+        {
+            ServiceUbicaciones.cargarGridEstanteria(gridUbicaciones, "-1", ddlArticulo.SelectedValue);
         }
     }
 }
