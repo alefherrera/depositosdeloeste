@@ -3,12 +3,11 @@
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
     <h3>Eliminar Articulo</h3>
     <asp:Label runat="server" ID="lbError" CssClass="error"></asp:Label><br />
-    <asp:Label runat="server" ID="lbCliente"></asp:Label><br />
-    Nombre
+    <b><asp:Label runat="server" ID="lbCliente"></asp:Label></b><br /><br />
     <asp:Label runat="server" ID="lbNombre"></asp:Label><br />
     Descripcion
     <br />
-    <asp:TextBox TextMode="MultiLine" Enabled="false" runat="server" ID="txtDescripcion"></asp:TextBox><br />
+    <asp:TextBox TextMode="MultiLine" Enabled="false" Width="300px" runat="server" ID="txtDescripcion"></asp:TextBox><br />
     Alto
     <asp:Label runat="server" ID="lbAlto"></asp:Label>
     milímetros

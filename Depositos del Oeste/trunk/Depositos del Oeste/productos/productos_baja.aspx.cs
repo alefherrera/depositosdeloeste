@@ -16,7 +16,9 @@ namespace Depositos_del_Oeste
         protected void Page_Load(object sender, EventArgs e)
         {
             articulo = ServiceProductos.cargarArticulos(Request.QueryString["id"]);
-            
+            Cliente oCliente = ServiceProductos.cargarCliente(articulo.IdCliente.ToString());
+
+            lbCliente.Text = oCliente.Razon_Social;
             lbNombre.Text = articulo.Nombre;
             txtDescripcion.Text = articulo.Descripcion;
             lbAlto.Text = articulo.Alto.ToString();
