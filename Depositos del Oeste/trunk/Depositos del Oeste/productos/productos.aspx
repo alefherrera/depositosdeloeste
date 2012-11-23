@@ -3,7 +3,7 @@
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
     <h3>Gestion de Productos</h3>
     <asp:Label runat="server" ID="lbError" CssClass="error"></asp:Label><br />
-    <asp:DropDownList ID="ddlClientes" runat="server" CssClass="ddlcliente" Width="200px"></asp:DropDownList><br />
+    <asp:DropDownList ID="ddlClientes" runat="server" CssClass="ddlcliente" Width="200px" AutoPostBack="true"></asp:DropDownList><br />
     <asp:GridView ID="gridArticulos" runat="server">
         <Columns>
             <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
@@ -21,16 +21,21 @@
     <script type="text/ecmascript">
         $(function () {
             $(".ddlcliente").change(function () {
-                if ($(this).val() != -1) {
-                    $("#location").attr("href", "productos_alta.aspx?id=" + $(this).val());
-                }
-                else {
-                    $("#location").attr("href", "javascript:void(0);");
-                }
+                VerificarURL($(this).val());
             });
 
-            $(".ddlcliente").change();
+            VerificarURL($(".ddlcliente").val());
+
         });
+
+        function VerificarURL(valor) {
+            if (valor != -1) {
+                $("#location").attr("href", "productos_alta.aspx?id=" + valor);
+            }
+            else {
+                $("#location").attr("href", "javascript:void(0);");
+            }
+        }
 
 
     </script>
