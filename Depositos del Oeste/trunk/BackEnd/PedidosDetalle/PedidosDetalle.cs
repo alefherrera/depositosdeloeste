@@ -13,7 +13,7 @@ namespace BackEnd
         public virtual int IdArticulo { get; set; }
         public virtual int Cantidad{ get; set; }
         public virtual Compartimiento Compartimiento { get; set; }
-
+        
         public override bool Load()
         {
             base.Load();
