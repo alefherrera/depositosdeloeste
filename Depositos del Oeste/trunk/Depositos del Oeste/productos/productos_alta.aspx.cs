@@ -15,7 +15,14 @@ namespace Depositos_del_Oeste
         Cliente cliente;
         protected void Page_Load(object sender, EventArgs e)
         {
-            cargarCliente();
+            try
+            {
+                cargarCliente();
+            }
+            catch (ErrorFormException ex)
+            {
+                lbError.Text = ex.Message;
+            }
         }
 
         private void cargarCliente()
