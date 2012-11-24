@@ -35,8 +35,6 @@
             else {
                 $("#location").attr("href", "javascript:void(0);");
             }
-        }
-
-
+        }        
     </script>
 </asp:Content>
