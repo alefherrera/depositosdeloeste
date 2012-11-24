@@ -33,6 +33,9 @@ namespace BackEnd
 
         public static void Facturacion(List<Compartimiento> compartimientos, string cliente)
         {
+            if (compartimientos.Count == 0)
+                return;
+
             string asunto = "Facturacion ubicaciones";
             string cuerpo;
 
