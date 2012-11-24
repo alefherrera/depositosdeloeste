@@ -173,6 +173,7 @@ namespace Services
         /// <returns></returns>
         public static List<Compartimiento> posiblesUbicaciones(Articulo articulo, int cantidad, List<Compartimiento> compartimientos_posibles)
         {
+            int cantidadTotal = cantidad;
             if (articulo == null)
                 throw new Exception("Articulo es nulo");
             if (cantidad == 0)
@@ -377,7 +378,7 @@ namespace Services
                 }
             }
             if(cantidad > 0){
-                throw new ErrorFormException("No se pueden almacenar " + cantidad.ToString() + " " + articulo.Nombre + "/s");
+                throw new ErrorFormException("No se pueden almacenar " + cantidad.ToString() + " de " + cantidadTotal + " del articulo: " + articulo.Nombre + "/s");
             }
             return compartimientos_posibles;
         }
