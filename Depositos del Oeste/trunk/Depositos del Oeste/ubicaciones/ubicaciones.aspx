@@ -27,6 +27,7 @@
     <asp:Label runat="server" ID="lbError" CssClass="error"></asp:Label><br />
     <asp:GridView ID="gridUbicaciones" runat="server" AutoGenerateColumns="false">
         <Columns>
+            <asp:BoundField HeaderText="Estanteria" DataField="nroestanteria" />
             <asp:BoundField HeaderText="Nivel" DataField="nivel" />
             <asp:BoundField HeaderText="Compartimiento" DataField="compartimiento" />
             <asp:TemplateField HeaderText="Actividad">
