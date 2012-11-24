@@ -318,8 +318,7 @@ namespace Services
             //Busco los libres por indice de actividad distintos al articulo
             oCompartimiento = new Compartimiento();
             oCompartimiento.Estado = (int)Enums.Ubicaciones_Estado.Libre;
-            oCompartimiento.IdArticulo = actividad[0];
-            oCompartimiento.Actividad = articulo.Actividad;
+            oCompartimiento.Actividad = actividad[0];
 
             compartimientos = oCompartimiento.Select();
             foreach (Compartimiento compartimiento in compartimientos)
