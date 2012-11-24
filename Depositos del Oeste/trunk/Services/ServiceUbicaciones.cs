@@ -34,6 +34,9 @@ namespace Services
                     oRemitoDetalle.IdCompartimiento = ingreso.Id;
                     oRemitoDetalle.Save();
                 }
+                if (ingreso.IdArticulo == 0)
+                    ingreso.FechaReserva = DateTime.Parse("1900-01-01");
+
                 ingreso.Update();
             }
 
@@ -380,10 +383,6 @@ namespace Services
         }
         public static List<Compartimiento> ingresoUbicaciones(Articulo articulo, int cantidad, string codigo)
         {
-            if (cantidad == 0)
-            {
-                return new List<Compartimiento>();
-            }
             ReservaDetalle oReservaDetalle = new ReservaDetalle();
             oReservaDetalle.CodigoReserva = codigo;
             oReservaDetalle.IdArticulo = articulo.IdArticulo;

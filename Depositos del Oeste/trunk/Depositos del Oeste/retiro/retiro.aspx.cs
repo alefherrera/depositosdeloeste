@@ -17,7 +17,7 @@ namespace Depositos_del_Oeste
         protected void Page_Load(object sender, EventArgs e)
         {
             lbError.Text = "";
-            if(!IsPostBack)
+            if (!IsPostBack)
                 ServiceProductos.cargarComboClientes(ddlClientes);
         }
 
@@ -60,9 +60,20 @@ namespace Depositos_del_Oeste
             {
                 FechaPedido = Validaciones.isDate(txtFechaPedido.Text);
             }
-            catch(ErrorFormException)
+            catch (ErrorFormException)
             {
                 lbError.Text = "Fecha de Pedido Incorrecta";
+                return;
+
+            }
+            if (FechaPedido == null)
+            {
+                lbError.Text = "Fecha de Pedido Incorrecta";
+                return;
+            }
+            if (FechaPedido.CompareTo(DateTime.Today) == 1)
+            {
+                lbError.Text = "Fecha de Pedido Incorrecta, no puede ser mayor a la fecha actual";
                 return;
             }
 
@@ -76,7 +87,7 @@ namespace Depositos_del_Oeste
                 //Validaciones
                 DataRow row = dtIngresos.Rows[i];
                 int cantidadPedido = 0;
-                if(((TextBox)gridIngresados.Rows[i].FindControl("txtCantidad")).Text == "")
+                if (((TextBox)gridIngresados.Rows[i].FindControl("txtCantidad")).Text == "")
                     cantidadPedido = 0;
                 else
                 {
@@ -94,27 +105,30 @@ namespace Depositos_del_Oeste
                 }
 
                 int cantidadIngresada = int.Parse(row["cantidad"].ToString());
-                cantidadTotal += cantidadPedido; 
+                cantidadTotal += cantidadPedido;
                 if (cantidadIngresada < cantidadPedido)
                 {
                     lbError.Text = "Cantidad en el pedido mayor a cantidad almacenada";
                     return;
                 }
-
-                //Registro
-                Compartimiento cmp = new Compartimiento();
-                cmp.Id = int.Parse(row["idcompartimiento"].ToString());
-                cmp.Load();
-                cmp.Cantidad_Guardar = cantidadPedido;
-                cmp.Cantidad -= cantidadPedido;
-                if (cmp.Cantidad == 0)
+                if (cantidadPedido != 0)
                 {
-                    cmp.Estado = (int)Enums.Ubicaciones_Estado.Libre;
-                    if (int.Parse(row["reservados"].ToString()) > 0)
-                        cmp.Estado = (int)Enums.Ubicaciones_Estado.Reservada;
+                    //Registro
+                    Compartimiento cmp = new Compartimiento();
+                    cmp.Id = int.Parse(row["idcompartimiento"].ToString());
+                    cmp.Load();
+                    cmp.Cantidad_Guardar = cantidadPedido;
+                    cmp.Cantidad -= cantidadPedido;
+                    if (cmp.Cantidad == 0)
+                    {
+                        cmp.Estado = (int)Enums.Ubicaciones_Estado.Libre;
+                        if (int.Parse(row["reservados"].ToString()) > 0)
+                            cmp.Estado = (int)Enums.Ubicaciones_Estado.Reservada;
+                    }
+
+                    compartimientos.Add(cmp);
                 }
-                    
-                compartimientos.Add(cmp);
+
             }
             if (cantidadTotal == 0)
             {
@@ -122,8 +136,16 @@ namespace Depositos_del_Oeste
                 return;
             }
 
+            List<Compartimiento> comp_mail = new List<Compartimiento>();
+            foreach (Compartimiento cmp in compartimientos)
+                if (cmp.Estado == (int)Enums.Ubicaciones_Estado.Libre)
+                    comp_mail.Add(cmp);
+
+
+            Lista_Mails.Facturacion(comp_mail, lbCliente.Text);
             ServiceRetiro.registrarRetiro(compartimientos, int.Parse(ddlClientes.SelectedItem.Value.ToString()), FechaPedido);
-            Lista_Mails.Facturacion(compartimientos, lbCliente.Text);
+
+
 
             pnlPedido.Visible = false;
             lbSuccess.Visible = true;

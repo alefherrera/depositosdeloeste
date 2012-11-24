@@ -60,7 +60,7 @@ namespace Depositos_del_Oeste
             }
             if (FechaRemito.CompareTo(DateTime.Today) == 1)
             {
-                lbError.Text = "Fecha de Remito Incorrecta";
+                lbError.Text = "Fecha de Remito Incorrecta, no puede ser mayor a la fecha actual";
                 return;
             }
 
@@ -92,9 +92,9 @@ namespace Depositos_del_Oeste
                         lbError.Text = "Cantidad de articulos negativa";
                         return;
                     }
+                    cantidadRemito = int.Parse(((TextBox)gridArticulos.Rows[i].FindControl("txtCantidad")).Text);
                 }
 
-                cantidadRemito = int.Parse(((TextBox)gridArticulos.Rows[i].FindControl("txtCantidad")).Text);
                 ingreso_total += cantidadRemito;
                 if (cantidadRemito > cantidadReservada)
                 {
@@ -124,15 +124,12 @@ namespace Depositos_del_Oeste
             List<Compartimiento> comp_mail = new List<Compartimiento>();
             foreach (Compartimiento cmp in ingresados)
             if (cmp.IdArticulo == 0)
-            {
                 comp_mail.Add(cmp);
-                cmp.FechaReserva = DateTime.Parse("1900-01-01");
-            }
 
-            ServiceUbicaciones.registrarIngreso(ingresados, FechaRemito, txtDescripcion.Text, cliente, txtCodigo.Text);
-            
             Cliente oCliente = ServiceProductos.cargarCliente(cliente.ToString());
             Lista_Mails.Facturacion(comp_mail, oCliente.Razon_Social);
+            ServiceUbicaciones.registrarIngreso(ingresados, FechaRemito, txtDescripcion.Text, cliente, txtCodigo.Text);
+            
 
 
             pnlReserva.Visible = false;
