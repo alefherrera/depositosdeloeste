@@ -62,6 +62,7 @@ namespace Depositos_del_Oeste
                 {
                     Articulo articulo = new Articulo();
                     articulo.IdCliente = int.Parse(ddlClientes.SelectedItem.Value);
+                    articulo.Activo = true;
                     ServiceProductos.cargarComboArticulos(ddlArticulo, articulo);
                     pnlArticulosGeneral.Visible = true;
                 
