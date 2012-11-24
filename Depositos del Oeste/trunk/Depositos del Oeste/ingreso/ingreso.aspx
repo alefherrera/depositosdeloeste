@@ -39,7 +39,7 @@
         <br />
         <asp:Label ID="lbDescripcion" Text="Detalles" runat="server"></asp:Label>
         <br />
-        <asp:TextBox ID="txtDescripcion" TextMode="MultiLine" MaxLength="1000" runat="server" Height="100px" Width="300px"></asp:TextBox>
+        <asp:TextBox ID="txtDescripcion" TextMode="MultiLine" MaxLength="1000" runat="server" Height="100px" Width="300px" CssClass="txtarea"></asp:TextBox>
         <br />
         <asp:Button ID="btnSubmit" CssClass="btnSubmit" Text="Registrar Ingreso" runat="server" OnClick="btnSubmit_Click" />
         <asp:Button ID="btnCancel" CssClass="btnCancel" Text="Cancelar Reserva" runat="server" OnClick="btnCancel_Click"/>
@@ -56,6 +56,20 @@
                 return false;
             return confirm("Confirme la cancelación de la reserva");
         });
+        $(function () {
+            $(".txtarea").attr("maxlength", "1000");
+        });
 
+        $("document").ready(function () {
+            $('textarea[maxlength]').live('keyup change', function () {
+                var str = $(this).val()
+                var mx = parseInt($(this).attr('maxlength'))
+                if (str.length > mx) {
+                    $(this).val(str.substr(0, mx))
+                    return false;
+                }
+            }
+          )
+        });
     </script>
 </asp:Content>
