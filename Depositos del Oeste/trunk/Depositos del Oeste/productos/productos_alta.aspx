@@ -18,7 +18,7 @@
         </tr>
         <tr>
             <td colspan="3">
-                <asp:TextBox runat="server" ID="txtDescripcion" TextMode="MultiLine" Width="300px" MaxLength="45" CssClass="required"></asp:TextBox>
+                <asp:TextBox runat="server" ID="txtDescripcion" TextMode="MultiLine" Width="300px" MaxLength="45" CssClass="required txtarea"></asp:TextBox>
             </td>
         </tr>
         <tr>
@@ -57,7 +57,7 @@
             <td>gramos
             </td>
         </tr>
-        </table>
+    </table>
     Índice de Actividad 
     <asp:RadioButtonList runat="server" ID="rblActividad">
         <asp:ListItem Value="0" Selected="True">Bajo</asp:ListItem>
@@ -71,5 +71,20 @@
         $(".btnConfirmar").click(function () {
             return confirm("¿Esta seguro que los datos son correctos?");
         });
+        $(function () {
+            $(".txtarea").attr("maxlength", "45");
+        });
+
+        $("document").ready(function () {
+            $('textarea[maxlength]').live('keyup change', function () {
+                var str = $(this).val()
+                var mx = parseInt($(this).attr('maxlength'))
+                if (str.length > mx) {
+                    $(this).val(str.substr(0, mx))
+                    return false;
+                }
+            }
+          )
+        })
     </script>
 </asp:Content>
